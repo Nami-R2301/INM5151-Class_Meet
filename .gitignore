@@ -1,4 +1,5 @@
 # IDE
+package-lock.json
 .vscode
 .idea
 

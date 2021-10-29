@@ -1,0 +1,22 @@
+{
+  "name": "inm5151-class_meet",
+  "version": "0.0.1",
+  "description": "Dépôt pour notre projet de session dans le cours INM5151 de la session A-21",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nami-R2301/INM5151-Class_Meet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nami-R2301/INM5151-Class_Meet/issues"
+  },
+  "homepage": "https://github.com/Nami-R2301/INM5151-Class_Meet#readme",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
+}

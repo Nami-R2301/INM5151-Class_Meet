@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo-Class_Meet.png">
+  <Connexion msg="Bienvenue à Class Meet"></Connexion>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Connexion from "./components/Connexion";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Connexion
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Sen, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #87ceeb;
   margin-top: 60px;
 }
 </style>

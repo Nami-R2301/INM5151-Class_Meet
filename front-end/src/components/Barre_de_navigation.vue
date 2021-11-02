@@ -1,5 +1,4 @@
 <template>
-  <div class="menu">
     <nav>
       <ul class="menu">
         <li><a class="logo" href="Connexion.vue" title="Cliquez ici pour revenir à la page principale">
@@ -9,7 +8,6 @@
         <li><a class="lien-connexion" href="Connexion.vue" title="Connectez-vous">Connectez-vous</a></li>
       </ul>
     </nav>
-  </div>
 </template>
 
 <script>
@@ -28,8 +26,9 @@ export default {
   text-align: center;
   font-size: large;
   top: 0;
+  left: 0;
   z-index: 3;
-  margin: 0 0 0 0;
+  margin: 0;
   padding: 0;
   width: 100%;
   list-style-type: none;

@@ -1,14 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo-Class_Meet.png">
-  <Connexion msg="Bienvenue à Class Meet"></Connexion>
+  <Barre_de_navigation/>
+  <img alt="Vue logo" src="../src/assets/logo.png">
+  <Connexion msg="Connectez-vous à Class Meet"/>
 </template>
 
 <script>
-import Connexion from "./components/Connexion";
+import Connexion from './components/Connexion.vue'
+import Barre_de_navigation from "./components/Barre_de_navigation";
 
 export default {
   name: 'App',
   components: {
+    Barre_de_navigation,
     Connexion
   }
 }
@@ -20,7 +23,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #87ceeb;
+  color: #2c3e50;
   margin-top: 60px;
 }
 </style>

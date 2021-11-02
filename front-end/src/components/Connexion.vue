@@ -1,6 +1,7 @@
 <template>
   <div class="connexion">
   <h1>{{msg}}</h1>
+    <img alt="Vue logo" src="../assets/logo.png">
     <div>
         <form action="login">
             <label>Adresse courriel :</label><br>

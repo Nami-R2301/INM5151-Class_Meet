@@ -1,6 +1,5 @@
 <template>
   <Barre_de_navigation/>
-  <img alt="Vue logo" src="../src/assets/logo.png">
   <Connexion msg="Connectez-vous à Class Meet"/>
 </template>
 

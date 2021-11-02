@@ -1,6 +1,9 @@
 <template>
     <nav>
       <ul class="menu">
+        <li><a class="icon" href="Connexion.vue" title="Défiler les fonctionnalités vers la droite">
+          <img  alt="icône de menu" src="../assets/icon-menu.png" width="50%">
+        </a></li>
         <li><a class="logo" href="Connexion.vue" title="Cliquez ici pour revenir à la page principale">
           <img class="logo" alt="logo Class Meet" src="../assets/logo.png">
           <img class="class_Meet" alt="Class Meet" src="../assets/Class_Meet.png"></a>
@@ -43,22 +46,34 @@ export default {
   color: black;
   font-weight: bold;
   overflow: hidden;
-  text-align: center;
   text-decoration: none;
 }
 
+
 a.lien-connexion {
   float: right;
+  padding: 1.5625% 2%;
   margin: 0 auto;
 }
 
 .logo {
-  padding: 0 2%;
+  padding: 0;
   max-width: 100%;
   width: 20%;
   height: auto;
-  margin: -1% 5% -1% 5%;
+  margin: -1% 0;
+  text-align: left;
 }
+
+.icon {
+  max-width: 100%;
+  height: auto;
+  text-align: left;
+  float: left;
+  padding: 0;
+  margin: 0 auto;
+}
+
 
 .class_Meet {
   max-width: 100%;

@@ -1,0 +1,60 @@
+
+@startuml
+title Séquence Inscription
+User  -> System : emailInput
+activate System
+System -> BaseDeDonnee : verifyEmail
+activate BaseDeDonnee
+BaseDeDonnee --> System : verifyEmail Reponse
+deactivate BaseDeDonnee
+System --> User : emailInput Reponse
+deactivate System
+User -> System : inputPassword
+activate System
+System -> System : validatePassword
+System --> User : inputPassword Reponse
+deactivate System
+User -> System : repeatPassword
+activate System
+System -> System : validateSamePassword
+System --> User : repeatPassword Reponse
+deactivate System
+User -> System : confirmation
+activate System
+System -> User : sendMailConfirmation
+System -> User : redirectToConfirmationPage
+User -> System : inputMailConfirmationNbr
+System -> System : validateNbr
+System --> User : unlockInscriptionButton
+deactivate System
+User -> System : termineInscription
+activate System
+System -> BaseDeDonnee : demandeCreationCompte
+activate BaseDeDonnee
+BaseDeDonnee --> System : confirmationCreation
+deactivate BaseDeDonnee
+deactivate System
+@enduml
+
+@startuml
+title Séquence Supprimer Compte
+User -> System : demandeSupprimationCompte
+activate System
+System -> User : afficheFenetreConfirmation
+deactivate System
+User -> System : inputPassword
+activate System
+System -> BaseDeDonnee : validePassword 
+activate BaseDeDonnee
+BaseDeDonnee --> System : validePassword Reponse
+deactivate BaseDeDonnee
+System -> User : unlockSupprimerCompteButton
+deactivate System
+User -> System : confirmeSupprimeCompte
+activate System
+System -> BaseDeDonnee : DemandeDestructionCompte
+activate BaseDeDonnee
+BaseDeDonnee --> System : DemandeDestructionCompte Reponse
+deactivate BaseDeDonnee
+deactivate System
+@enduml

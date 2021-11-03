@@ -11,7 +11,7 @@ deactivate System
 User -> System : inputPassword()
 activate System
 System -> System : validatePassword(String )
-System --> User : inputPassword Reponse
+System -> User : afficheValidationPassword()
 deactivate System
 User -> System : repeatPassword()
 activate System

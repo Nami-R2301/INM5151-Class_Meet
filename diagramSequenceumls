@@ -23,14 +23,14 @@ activate System
 System -> User : sendMailConfirmation(String )
 System -> User : redirectToConfirmationPage()
 User -> System : inputMailConfirmationNbr()
-System -> System : validateNbr
+System -> System : validateNbr(int)
 System --> User : unlockInscriptionButton()
 deactivate System
 User -> System : termineInscription()
 activate System
 System -> BaseDeDonnee : demandeCreationCompte()
 activate BaseDeDonnee
-BaseDeDonnee --> System : confirmationCreation()
+BaseDeDonnee --> System : confirmationCreation
 deactivate BaseDeDonnee
 deactivate System
 @enduml
@@ -51,9 +51,9 @@ System -> User : unlockSupprimerCompteButton()
 deactivate System
 User -> System : confirmeSupprimeCompte()
 activate System
-System -> BaseDeDonnee : DemandeDestructionCompte()
+System -> BaseDeDonnee : demandeDestructionCompte()
 activate BaseDeDonnee
-BaseDeDonnee --> System : DemandeDestructionCompte Reponse
+BaseDeDonnee --> System : demandeDestructionCompte Reponse
 deactivate BaseDeDonnee
 deactivate System
 @enduml

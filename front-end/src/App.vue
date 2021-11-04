@@ -1,17 +1,20 @@
 <template>
   <Barre_de_navigation/>
-  <Connexion msg="Connectez-vous à Class Meet"/>
+  <Connexion msg="Connectez-vous à "/>
+  <Footer/>
 </template>
 
 <script>
 import Connexion from './components/Connexion.vue'
 import Barre_de_navigation from "./components/Barre_de_navigation";
+import Footer from "./components/Footer";
 
 export default {
   name: 'App',
   components: {
     Barre_de_navigation,
-    Connexion
+    Connexion,
+    Footer,
   }
 }
 </script>
@@ -24,4 +27,5 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 </style>

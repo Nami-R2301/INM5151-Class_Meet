@@ -2,36 +2,34 @@
 title Séquence Inscription
 User  -> System : emailInput()
 activate System
-System -> BaseDeDonnee : verifyEmail(String )
-activate BaseDeDonnee
-BaseDeDonnee --> System : verifyEmail Reponse
-deactivate BaseDeDonnee
-System --> User : emailInput Reponse
+System -> System : verifyEmail(String )
+System --> User : emailInput 
 deactivate System
 User -> System : inputPassword()
 activate System
 System -> System : validatePassword(String )
-System -> User : afficheValidationPassword()
+System --> User : validatePassword(String )
+System -> System : afficheValidationPassword()
 deactivate System
 User -> System : repeatPassword()
 activate System
 System -> System : validateSamePassword(String)
-System --> User : repeatPassword Reponse
+System --> User : repeatPassword 
 deactivate System
 User -> System : confirmation()
 activate System
-System -> User : sendMailConfirmation(String )
-System -> User : redirectToConfirmationPage()
+System -> System : sendMailConfirmation(String )
+System -> System : redirectToConfirmationPage()
+System --> User : confirmation()
+deactivate System
 User -> System : inputMailConfirmationNbr()
+activate System
 System -> System : validateNbr(int)
-System --> User : unlockInscriptionButton()
+System -> System : unlockInscriptionButton()
 deactivate System
 User -> System : termineInscription()
 activate System
-System -> BaseDeDonnee : demandeCreationCompte()
-activate BaseDeDonnee
-BaseDeDonnee --> System : confirmationCreation
-deactivate BaseDeDonnee
+System -> System : CreationCompte()
 deactivate System
 @enduml
 
@@ -39,21 +37,17 @@ deactivate System
 title Séquence Supprimer Compte
 User -> System : demandeSupprimationCompte()
 activate System
-System -> User : afficheFenetreConfirmation()
+System -> System : afficheFenetreConfirmation()
+System --> User : demandeSupprimationCompte()
 deactivate System
 User -> System : inputPassword()
 activate System
-System -> BaseDeDonnee : validePassword( String ) 
-activate BaseDeDonnee
-BaseDeDonnee --> System : validePassword Reponse 
-deactivate BaseDeDonnee
-System -> User : unlockSupprimerCompteButton()
+System -> System : validePassword( String ) 
+System -> System : unlockSupprimerCompteButton()
+User <-- System : inputPassword()
 deactivate System
 User -> System : confirmeSupprimeCompte()
 activate System
-System -> BaseDeDonnee : demandeDestructionCompte()
-activate BaseDeDonnee
-BaseDeDonnee --> System : demandeDestructionCompte Reponse
-deactivate BaseDeDonnee
+System -> System : destructionCompte()
 deactivate System
 @enduml

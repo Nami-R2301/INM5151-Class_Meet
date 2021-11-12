@@ -1,0 +1,53 @@
+@startuml
+title Séquence Inscription
+User  -> System : emailInput()
+activate System
+System -> System : verifyEmail(String )
+System --> User : emailInput 
+deactivate System
+User -> System : inputPassword()
+activate System
+System -> System : validatePassword(String )
+System --> User : validatePassword(String )
+System -> System : afficheValidationPassword()
+deactivate System
+User -> System : repeatPassword()
+activate System
+System -> System : validateSamePassword(String)
+System --> User : repeatPassword 
+deactivate System
+User -> System : confirmation()
+activate System
+System -> System : sendMailConfirmation(String )
+System -> System : redirectToConfirmationPage()
+System --> User : confirmation()
+deactivate System
+User -> System : inputMailConfirmationNbr()
+activate System
+System -> System : validateNbr(int)
+System -> System : unlockInscriptionButton()
+deactivate System
+User -> System : termineInscription()
+activate System
+System -> System : CreationCompte()
+deactivate System
+@enduml
+
+@startuml
+title Séquence Supprimer Compte
+User -> System : demandeSupprimationCompte()
+activate System
+System -> System : afficheFenetreConfirmation()
+System --> User : demandeSupprimationCompte()
+deactivate System
+User -> System : inputPassword()
+activate System
+System -> System : validePassword( String ) 
+System -> System : unlockSupprimerCompteButton()
+User <-- System : inputPassword()
+deactivate System
+User -> System : confirmeSupprimeCompte()
+activate System
+System -> System : destructionCompte()
+deactivate System
+@enduml

@@ -1,17 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./../public/ClassMeetLogo.png">
-  <Connection msg="Connectez-vous à Class Meet"/>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import Connection from './components/Connection.vue'
-
 export default {
-  name: 'App',
-  components: {
-    Connection
-  }
-}
+  name: "App",
+};
 </script>
 
 <style>

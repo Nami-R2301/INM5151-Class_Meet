@@ -1,7 +1,13 @@
-# IDE
-package-lock.json
-.vscode
-.idea
-
-# Javascript
+.DS_Store
+/dist
 node_modules/
+package-lock.json
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -6,10 +6,27 @@ from flask import Flask
 app = Flask(__name__)
 db = SQLAlchemy( app )
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://etudiant.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://etudiantUqam.sqlite3'
 
-class etudiant(db.Model):
-   _email = db.Column("email", db.str)
+class etudiants(db.Model):
+    id = db.Column(db.Integer , primary_key = true)
+    username = db.Column(db.String(80))
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+def _init_(self, username, email):
+    self.username = username
+    self.email = email
+#Inserts records into a mapping table
+#db.session.add (model object)
+#delete records from a table
+#db.session.delete (model object)
+#retrieves all records (corresponding to SELECT queries) from the table.
+#model.query.all ()
 
 
 
+db.create_all()
+
+@app.route('/')
+def show_all():
+   return render_template('show_all.html', etudiants = etudiants.query.all() )

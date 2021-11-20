@@ -26,7 +26,7 @@ def _init_(self, username, email):
 #retrieves all records (corresponding to SELECT queries) from the table.
 #model.query.all ()
 
- 
+
 
 db.create_all()
 

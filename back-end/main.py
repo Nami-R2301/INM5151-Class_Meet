@@ -1,16 +1,9 @@
-# This is a sample Python script.
+import Database 
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#create object Etudiant that can go in Db
+jules = Database.etudiant(username='jules',email='youle21' , password='xxx')
+#print( repr(jules) )
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Need to add and commit to save it in Db
+Database.db.session.add(jules)
+Database.db.session.commit()

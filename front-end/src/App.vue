@@ -1,7 +1,9 @@
 <template>
-  <Barre_de_navigation/>
-  <Connexion msg="Connectez-vous à "/>
-  <Footer/>
+    <div>
+        <Barre_de_navigation/>
+        <Connexion msg="Connectez-vous à "/>
+        <Footer/>
+    </div>
 </template>
 
 <script>

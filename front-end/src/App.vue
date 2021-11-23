@@ -1,16 +1,18 @@
 <template>
-  <head>
-    <script href="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"/>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  </head>
   <div id="app">
-    <router-view />
+    <router-view/>
+    <head>
+      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+      <script type="application/javascript" href="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"/>
+    </head>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  components: {
+  }
 };
 </script>
 

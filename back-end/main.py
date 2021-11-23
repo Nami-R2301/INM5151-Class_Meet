@@ -1,4 +1,5 @@
-import Database 
+import Database
+import server
 
 #create object Etudiant that can go in Db
 #jules = Database.etudiant(username='jules',email='youle21' , password='xxx')

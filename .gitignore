@@ -2,7 +2,7 @@
 /dist
 node_modules/
 package-lock.json
-back-end/__pycache__/Database.cpython-39.pyc
+**/__pycache__/
 # Editor directories and files
 .idea
 .vscode

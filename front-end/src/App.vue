@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-        <router-view/>
-        <Barre_de_navigation/>
-        <Connexion msg="Connectez-vous à "/>
-        <Footer/>
-    </div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import Connexion from './components/Connexion.vue'
-import Barre_de_navigation from "./components/Barre_de_navigation";
-import Footer from "./components/Footer";
+import "./assets/bootstrap-grid.min.css";
 
 export default {
-  name: 'App',
-  components: {
-    Barre_de_navigation,
-    Connexion,
-    Footer,
-  }
-}
+  name: "App",
+
+  beforeCreate() {
+    if (
+      this.$router.currentRoute.fullPath !== "/login" &&
+      !this.$store.state.session_id
+    ) {
+      this.$router.push("/login");
+    } else if (
+      this.$router.currentRoute.fullPath === "/login" &&
+      this.$store.state.session_id
+    ) {
+      this.$router.push("/");
+    }
+  },
+};
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+
+.container-fluid {
+  width: auto;
+}
+
+.row > * {
+  padding: 0;
+}
+
 #app {
   font-family: Sen, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -30,5 +46,4 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 </style>

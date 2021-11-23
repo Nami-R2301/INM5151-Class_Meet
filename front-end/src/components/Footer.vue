@@ -17,8 +17,6 @@ export default {
 <style>
 
 footer {
-  position: absolute;
-  z-index: 3;
   bottom: 0;
   left: 0;
   width: 100%;

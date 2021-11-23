@@ -1,7 +1,14 @@
 <template>
-  <Barre_de_navigation/>
-  <Connexion msg="Connectez-vous à "/>
-  <Footer/>
+  <head>
+    <script href="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  </head>
+  <div id="app">
+        <router-view/>
+        <Barre_de_navigation/>
+        <Connexion msg="Connectez-vous à "/>
+        <Footer/>
+    </div>
 </template>
 
 <script>

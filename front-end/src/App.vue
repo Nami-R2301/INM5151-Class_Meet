@@ -5,10 +5,11 @@
 </template>
 
 <script>
-import "./assets/bootstrap-grid.min.css"
+import "./assets/bootstrap-grid.min.css";
 
 export default {
   name: "App",
+
   beforeCreate() {
     if (
       this.$router.currentRoute.fullPath !== "/login" &&
@@ -28,6 +29,14 @@ export default {
 <style>
 body {
   margin: 0;
+}
+
+.container-fluid {
+  width: auto;
+}
+
+.row > * {
+  padding: 0;
 }
 
 #app {

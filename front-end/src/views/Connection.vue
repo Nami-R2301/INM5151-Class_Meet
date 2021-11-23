@@ -1,8 +1,18 @@
 <template>
-  <div>
-    <Barre_de_navigation />
-    <Connexion msg="Connectez-vous à " />
-    <Footer />
+  <div class="container-fluid">
+    <div class="row">
+      <Barre_de_navigation class="col-12" />
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <Connexion msg="Connectez-vous à " />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <Footer />
+      </div>
+    </div>
   </div>
 </template>
 

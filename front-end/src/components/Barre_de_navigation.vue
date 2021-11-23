@@ -32,7 +32,6 @@ export default {
   text-align: center;
   top: 0;
   left: 0;
-  z-index: 3;
   margin: 0 0 1% 0;
   padding: 0;
   list-style-type: none;

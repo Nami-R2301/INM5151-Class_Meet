@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import "./assets/bootstrap-grid.min.css"
+
 export default {
   name: "App",
   beforeCreate() {

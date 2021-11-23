@@ -1,16 +1,18 @@
-# This is a sample Python script.
+import Database
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#create object Etudiant that can go in Db
+#jules = Database.etudiant(username='jules',email='youle21' , password='xxx')
+#Nami = Database.Etudiant(username='Nami2122',email='emailfoo' , password='xXxx')
+#Mehdi = Database.Etudiant(username='Mehdi22',email='emailfoo2' , password='xXx')
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Need to add and commit to save it in Db
+#Database.db.session.add(Mehdi)
+#Database.db.session.commit()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+# Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
+list_etudiants = Database.Etudiant.query.all()
+
+Database.print_etudiant(Etudiants=list_etudiants)
+

@@ -6,13 +6,13 @@
         <h1>{{ msg }}</h1>
         <h1 class="msg_connexion">Class Meet</h1>
       </div>
-      <div class="row justify-content-lg-center">
+      <div>
         <form action="login">
-          <div class="col-lg-6"><label>Adresse courriel :</label><br></div>
-          <div class="col-lg-6"><input type="text" name="username"/><br></div>
-          <div class="col-lg-6"><label>Mot de passe :</label><br></div>
-          <div class="col-lg-6"><input type="password" name="password"/><br></div>
-          <div class="col-lg-6"><input type="submit" name="Soumettre"/></div>
+          <div class="text-center mt-sm-2"><label>Adresse courriel :</label><br></div>
+          <div class="text-center mt-sm-2"><input type="text" name="username"/><br></div>
+          <div class="text-center mt-sm-2"><label>Mot de passe :</label><br></div>
+          <div class="text-center mt-sm-2"><input type="password" name="password"/><br></div>
+          <div class="text-center mt-sm-2"><input type="submit" name="Soumettre"/></div>
         </form>
       </div>
     </div>
@@ -50,8 +50,6 @@ h1 {
 
 form {
   margin-top: 2%;
-  margin-left: 37%;
-  position: relative;
   text-align: left;
   font-family: Sen, "Times New Roman", serif;
   font-size: 120%;
@@ -91,7 +89,7 @@ input[type=password] {
 
 input[type=submit] {
   width: 15%;
-  margin: 1% 0 1% 13.5%;
+  margin: 1% 0 1%;
   padding: 1%;
   border: none;
   border-radius: 4px;

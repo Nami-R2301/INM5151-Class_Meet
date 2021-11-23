@@ -1,16 +1,20 @@
 <template>
   <div class="connexion">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <div>
-      <h1>{{ msg }}</h1>
-      <h1 class="msg_connexion">Class Meet</h1>
-      <form action="login">
-        <label>Adresse courriel :</label><br>
-        <input type="text" name="username"/><br>
-        <label>Mot de passe :</label><br>
-        <input type="password" name="password"/><br>
-        <input type="submit" name="Soumettre"/>
-      </form>
+    <img class="img-fluid" alt="Vue logo" src="../assets/logo.png">
+    <div class="container-fluid">
+      <div class="text-center mt-3">
+        <h1>{{ msg }}</h1>
+        <h1 class="msg_connexion">Class Meet</h1>
+      </div>
+      <div class="row justify-content-lg-center">
+        <form action="login">
+          <div class="col-lg-6"><label>Adresse courriel :</label><br></div>
+          <div class="col-lg-6"><input type="text" name="username"/><br></div>
+          <div class="col-lg-6"><label>Mot de passe :</label><br></div>
+          <div class="col-lg-6"><input type="password" name="password"/><br></div>
+          <div class="col-lg-6"><input type="submit" name="Soumettre"/></div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +30,11 @@ export default {
 </script>
 
 <style scoped>
+
+.img-fluid {
+  max-width: 40%;
+  height: auto;
+}
 
 .msg_connexion {
   color: #87ceeb;

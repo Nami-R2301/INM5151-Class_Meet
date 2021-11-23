@@ -1,27 +1,26 @@
 <template>
-  <head>
-    <script href="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"/>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  </head>
   <div id="app">
-        <router-view/>
-        <Barre_de_navigation/>
-        <Connexion msg="Connectez-vous à "/>
-        <Footer/>
-    </div>
+    <head>
+      <title>Connexion</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <Barre_de_navigation/>
+    <Connexion msg="Connectez-vous à "/>
+  </div>
 </template>
 
 <script>
 import Connexion from './components/Connexion.vue'
 import Barre_de_navigation from "./components/Barre_de_navigation";
-import Footer from "./components/Footer";
 
 export default {
   name: 'App',
   components: {
     Barre_de_navigation,
     Connexion,
-    Footer,
   }
 }
 </script>

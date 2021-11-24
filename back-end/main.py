@@ -10,7 +10,8 @@ Jules = Database.Etudiant(username='jules',email='youle21' , password='xxx')
 #inf5151 = Database.Sigle(sigle='INF5151')
 #inf5171 = Database.Sigle(sigle='INF5171')
 #inf5153 = Database.Sigle(sigle='INF5153')
-
+fooPost = Database.Publication( idEtudiant=Jules.id, contenu="some random post!" )
+Database.db.session.add(fooPost)
 ## Need to add and commit to save it in Db
 #Database.db.session.add(Jules)
 #Database.db.session.add(Nami)
@@ -18,8 +19,9 @@ Jules = Database.Etudiant(username='jules',email='youle21' , password='xxx')
 #Database.db.session.add(inf5171)
 #Database.db.session.add(inf5153)
 #Database.db.session.add(Mehdi)
-#Database.db.session.commit()
-
+Database.db.session.commit()
+print( fooPost )
+print( fooPost.contenu )
 
 # Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
 list_etudiants = Database.Etudiant.query.all()

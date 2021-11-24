@@ -3,7 +3,8 @@ from sqlalchemy import ForeignKey, Table, Column
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+
+#Base = declarative_base() # Not necessary yet , might use later dont remove
 
 # Etudiant
 class Etudiant(db.Model):
@@ -13,8 +14,8 @@ class Etudiant(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(20), unique=True, nullable=False)
     publications = relationship("Publication")
-#    cours = relationship('Inscription')
 
+# Publication
 class Publication(db.Model):
     __tablename__ = 'publication'
     id = db.Column(db.Integer , primary_key = True)
@@ -31,12 +32,12 @@ class Sigle(db.Model):
     id = db.Column(db.Integer , primary_key = True)
     sigle = db.Column(db.String(7))
 
-    # Permet de sortir en string des éléments de l'objets passé en parametre
+# Permet de sortir en string des éléments de l'obnjet passé en parametre s'il possède l'attribut username et email , modifiable
 def __repr__(self):
     return 'Username  %r' % self.username + '\n Email %r' % self.email
 
 
-
+#TODO pas fonctionnel encore
 class Inscription(db.Model):
     __tablename__= 'inscription'
     etudiant_id = Column(ForeignKey('etudiant.id'), primary_key=True)
@@ -47,14 +48,13 @@ class Inscription(db.Model):
     sigle = relationship('Sigle', backref=('etudiant_inscription'))
     etudiant = relationship('Etudiant',  backref=('sigle_inscription'))
 
-db.create_all()
-
 
 # Print passe la liste passé en paramêtre dans une boucle qui affiche le contenu avec repr
 def print_etudiant(Etudiants):
     for Etudiant in Etudiants :
        print( __repr__(Etudiant))
 
+# pas fonctionnel encore
 def print_inscription(etudiant):
     for  assoc in etudiant.cours :
         print( assoc.sigle )

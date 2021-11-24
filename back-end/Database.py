@@ -1,7 +1,6 @@
 from server import db
-from sqlalchemy import ForeignKey, Table, Column
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
 
 
 # Base = declarative_base() # Not necessary yet , might use later dont remove
@@ -16,7 +15,7 @@ class Etudiant(db.Model):
     publications = relationship("Publication")
 
     def __repr__(self):
-        return "Username: %r\nEmail: %r" % (self.username, self.username)
+        return "Id: %d\nUsername: %r\nEmail: %r" % (self.id, self.username, self.username)
 
 # Publication
 
@@ -30,26 +29,23 @@ class Publication(db.Model):
     contenu = db.Column(db.String(200))
 
 
-# Sigle cours
-class Sigle(db.Model):
-    __tablename__ = 'sigle'
+# Cours
+class Cours(db.Model):
+    __tablename__ = 'cours'
     id = db.Column(db.Integer, primary_key=True)
     sigle = db.Column(db.String(7))
+    session = db.Column(db.String(4))  # AU20 -> automne 2020
 
 
 # TODO pas fonctionnel encore
 class Inscription(db.Model):
     __tablename__ = 'inscription'
-    etudiant_id = Column(ForeignKey('etudiant.id'), primary_key=True)
-    sigle_id = Column(ForeignKey('sigle.id'), primary_key=True)
-
-    postMaybe = Column(db.String(200))
-
-    sigle = relationship('Sigle', backref=('etudiant_inscription'))
-    etudiant = relationship('Etudiant',  backref=('sigle_inscription'))
-
+    db.Column("etudiant_id", db.Integer, ForeignKey('etudiant.id'), primary_key=True)
+    db.Column("sigle_id", db.Integer, ForeignKey('cours.id'), primary_key=True)
 
 # pas fonctionnel encore
+
+
 def print_inscription(etudiant):
     for assoc in etudiant.cours:
         print(assoc.sigle)

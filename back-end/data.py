@@ -9,9 +9,9 @@ list_etudiants = [
 ]
 
 list_cours = [
-    {"sigle": "INF5151"},
-    {"sigle": "INF5171"},
-    {"sigle": "INF5153"},
+    {"sigle": "INF5151", "session": "AU21"},
+    {"sigle": "INF5171", "session": "AU21"},
+    {"sigle": "INF5153", "session": "AU21"},
 ]
 
 
@@ -22,5 +22,5 @@ for etudiant in list_etudiants:
     Database.db.session.add(db_etudiant)
 
 for cours in list_cours:
-    db_cours = Database.Sigle(sigle=cours["sigle"])
+    db_cours = Database.Cours(sigle=cours["sigle"])
     Database.db.session.add(db_cours)

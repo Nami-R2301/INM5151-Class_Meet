@@ -8,7 +8,6 @@
       <script type="application/javascript"
               src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <router-view/>
     <Barre_de_navigation/>
     <Connexion msg="Connectez-vous à "/>
   </div>

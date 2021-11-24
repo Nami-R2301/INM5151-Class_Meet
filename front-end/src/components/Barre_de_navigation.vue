@@ -105,7 +105,7 @@ export default {
   }
 
   .connection {
-    margin: 2.5% 5%;
+    margin: 5% 5%;
   }
 }
 

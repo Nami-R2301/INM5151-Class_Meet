@@ -12,19 +12,10 @@
       <div class="row">
         <div class="col-xl-4 col-sm-3 col-md-3 col-xxl-6 col-lg-3"></div>
         <form action="login" class="col-6-5 col-xxl-4">
-          <label class="form-label">Prénom :</label><br>
-          <input type="text" class="form-control" name="first_name"/><br>
-          <label class="form-label">Nom :</label><br>
-          <input type="text" class="form-control" name="last_name"/><br>
           <label class="form-label">Adresse courriel :</label><br>
           <input type="text" v-model="email" class="form-control" name="username"/><br>
           <label class="form-label">Mot de passe :</label><br>
           <input type="password" v-model="password" class="form-control" name="password"/><br>
-          <div class="col-auto">
-          <span id="passwordHelpInline" class="form-text">
-              Doit être de longueur 8-20 caractères.
-            </span>
-          </div>
           <button type="submit" @click="connection" title="Soumettre" class="rounded-pill col-auto" name="submit" disabled>Soumettre
           </button>
         </form>
@@ -164,7 +155,7 @@ input[type=password] {
 button[type=submit] {
   width: 100%;
   max-width: 20%;
-  margin: 3% 0 1% 15%;
+  margin: 3% 0 1% 17.5%;
   padding: 2.5%;
   border: none;
   background-color: #87ceeb;

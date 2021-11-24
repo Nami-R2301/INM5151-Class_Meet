@@ -15,12 +15,6 @@ class Etudiant(db.Model):
     password = db.Column(db.String(20), nullable=False)
     publications = relationship("Publication")
 
-    
-    def ajout_etudiant(self, username_, psw_, email_):
-        n = self(username=username_, password=psw_, email=email_)
-        self.db.session.add(n)
-        self.db.session.commit()
-
     def __repr__(self):
         return "Username: %r\nEmail: %r" % (self.username, self.username)
 
@@ -42,12 +36,6 @@ class Sigle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sigle = db.Column(db.String(7))
 
-# Permet de sortir en string des éléments de l'obnjet passé en parametre s'il possède l'attribut username et email , modifiable
-
-
-def __repr__(self):
-    return 'Username  %r' % self.username + '\n Email %r' % self.email
-
 
 # TODO pas fonctionnel encore
 class Inscription(db.Model):
@@ -61,14 +49,7 @@ class Inscription(db.Model):
     etudiant = relationship('Etudiant',  backref=('sigle_inscription'))
 
 
-# Print passe la liste passé en paramêtre dans une boucle qui affiche le contenu avec repr
-def print_etudiant(Etudiants):
-    for Etudiant in Etudiants:
-        print(__repr__(Etudiant))
-
 # pas fonctionnel encore
-
-
 def print_inscription(etudiant):
     for assoc in etudiant.cours:
         print(assoc.sigle)

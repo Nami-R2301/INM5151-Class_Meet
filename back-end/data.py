@@ -8,10 +8,19 @@ list_etudiants = [
     {"username": 'Mehdi22', "email": 'emailfoo2', "password": 'xxx'}
 ]
 
+list_cours = [
+    {"sigle": "INF5151"},
+    {"sigle": "INF5171"},
+    {"sigle": "INF5153"},
+]
+
+
 for etudiant in list_etudiants:
     db_etudiant = Database.Etudiant(username=etudiant["username"],
                                     email=etudiant["email"],
                                     password=etudiant["password"])
     Database.db.session.add(db_etudiant)
 
-# Database.db.session.commit()
+for cours in list_cours:
+    db_cours = Database.Sigle(sigle=cours["sigle"])
+    Database.db.session.add(db_cours)

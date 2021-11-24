@@ -3,7 +3,7 @@ from sqlalchemy import ForeignKey, Table, Column
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-#Base = declarative_base()
+Base = declarative_base()
 
 
 
@@ -17,6 +17,12 @@ class Inscription(db.Model):
     sigle = relationship('Sigle', backref=('etudiant_inscription'))
     etudiant = relationship('Etudiant',  backref=('sigle_inscription'))
 
+class Publication(db.Model):
+    __tablename__ = 'publication'
+    id = db.Column(db.Integer , primary_key = True)
+    idEtudiant = db.Column(db.Integer, ForeignKey('etudiant.id'))
+    #idParentPost
+    contenu = db.Column(db.String(200))
 
 # Sigle cours
 class Sigle(db.Model):

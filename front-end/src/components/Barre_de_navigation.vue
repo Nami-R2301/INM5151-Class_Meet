@@ -100,7 +100,7 @@ export default {
   }
 
   .accessibility {
-    margin: 7.5% 0;
+    margin: 15% 0;
     max-width: 30%;
   }
 

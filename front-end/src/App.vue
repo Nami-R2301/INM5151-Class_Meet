@@ -10,41 +10,37 @@
     </head>
     <Barre_de_navigation/>
     <Connexion msg="Connectez-vous à "/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import "./assets/bootstrap-grid.min.css";
-import Connexion from './components/Connexion.vue'
-import Barre_de_navigation from "./components/Barre_de_navigation";
-
 export default {
   name: "App",
-  components: {
-    Barre_de_navigation,
-    Connexion,
-  },
 
   beforeCreate() {
     if (
-        this.$router.currentRoute.fullPath !== "/login" &&
-        !this.$store.state.session_id
+      this.$router.currentRoute.fullPath !== "/login" &&
+      !this.$store.state.session_id
     ) {
       this.$router.push("/login");
     } else if (
-        this.$router.currentRoute.fullPath === "/login" &&
-        this.$store.state.session_id
+      this.$router.currentRoute.fullPath === "/login" &&
+      this.$store.state.session_id
     ) {
       this.$router.push("/");
     }
   },
 };
-
 </script>
 
 <style>
 body {
   margin: 0;
+}
+
+.container-fluid {
+  width: auto;
 }
 
 .row > * {
@@ -55,7 +51,7 @@ body {
   font-family: Sen, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
 }
-
 </style>

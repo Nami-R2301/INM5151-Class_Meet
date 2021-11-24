@@ -3,7 +3,6 @@ from sqlalchemy import ForeignKey, Table, Column
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-
 #Base = declarative_base() # Not necessary yet , might use later dont remove
 
 # Etudiant
@@ -24,17 +23,11 @@ class Publication(db.Model):
     #idParentPost
     contenu = db.Column(db.String(200))
 
-
-
 # Sigle cours
 class Sigle(db.Model):
     __tablename__ = 'sigle'
     id = db.Column(db.Integer , primary_key = True)
     sigle = db.Column(db.String(7))
-
-# Permet de sortir en string des éléments de l'obnjet passé en parametre s'il possède l'attribut username et email , modifiable
-def __repr__(self):
-    return 'Username  %r' % self.username + '\n Email %r' % self.email
 
 
 #TODO pas fonctionnel encore
@@ -49,12 +42,3 @@ class Inscription(db.Model):
     etudiant = relationship('Etudiant',  backref=('sigle_inscription'))
 
 
-# Print passe la liste passé en paramêtre dans une boucle qui affiche le contenu avec repr
-def print_etudiant(Etudiants):
-    for Etudiant in Etudiants :
-       print( __repr__(Etudiant))
-
-# pas fonctionnel encore
-def print_inscription(etudiant):
-    for  assoc in etudiant.cours :
-        print( assoc.sigle )

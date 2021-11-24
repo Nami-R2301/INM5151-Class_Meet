@@ -1,8 +1,13 @@
 import Database
-import server
+import Interation
+from server import db
 
 ### Main 
 
+i = Interation
+
+# Méthode d'ajout d'utilisateur de la classe Interaction  exemple
+i.ajout_utilisateur('gab', 'mgai.gmail', 'xXxxx')
 
 
 # Comment instancier des étudiants 
@@ -45,11 +50,11 @@ Database.db.create_all()
 #for  Database.Publication in list_post:
 #        print(Database.Publication.id,  Database.Publication.idEtudiant )
 # Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
-#list_etudiants = Database.Etudiant.query.all()
+list_etudiants = Database.Etudiant.query.all()
 #for Etudiant in list_etudiants:
 #    print( Etudiant.id )
 
 # Méthode qui renvois les éleves inscrits
-#Database.print_etudiant(Etudiants=list_etudiants)
+Database.print_etudiant(Etudiants=list_etudiants)
 
 

@@ -25,7 +25,6 @@ export default {
 <style>
 
 .menu {
-  position: fixed;
   font-family: Sen, "Times New Roman", serif;
   font-size: 120%;
   -webkit-font-smoothing: antialiased;
@@ -33,10 +32,8 @@ export default {
   text-align: center;
   top: 0;
   left: 0;
-  z-index: 3;
   margin: 0 0 1% 0;
   padding: 0;
-  width: 100%;
   list-style-type: none;
   overflow: hidden;
   background: aliceblue;

@@ -1,15 +1,20 @@
 <template>
   <div class="connexion">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/logo.png" />
     <div>
       <h1>{{ msg }}</h1>
       <h1 class="msg_connexion">Class Meet</h1>
-      <form action="login">
-        <label>Adresse courriel :</label><br>
-        <input type="text" name="username"/><br>
-        <label>Mot de passe :</label><br>
-        <input type="password" name="password"/><br>
-        <input type="submit" name="Soumettre"/>
+      <form>
+        <label>Adresse courriel :</label><br />
+        <input type="text" v-model="email" name="username" /><br />
+        <label>Mot de passe :</label><br />
+        <input type="password" v-model="password" name="password" /><br />
+        <input
+          type="submit"
+          @click="connection"
+          name="submit"
+          value="Se connecter"
+        />
       </form>
     </div>
   </div>
@@ -21,12 +26,29 @@ export default {
   props: {
     msg: String,
     msg2: String,
-  }
-}
+  },
+  data: () => ({
+    email: "",
+    password: "",
+  }),
+  methods: {
+    connection(e) {
+      e.preventDefault();
+
+      fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
+        method: "POST",
+        body: JSON.stringify({ email: this.email, password: this.password }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 .msg_connexion {
   color: #87ceeb;
 }
@@ -54,7 +76,7 @@ label {
   text-align: left;
 }
 
-input[type=text] {
+input[type="text"] {
   display: inline-block;
   max-width: 50%;
   width: 40%;
@@ -67,7 +89,7 @@ input[type=text] {
   background: white;
 }
 
-input[type=password] {
+input[type="password"] {
   display: inline-block;
   max-width: 50%;
   width: 40%;
@@ -80,7 +102,7 @@ input[type=password] {
   background: white;
 }
 
-input[type=submit] {
+input[type="submit"] {
   width: 15%;
   margin: 1% 0 1% 13.5%;
   padding: 1%;
@@ -93,5 +115,4 @@ input[type=submit] {
   font-size: large;
   font-weight: bolder;
 }
-
 </style>

@@ -1,22 +1,44 @@
 <template>
   <div id="app">
-    <router-view/>
-    <head>
-      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-      <script type="application/javascript" href="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"/>
-    </head>
+    <router-view />
   </div>
 </template>
 
 <script>
+import "./assets/bootstrap-grid.min.css";
+
 export default {
   name: "App",
-  components: {
-  }
+
+  beforeCreate() {
+    if (
+      this.$router.currentRoute.fullPath !== "/login" &&
+      !this.$store.state.session_id
+    ) {
+      this.$router.push("/login");
+    } else if (
+      this.$router.currentRoute.fullPath === "/login" &&
+      this.$store.state.session_id
+    ) {
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+
+.container-fluid {
+  width: auto;
+}
+
+.row > * {
+  padding: 0;
+}
+
 #app {
   font-family: Sen, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

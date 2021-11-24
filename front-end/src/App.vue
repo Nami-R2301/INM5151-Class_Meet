@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <router-view />
     <head>
       <title>Connexion</title>
       <meta charset="utf-8">
@@ -9,6 +8,7 @@
       <script type="application/javascript"
               src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
+    <router-view/>
     <Barre_de_navigation/>
     <Connexion msg="Connectez-vous à "/>
   </div>
@@ -28,13 +28,13 @@ export default {
 
   beforeCreate() {
     if (
-      this.$router.currentRoute.fullPath !== "/login" &&
-      !this.$store.state.session_id
+        this.$router.currentRoute.fullPath !== "/login" &&
+        !this.$store.state.session_id
     ) {
       this.$router.push("/login");
     } else if (
-      this.$router.currentRoute.fullPath === "/login" &&
-      this.$store.state.session_id
+        this.$router.currentRoute.fullPath === "/login" &&
+        this.$store.state.session_id
     ) {
       this.$router.push("/");
     }

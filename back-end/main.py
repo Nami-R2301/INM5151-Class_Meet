@@ -20,6 +20,8 @@ print ("%r" % auteur.username )
 #inf5171 = Database.Sigle(sigle='INF5171')
 #inf5153 = Database.Sigle(sigle='INF5153')
 
+Database.db.create_all()
+Database.db.session.commit()
 
 # Comment instancier un post écrit par un élève.
 #fooPost2 = Database.Publication( idEtudiant=(Jules.id), contenu="some random post2!" )
@@ -41,12 +43,12 @@ print ("%r" % auteur.username )
 #print( fooPost )
 #print( fooPost.contenu )
 
-# filtrer query 
+# filtrer query
 #idTmp = Database.Etudiant.query.filter_by(username='jules').all()
 #Database.print_etudiant( idTmp )
 
-#list_post = Database.Publication.query.all() 
-#for  Database.Publication in list_post:
+#list_post = Database.Publication.query.all()
+# for  Database.Publication in list_post:
 #        print(Database.Publication.id,  Database.Publication.idEtudiant )
 # Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
 list_etudiants = Database.Etudiant.query.all()
@@ -57,3 +59,6 @@ list_etudiants = Database.Etudiant.query.all()
 #i.print_etudiant(Etudiants=list_etudiants)
 
 
+# Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
+for etudiant in Database.Etudiant.query.all():
+    print(etudiant)

@@ -1,19 +1,28 @@
 <template>
-    <nav>
-      <ul class="menu">
-        <li>
-          <a class="container_accessibility" href="Connexion.vue" title="Défiler les fonctionnalités vers la droite">
-          <img class="accessibility" alt="icône de menu" src="../assets/icon-menu.png">
-        </a>
-        </li>
-        <li class="container_brand">
-          <a href="Connexion.vue" title="Cliquez ici pour revenir à la page principale">
+  <nav class="container-fluid navbar-nav m-lg-auto navbar-light bg-light sticky-md-top">
+    <ul class="row">
+      <li class="col-1 align-content-start">
+        <img class="accessibility" src="../assets/icon-menu.png" alt="Icone de menu deroulant">
+      </li>
+      <li class="col-2 col-sm-3 col-md-3 col-lg-3 col-xl-2 col-xxl-2">
+        <a href="Connexion.vue"
+           title="Cliquez ici pour revenir à la page principale">
           <img class="logo" alt="logo Class Meet" src="../assets/logo.png">
           <img class="class_Meet" alt="Class Meet" src="../assets/Class_Meet.png"></a>
-        </li>
-        <li><a class="lien-connexion" href="Connexion.vue" title="Connectez-vous">Connectez-vous</a></li>
-      </ul>
-    </nav>
+      </li>
+      <li class="col-4 col-sm-5 col-md-5 col-lg-5 col-xl-4 col-xxl-4">
+        <form class="d-flex justify-content-sm-start">
+          <input class="form-control" type="search" placeholder="Rechercher des programmes"
+                 aria-label="Rechercher">
+          <button class="btn btn-outline-success" type="submit">Rechercher</button>
+        </form>
+      </li>
+      <li class="col-5 col-sm-3 col-md-3 col-lg-3 col-xl-5 col-xxl-5 justify-content-end">
+        <a class="connection" href="Connexion.vue"
+           title="Connectez-vous">Connectez-vous</a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
@@ -24,73 +33,99 @@ export default {
 
 <style>
 
-.menu {
-  font-family: Sen, "Times New Roman", serif;
-  font-size: 120%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  top: 0;
-  left: 0;
-  margin: 0 0 1% 0;
-  padding: 0;
-  list-style-type: none;
-  overflow: hidden;
-  background: aliceblue;
-}
-
-.menu a {
-  float: left;
-  display: block;
-  padding: 1.5625% 2%;
-  color: black;
+.connection {
+  float: right;
+  margin: 2% 5%;
+  color: #000000;
   font-weight: bold;
-  overflow: hidden;
   text-decoration: none;
 }
 
-
-a.lien-connexion {
-  float: right;
-  padding: 0 2%;
-  margin: 2% 0;
-  text-align: center;
+.connection:hover {
+  color: #06b8f6;
 }
 
-.container_accessibility {
-  max-width: 3%;
-  text-align: left;
+@media (min-width: 260px) {
+  .logo {
+    max-width: 35%;
+  }
+
+  .class_Meet {
+    max-width: 55%;
+    margin: 0 2%;
+  }
+
+  .accessibility {
+    margin: 10% 0;
+    max-width: 55%;
+  }
+
+  input[type=search] {
+    margin: 1% 0;
+  }
+
+  .connection {
+    margin: 5% 5%;
+  }
 }
 
+@media (min-width: 1080px) {
+  .logo {
+    max-width: 35%;
+  }
 
-.accessibility {
-  width: 60%;
-  height: 5%;
-  padding-left: 1%;
-  text-align: left;
+  .class_Meet {
+    max-width: 45%;
+    margin: 0 2%;
+  }
+
+  .accessibility {
+    margin: 7.5% 0;
+    max-width: 30%;
+  }
+
+  .connection {
+    margin: 2.5% 5%;
+  }
 }
 
-.container_brand a {
-  max-width: 25%;
-  text-align: left;
-  margin: 1% 2%;
-  padding: 0;
+@media (min-width: 1440px) {
+  .logo {
+    max-width: 35%;
+  }
+
+  .class_Meet {
+    max-width: 45%;
+    margin: 0 2%;
+  }
+
+  .accessibility {
+    margin: 7.5% 0;
+    max-width: 30%;
+  }
+
+  .connection {
+    margin: 2.5% 5%;
+  }
 }
 
-.logo {
-  padding: 0;
-  width: 15%;
-  height: auto;
+.container-fluid {
+  display: inline-block;
 }
 
-.class_Meet {
-  max-width: 100%;
-  width: 40%;
-  height: auto;
-  margin: 0 auto;
+.row {
+  flex-wrap: nowrap;
 }
 
-.menu a:hover {
+li {
+  list-style-type: none;
+}
+
+.logo:hover {
+  opacity: 70%;
+}
+
+a:hover {
   opacity: 50%;
   color: cyan;
 }

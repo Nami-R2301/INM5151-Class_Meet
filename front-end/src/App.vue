@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="application/javascript"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+    ></script>
     <router-view />
   </div>
 </template>
 
 <script>
-import "./assets/bootstrap-grid.min.css";
-
 export default {
   name: "App",
 

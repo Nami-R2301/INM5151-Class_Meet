@@ -1,17 +1,17 @@
-import Database
-import Interation
-from server import db
+import Database 
+import Interation as i
 
 ### Main 
 
-i = Interation
-
 # Méthode d'ajout d'utilisateur de la classe Interaction  exemple
-i.ajout_utilisateur('gab', 'mgai.gmail', 'xXxxx')
-
+#i.ajout_utilisateur('gab', 'mgai.gmail', 'xXxxx')
+blah = "blahblahblahblahblash"
+auteur = Database.Etudiant.query.filter_by(username='jules').all()
+print ("%r" % auteur.username )
+#i.ajout_publication( blah, auteur.id  )
 
 # Comment instancier des étudiants 
-Jules = Database.Etudiant(username='jules',email='youle21' , password='xxx')
+#Jules = Database.Etudiant(username='jules',email='youle21' , password='xxx')
 #Nami = Database.Etudiant(username='Nami2122',email='emailfoo' , password='xXxx')
 #Mehdi = Database.Etudiant(username='Mehdi22',email='emailfoo2' , password='xXx')
 
@@ -34,9 +34,8 @@ Jules = Database.Etudiant(username='jules',email='youle21' , password='xxx')
 #Database.db.session.add(inf5151)
 #Database.db.session.add(inf5171)
 #Database.db.session.add(inf5153)
-Database.db.session.commit()
-
-Database.db.create_all()
+#Database.db.session.commit()
+#Database.db.create_all()
 
 # Afficher un post
 #print( fooPost )
@@ -55,6 +54,6 @@ list_etudiants = Database.Etudiant.query.all()
 #    print( Etudiant.id )
 
 # Méthode qui renvois les éleves inscrits
-Database.print_etudiant(Etudiants=list_etudiants)
+#i.print_etudiant(Etudiants=list_etudiants)
 
 

@@ -24,9 +24,11 @@ class Publication(db.Model):
     __tablename__ = 'publication'
     id = db.Column(db.Integer, primary_key=True)
     idEtudiant = db.Column(db.Integer, ForeignKey('etudiant.id'))
+    auteur = db.Column( db.String(80) )
 #    auteur = relationship("Etudiant", back_populates="publications")
     # idParentPost
     contenu = db.Column(db.String(200))
+    sous_categorie = db.Column( db.String(7) ) # mettre un sigle
 
 
 # Cours
@@ -38,8 +40,8 @@ class Cours(db.Model):
 
 
 # TODO pas fonctionnel encore
-class Inscription(db.Model):
-    __tablename__ = 'inscription'
-    db.Column("etudiant_id", db.Integer, ForeignKey('etudiant.id'), primary_key=True)
-    db.Column("sigle_id", db.Integer, ForeignKey('cours.id'), primary_key=True)
+#class Inscription(db.Model):
+#    __tablename__ = 'inscription'
+#    db.Column("etudiant_id", db.Integer, ForeignKey('etudiant.id'), primary_key=True)
+#    db.Column("sigle_id", db.Integer, ForeignKey('cours.id'), primary_key=True)
 

@@ -1,11 +1,18 @@
+from datetime import datetime 
 import Database
+
+class Objet_publication():
+    def __init__ ( self , auteur_, contenu_,  ):
+#        self.date = date_
+        self.auteur = auteur_
+        self.contenu = contenu_
 
 def __repr_etudiant__(self):
     return 'Username  %r' % self.username + '\n Email %r' % self.email
 
 
 def __repr_post__(self):
-    return '%r' % self.contenu 
+    return '%r' % self.contenu  
 
 
 def ajout_utilisateur( username_, psw_, email_ ):
@@ -32,5 +39,17 @@ def print_publications( sous_categorie_ ):
      posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
      for Publication in posts:
          print(__repr_post__( Publication))
+
+def retourne_Publication( Publication_ ):
+    return  Objet_publication( auteur_=Publication_.auteur , contenu_=Publication_.contenu )
+
+
+def list_publication( sous_categorie_ ):
+     posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
+     list = []
+     for Publication in posts:
+        list.append(retourne_Publication( Publication ))
+     return list     
+
 
 # Permet de sortir en string des éléments de l'obnjet passé en parametre s'il possède l'attribut username et email , modifiable

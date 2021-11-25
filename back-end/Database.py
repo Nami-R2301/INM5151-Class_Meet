@@ -1,9 +1,9 @@
+from datetime import datetime
 from server import db
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 
-# Base = declarative_base() # Not necessary yet , might use later dont remove
 
 # Etudiant
 class Etudiant(db.Model):
@@ -25,10 +25,10 @@ class Publication(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     idEtudiant = db.Column(db.Integer, ForeignKey('etudiant.id'))
     auteur = db.Column( db.String(80) )
-#    auteur = relationship("Etudiant", back_populates="publications")
     # idParentPost
     contenu = db.Column(db.String(200))
-    sous_categorie = db.Column( db.String(7) ) # mettre un sigle
+    sous_categorie = db.Column( db.String(20) ) # mettre un sigle
+#    date = db.Column(datetime.now())
 
 
 # Cours

@@ -1,3 +1,4 @@
+import Interation as i
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 import json
@@ -18,8 +19,14 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-@app.route("/api/connection", methods=["POST"])
-def connection():
-    data = json.loads(request.get_data())
-    print(data)
-    return data
+#@app.route("/api/connection", methods=["POST"])
+#def connection():
+#    data = json.loads(request.get_data())
+#    print(data)
+#    return data
+#
+# comment j'imagine qu'il faudrait appeler la méthode pour envoyer les posts
+@app.route("/api/forum", methods=["POST"])
+def publications():
+    categorie_ = json.loads(request.get_data())
+    return i.list_publication( categorie_ ) 

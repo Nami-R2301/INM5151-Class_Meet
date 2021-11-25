@@ -17,18 +17,24 @@ export default {
   name: "App",
 
   beforeCreate() {
-    if (
-      this.$router.currentRoute.fullPath !== "/login" &&
-      !this.$store.state.session_id
-    ) {
-      this.$router.push("/login");
-    } else if (
-      this.$router.currentRoute.fullPath === "/login" &&
-      this.$store.state.session_id
-    ) {
-      this.$router.push("/");
-    }
+    // Disable for dev
+    // this.checkLogin()
   },
+  methods: {
+    checkLogin() {
+      if (
+        this.$router.currentRoute.fullPath !== "/login" &&
+        !this.$store.state.session_id
+      ) {
+        this.$router.push("/login");
+      } else if (
+        this.$router.currentRoute.fullPath === "/login" &&
+        this.$store.state.session_id
+      ) {
+        this.$router.push("/");
+      }
+    }
+  }
 };
 </script>
 

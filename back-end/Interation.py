@@ -11,13 +11,19 @@ class Objet_publication():
 def retourne_Publication( Publication_ ):
     return  Objet_publication( auteur_=Publication_.auteur , contenu_=Publication_.contenu )
 
-def list_publication_string( sous_categorie_ ):
+def list_publication( sous_categorie_ ):
      posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
      list = []
      for Publication in posts:
          list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
-#        list.append(retourne_Publication( Publication ).contenu)
      return list     
+
+#def list_etudiants( sous_categorie_ ):
+#     posts= Database.Etudiant.query.filter_by(sous_categorie=sous_categorie_).all()
+#     list = []
+#     for Publication in posts:
+#         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
+#     return list     
 
 
 def ajout_utilisateur( username_, psw_, email_ ):
@@ -39,8 +45,6 @@ def __repr_etudiant__(self):
 
 def __repr_post__(self):
     return '%r\n%r\n%r' % (self.date , self.contenu, self.auteur) 
-
-
 
 # Print passe la liste passé en paramêtre dans une boucle qui affiche le contenu avec repr
 def print_etudiant(Etudiants):

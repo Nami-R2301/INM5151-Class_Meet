@@ -17,7 +17,10 @@
           <button class="btn btn-outline-success" type="submit">Rechercher</button>
         </form>
       </li>
-      <li class="col-5 col-sm-3 col-md-3 col-lg-3 col-xl-5 col-xxl-5 justify-content-end">
+      <li class="col-1 justify-content-end">
+        <router-link class="connection" to="/forum/INF5151">Forum</router-link>
+      </li>
+      <li class="col-4 justify-content-end">
         <router-link class="connection" to="/login"
            title="Connectez-vous">Connectez-vous</router-link>
       </li>

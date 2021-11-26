@@ -6,14 +6,18 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     session_id: 0,
-    student: "Jules"
+    student: {
+      id: 0,
+      username: "",
+      email: ""
+    }
   },
   getters: {
     baseUrlBackEnd: () => "http://127.0.0.1:5000/"
   },
   mutations: {
     connect(state, student) {
-      state.session_id = student
+      state.student = student
     },
     disconnect(state) {
       state.session_id = 0

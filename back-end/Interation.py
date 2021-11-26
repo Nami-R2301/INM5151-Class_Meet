@@ -42,6 +42,7 @@ def ajout_publication(username_, sigle_,  contenu_  ):
     n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ )
     Database.db.session.add(n)
     Database.db.session.commit()
+    return n
 
 #####################################################################################
 

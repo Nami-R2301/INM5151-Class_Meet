@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    session_id: 0
+    session_id: 0,
+    student: "Jules"
   },
   getters: {
     baseUrlBackEnd: () => "http://127.0.0.1:5000/"

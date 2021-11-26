@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="row">
-      <div class="offset-1 col-1">
+      <div class="offset-1 col-3">
         <p>{{ auteur }}</p>
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <p>{{ dateTime }}</p>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-light text-center text-black fixed-bottom">
+  <footer class="bg-light text-center text-black bottom-0">
     <!-- Grid container -->
     <div class="container-fluid" style="padding: 0;">
       <!-- Copyright -->

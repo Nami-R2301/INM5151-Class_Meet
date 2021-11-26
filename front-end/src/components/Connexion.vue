@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row centered">
         <div class="col-12">
-          <img class="img-fluid col-8 col-sm-2 col-md-2 col-lg-3 col-xl-3 col-xxl-3" alt="Vue logo"
+          <img class="img-fluid col-8 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-3" alt="Vue logo"
                src="../assets/logo.png">
         </div>
         <div class="row centered">
@@ -19,7 +19,7 @@
             <form action="login">
 
               <label class="form-label">Adresse courriel :</label><br>
-              <input type="text" v-model="email" class="form-control w-100 h-auto" name="username"/><br>
+              <input type="text" v-model="email" class="form-control w-100 py-auto h-auto" name="username"/><br>
               <label class="form-label">Mot de passe :</label><br>
               <input type="password" v-model="password" class="form-control w-100 h-auto" name="password"/>
               <p class="forgot-pw">Mot de passe oublié</p>
@@ -163,7 +163,7 @@ input[type=password] {
 button[type=submit] {
   max-width: 100%;
   margin: 10% 0;
-  padding: 10% 20%;
+  padding: 5% 10%;
   border: none;
   background-color: #87ceeb;
   color: black;
@@ -203,9 +203,7 @@ button[type=submit] {
   }
 
   button[type=submit] {
-    padding: 10% 15%;
     font-size: small;
-    text-align: center;
   }
 
   .centered_form {
@@ -261,13 +259,13 @@ button[type=submit] {
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 1080px) {
+@media (min-width: 1024px) {
   h1 {
-    font-size: 150%;
+    font-size: 135%;
   }
 
   label {
-    font-size: large;
+    font-size: medium;
   }
 
   .centered_form {
@@ -307,11 +305,19 @@ button[type=submit] {
 
 @media (min-width: 2000px) {
   h1 {
-    font-size: 500%;
+    font-size: 300%;
   }
 
   label {
-    font-size: 200%;
+    font-size: 150%;
+  }
+
+  .forgot-pw {
+    font-size: large;
+  }
+
+  button[type=submit] {
+    font-size: x-large;
   }
 }
 

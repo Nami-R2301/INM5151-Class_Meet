@@ -15,7 +15,7 @@
 export default {
   name: "App",
 
-  beforeCreate() {
+  /*beforeCreate() {
     if (
         this.$router.currentRoute.fullPath !== "/login" &&
         !this.$store.state.session_id
@@ -29,14 +29,14 @@ export default {
     }
   },
 };
-
-
+*/
+}
 </script>
 
 <style>
 
 #app {
-  font-family: Sen, Helvetica, Arial, sans-serif;
+  font-family: Sen, Helvetica, Arial,serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

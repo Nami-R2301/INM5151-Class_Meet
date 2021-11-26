@@ -4,9 +4,12 @@ package front-end {
 }
 package back-end {
     class main {
-        + Data Database
-        + Inter Interaction
-
-    }
+        + db : Database
+        + inter : Interaction
+        + data : Data
+}
+class server {
+    + app : Flask
+    + 
 }
 @enduml

@@ -1,7 +1,7 @@
 from datetime import datetime
 from server import db
 from sqlalchemy import ForeignKey, DateTime
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func 
 from sqlalchemy.orm import relationship
 
 
@@ -29,7 +29,7 @@ class Publication(db.Model):
     contenu = db.Column(db.String(200))
     sous_categorie = db.Column(db.String(20))  # mettre un sigle
 #    date = db.Column(datetime.now())
-    date = db.Column(DateTime(timezone=True), default=func.now())
+    date = db.Column(DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self):
         return "id: %r\nauteur: %r\nsous_categorie: %r\ndate: %r\ncontenu: %r\n" % (self.id, self.auteur, self.sous_categorie, self.date, self.contenu)

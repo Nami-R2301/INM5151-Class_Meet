@@ -1,29 +1,39 @@
 <template>
   <div class="container-fluid">
-    <div class="row posts">
-      <Post
-        v-for="post in posts"
-        :key="post.dateTime + '_' + generateHexString()"
-        :auteur="post.auteur"
-        :contenu="post.contenu"
-        :dateTime="post.dateTime"
-      ></Post>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-9">
+        <Post
+          v-for="post in posts"
+          :key="post.dateTime + '_' + generateHexString()"
+          :auteur="post.auteur"
+          :contenu="post.contenu"
+          :dateTime="post.dateTime"
+        ></Post>
+      </div>
+      <div class="col-2 student_bar">
+        <Student_bar :etudiants="students"></Student_bar>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Post from "../components/Post.vue";
+import Student_bar from "../components/Student_bar.vue";
 
 export default {
   components: {
     Post,
+    Student_bar,
   },
   data: () => ({
     posts: [],
+    students: [],
   }),
   mounted() {
     this.getPost();
+    this.getStudents();
   },
   methods: {
     // Used only to make the post unique.
@@ -62,6 +72,13 @@ export default {
         },
       ];
     },
+    getStudents() {
+      this.students = [
+        { profilPicture: "", name: "Nami iydrgitfy" },
+        { profilPicture: "", name: "Jules gfdsgfdg" },
+        { profilPicture: "", name: "Mehdi fgdsggds" },
+      ];
+    },
   },
 };
 </script>
@@ -69,5 +86,8 @@ export default {
 <style scoped>
 .posts {
   gap: 1.5em;
+}
+.student_bar {
+  border-left: 1px solid black;
 }
 </style>

@@ -1,8 +1,5 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">FORUM</div>
-    </div>
     <div class="row posts">
       <Post
         v-for="post in posts"

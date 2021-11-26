@@ -28,12 +28,12 @@ def hello_world():
 @app.route("/api/forum/<categorie_>", methods=["GET"])
 def publications(categorie_):
     list = i.list_publication( categorie_ )
-    return json.dumps(list)
+    return json.dumps(list, default=str)
 
 @app.route("/api/etudiants", methods=["GET"])
 def etudiants():
     list = i.list_etudiants()
-    return json.dumps(list)
+    return json.dumps(list, default=str)
 
 #@app.route("/api/listEtudiant/<sigle_>", methods=["GET"])
 #def etudiants(sigle_):

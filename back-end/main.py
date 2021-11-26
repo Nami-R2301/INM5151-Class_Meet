@@ -13,6 +13,5 @@ list_etudiants = Database.Etudiant.query.all()
 # Méthode qui renvois les éleves inscrits
 #i.print_etudiant(Etudiants=list_etudiants)
 # affiche les publication du la catégorie cours INF5151
-i.print_publications( 'INF5151' )
-
+#i.print_publications( 'INF5151' )
 

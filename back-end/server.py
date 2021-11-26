@@ -27,8 +27,16 @@ def hello_world():
 # comment j'imagine qu'il faudrait appeler la méthode pour envoyer les posts
 @app.route("/api/forum/<categorie_>", methods=["GET"])
 def publications(categorie_):
-    return json.dumps(i.list_publication( categorie_ ))
+    list = i.list_publication_string( categorie_ )
+    return json.dumps(list)
 
+#@app.route("/api/forum/<categorie_>", methods=["GET"])
+#def publications(categorie_):
+#    list = i.list_publication( categorie_ )
+#    page = ""
+#    for item in list:
+#        page += "\n" + item.auteur + "\n" + item.contenu 
+#    return json.dumps(page)
 
 # LOL python is weird..
 import Interation as i

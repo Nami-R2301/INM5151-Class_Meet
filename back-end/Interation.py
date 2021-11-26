@@ -15,7 +15,7 @@ def list_publication( sous_categorie_ ):
      posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
      list = []
      for Publication in posts:
-         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu, "date":retourne_Publication(Publication).date})
+         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu, "dateTime":retourne_Publication(Publication).date})
      return list     
 
 def list_etudiants():

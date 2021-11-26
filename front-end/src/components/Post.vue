@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="row justify-content-between">
-      <div class="col-3">
+    <div class="row">
+      <div class="offset-1 col-3">
         <p>{{ auteur }}</p>
       </div>
       <div class="col-3">
         <p>{{ dateTime }}</p>
       </div>
     </div>
-    <div class="row justify-content-start">
-      <div class="col-12">
+    <div class="row">
+      <div class="offset-1 col-10">
         <p>{{ contenu }}</p>
       </div>
     </div>

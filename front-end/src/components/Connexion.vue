@@ -1,34 +1,44 @@
 <template>
   <div class="connexion">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row centered">
         <div class="col-12">
-          <img class="img-fluid col-auto" alt="Vue logo" src="../assets/logo.png">
-          <br>
-          <h1>{{ msg }}</h1>
-          <h1 class="msg_connexion">Class Meet</h1>
+          <img class="img-fluid col-8 col-sm-2 col-md-2 col-lg-3 col-xl-3 col-xxl-3" alt="Vue logo"
+               src="../assets/logo.png">
+        </div>
+        <div class="row centered">
+          <div class="col-12">
+            <h1>{{ msg }}</h1>
+            <h1 class="msg_connexion">Class Meet</h1>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-4 col-sm-3 col-md-3 col-xxl-6 col-lg-3"></div>
-        <form action="login" class="col-6-5 col-xxl-4">
-          <label class="form-label">Prénom :</label><br>
-          <input type="text" class="form-control" name="first_name"/><br>
-          <label class="form-label">Nom :</label><br>
-          <input type="text" class="form-control" name="last_name"/><br>
-          <label class="form-label">Adresse courriel :</label><br>
-          <input type="text" v-model="email" class="form-control" name="username"/><br>
-          <label class="form-label">Mot de passe :</label><br>
-          <input type="password" v-model="password" class="form-control" name="password"/><br>
-          <div class="col-auto">
-          <span id="passwordHelpInline" class="form-text">
-              Doit être de longueur 8-20 caractères.
-            </span>
+        <div class="col-12">
+          <div class="centered_form">
+            <form action="login">
+
+              <label class="form-label">Adresse courriel :</label><br>
+              <input type="text" v-model="email" class="form-control w-100 h-auto" name="username"/><br>
+              <label class="form-label">Mot de passe :</label><br>
+              <input type="password" v-model="password" class="form-control w-100 h-auto" name="password"/>
+              <p class="forgot-pw">Mot de passe oublié</p>
+
+              <div class="centered text-center">
+                <button type="submit" @click="connection" title="Soumettre"
+                        class="rounded-pill w-30 h-20" name="submit"
+                      >Soumettre
+                </button>
+              </div>
+
+            </form>
           </div>
-          <button type="submit" @click="connection" title="Soumettre" class="rounded-pill col-auto" name="submit" disabled>Soumettre
-          </button>
-        </form>
-        <div class="col-2-5"></div>
+        </div>
+      </div>
+      <div class="inscrire">
+        <span style="font-weight: bolder; margin-right: 2%">Première fois ? </span>
+        <a href="#" title="Inscription" class="btn btn-outline-primary" style="color: #06b8f6; border-color: #06b8f6;"
+           role="button">Inscrivez-vous</a>
       </div>
     </div>
   </div>
@@ -41,20 +51,22 @@ export default {
     msg: String,
     msg2: String,
   },
-   data: () => ({
+  data: () => ({
     email: "",
     password: "",
   }),
   methods: {
     connection(e) {
       e.preventDefault();
+
       fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
         method: "POST",
-        body: JSON.stringify({ email: this.email, password: this.password }),
+        body: JSON.stringify({email: this.email, password: this.password}),
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          this.$store.commit("connect", data)
+          this.$router.push("/")
         }).catch(err => {
           console.error(err)
         });
@@ -66,46 +78,28 @@ export default {
 
 <style scoped>
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered_form {
+  display: block;
+  margin-left: 30%;
+  margin-right: 30%;
+  align-items: center;
+  justify-content: center;
+}
+
+.connexion {
+  margin-bottom: 10%;
+}
+
 .row {
   text-align: center;
 }
 
-.col-2-5 {
-  width: 20.83333%;
-}
-
-
-.col-6-5 {
-  width: 54.16667%;
-}
-
-
-@media (min-width: 768px) {
-  .col-md-3 {
-    width: 32%;
-  }
-}
-
-@media (min-width: 1400px) {
-  .col-xxl-4 {
-    width: 40%
-  }
-
-  .col-xxl-6 {
-    width: 37%
-  }
-}
-
-
-@media (min-width: 2560px) {
-  .col-xxl-4 {
-    width: 35%;
-  }
-
-  .col-xxl-6 {
-    width: 40%
-  }
-}
 
 .img-fluid {
   max-width: 40%;
@@ -113,6 +107,7 @@ export default {
 }
 
 .msg_connexion {
+  margin-top: 2%;
   text-align: center;
   color: #06b8f6;
 }
@@ -130,7 +125,7 @@ button:disabled {
 }
 
 form {
-  margin-top: 2%;
+  margin-top: 5%;
   text-align: left;
   font-family: Sen, "Times New Roman", serif;
   font-size: 120%;
@@ -139,9 +134,8 @@ form {
 
 input[type=text] {
   display: inline-block;
-  width: 100%;
-  max-width: 60%;
-  margin: 0 1% 1% 0;
+  max-width: 100%;
+  margin: 0 auto 3% auto;
   padding: 0.3%;
   text-align: left;
   border: 3px groove black;
@@ -152,9 +146,8 @@ input[type=text] {
 
 input[type=password] {
   display: inline-block;
-  width: 100%;
-  max-width: 60%;
-  margin: 0 1% 1% 0;
+  max-width: 100%;
+  margin: 0 auto 3% auto;
   padding: 0.3%;
   text-align: left;
   border: 3px solid black;
@@ -163,19 +156,157 @@ input[type=password] {
   background: white;
 }
 
+.forgot-pw {
+  margin: 0;
+  text-decoration-line: underline;
+  font-size: medium;
+}
+
 button[type=submit] {
-  width: 100%;
-  max-width: 20%;
-  margin: 3% 0 1% 15%;
-  padding: 2.5%;
+  max-width: 100%;
+  margin: 10% 0;
+  padding: 10% 20%;
   border: none;
   background-color: #87ceeb;
   color: black;
   cursor: pointer;
-  box-sizing: content-box;
-  font-size: large;
   text-align: center;
+  font-size: large;
   font-weight: bolder;
+}
+
+.inscrire {
+  position: center;
+  margin: 2% auto 0 auto;
+  max-width: 50%;
+  align-content: center;
+  text-align: center;
+  color: #06b8f6;
+  border-color: #06b8f6;
+  border-width: 2px;
+  font-weight: bolder;
+  font-size: large;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media (min-width: 320px) {
+  h1 {
+    font-size: 90%;
+    font-weight: bolder;
+  }
+
+  label {
+    font-size: x-small;
+    margin-bottom: 0;
+  }
+
+  .forgot-pw {
+    font-size: xx-small;
+  }
+
+  button[type=submit] {
+    padding: 10% 15%;
+    font-size: small;
+    text-align: center;
+  }
+
+  .centered_form {
+    margin-left: 33%;
+    margin-right: 33%;
+  }
+
+  span {
+    font-size: small;
+  }
+
+  button[type=submit] {
+    font-size: small;
+  }
+
+  a[role=button] {
+    font-size: small;
+  }
+}
+
+/* Extra small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 125%;
+  }
+
+  label {
+    font-size: medium;
+    margin-bottom: 0;
+  }
+
+  .forgot-pw {
+    font-size: small;
+  }
+
+  button[type=submit] {
+    font-size: medium;
+  }
+
+  .centered_form {
+    margin-left: 36%;
+    margin-right: 36%;
+  }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 1080px) {
+  h1 {
+    font-size: 150%;
+  }
+
+  label {
+    font-size: large;
+  }
+
+  .centered_form {
+    margin-left: 38%;
+    margin-right: 38%;
+  }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1400px) {
+  h1 {
+    font-size: 175%;
+  }
+
+  .centered_form {
+    margin-left: 40%;
+    margin-right: 40%;
+  }
+
+  label {
+    font-size: large;
+  }
+
+  .forgot-pw {
+    font-size: medium;
+  }
+
+  span {
+    font-size: large;
+  }
+
+  a[role=button] {
+    font-size: large;
+  }
+}
+
+@media (min-width: 2000px) {
+  h1 {
+    font-size: 500%;
+  }
+
+  label {
+    font-size: 200%;
+  }
 }
 
 </style>

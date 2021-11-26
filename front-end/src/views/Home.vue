@@ -1,15 +1,19 @@
 <template>
   <div>
-    
+    <Main />
   </div>
 </template>
 
 <script>
-export default {
+import Main from "../components/Main";
 
-}
+export default {
+  name: "Home",
+  components: {
+    Main,
+  },
+};
 </script>
 
 <style>
-
 </style>

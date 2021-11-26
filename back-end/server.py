@@ -18,25 +18,40 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-#@app.route("/api/connection", methods=["POST"])
-#def connection():
-#    data = json.loads(request.get_data())
-#    print(data)
-#    return data
-#
+@app.route("/api/connection", methods=["POST"])
+def connection():
+   data = json.loads(request.get_data())
+   etudiant = i.connection(data['email'], data['password'])
+   if(etudiant['id'] < 1):
+       return "", 404
+   return json.dumps(etudiant), 200
 
-@app.route("/api/forum/<categorie_>", methods=["GET"])
+
+@app.route("/api/forum/<categorie_>", methods=["GET", "POST"])
 def publications(categorie_):
-    list = i.list_publication( categorie_ )
-    return json.dumps(list, default=str)
+    if request.method == "POST":
+        data = json.loads(request.get_data())
+        res = i.ajout_publication(
+            data['auteur'], data['categorie'], data['contenu'])
+        return json.dumps({"id": res.id,"auteur": res.auteur,
+                           "sous_categorie": res.sous_categorie, "date": str(res.date),
+                           "contenu": res.contenu}), 201
+
+    elif request.method == "GET":
+        list = i.list_publication(categorie_)
+        return json.dumps(list, default=str), 200
+
+    else:
+        return "", 404
+
 
 @app.route("/api/etudiants", methods=["GET"])
 def etudiants():
     list = i.list_etudiants()
     return json.dumps(list, default=str)
 
-#@app.route("/api/listEtudiant/<sigle_>", methods=["GET"])
-#def etudiants(sigle_):
+# @app.route("/api/listEtudiant/<sigle_>", methods=["GET"])
+# def etudiants(sigle_):
 #    list = i.list_etudiants( sigle_ )
 #    return json.dumps(list)
 

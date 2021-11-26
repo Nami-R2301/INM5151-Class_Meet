@@ -1,28 +1,50 @@
 <template>
-  <nav class="container-fluid navbar-nav m-lg-auto navbar-light bg-light sticky-md-top">
-    <ul class="row">
-      <li class="col-1 align-content-start">
-        <img class="accessibility" src="../assets/icon-menu.png" alt="Icone de menu deroulant">
-      </li>
-      <li class="col-2 col-sm-3 col-md-3 col-lg-3 col-xl-2 col-xxl-2">
-        <a href="Connexion.vue"
-           title="Cliquez ici pour revenir à la page principale">
-          <img class="logo" alt="logo Class Meet" src="../assets/logo.png">
-          <img class="class_Meet" alt="Class Meet" src="../assets/Class_Meet.png"></a>
-      </li>
-      <li class="col-4 col-sm-5 col-md-5 col-lg-5 col-xl-4 col-xxl-4">
-        <form class="d-flex justify-content-sm-start">
-          <input class="form-control" type="search" placeholder="Rechercher des programmes"
-                 aria-label="Rechercher">
-          <button class="btn btn-outline-success" type="submit">Rechercher</button>
-        </form>
-      </li>
-      <li class="col-5 col-sm-3 col-md-3 col-lg-3 col-xl-5 col-xxl-5 justify-content-end">
-        <a class="connection" href="Connexion.vue"
-           title="Connectez-vous">Connectez-vous</a>
-      </li>
-    </ul>
-  </nav>
+  <div id="barre-nav" class="Barre_de_navigation">
+    <nav class="container-fluid navbar-nav m-lg-auto navbar-light bg-light sticky-md-top">
+      <ul class="row flex-nowrap" style="background-color: rgb(230,237,248); padding-left: 2%">
+        <li class="col-1 col-sm-2 col-md-1 col-lg-1 col-xl-1 col-xxl-1 align-content-start">
+          <button type="button" class="navbar-toggler" data-bs-target="#collapsibleNavbar" aria-expanded="false"
+                  aria-controls="collapseNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </li>
+        <li class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-2">
+          <a class="navbar-brand" href="/"
+             title="Cliquez ici pour revenir à la page principale">
+            <img class="logo" alt="logo Class Meet" src="../assets/logo.png">
+            <img class="class_Meet" alt="Class Meet" src="../assets/Class_Meet.png"></a>
+        </li>
+        <li class="col-4 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-4">
+          <form class="d-flex justify-content-sm-start">
+            <input class="form-control" type="search" placeholder="Rechercher des programmes"
+                   aria-label="Rechercher">
+            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+          </form>
+        </li>
+        <li class="col nav-item">
+          <router-link class="nav-link active" to="/forum/INF5151"
+            ><span class="glyphicon glyphicon-log-in"></span>forum</router-link>
+        </li>
+        <li class="col nav-item">
+          <router-link class="nav-link active connection" to="/login"
+             title="Connectez-vous"><span class="glyphicon glyphicon-log-in"></span>Connectez-vous</router-link>
+        </li>
+      </ul>
+    </nav>
+    <div class="collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <router-link class="connection" to="/forum/INF5151">Forum</router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -33,9 +55,11 @@ export default {
 
 <style>
 
+
 .connection {
   float: right;
-  margin: 2% 5%;
+  padding: 0;
+  margin: 0 5% 0 0;
   color: #000000;
   font-weight: bold;
   text-decoration: none;
@@ -45,27 +69,63 @@ export default {
   color: #06b8f6;
 }
 
-@media (min-width: 260px) {
+@media (min-width: 320px) {
   .logo {
+    margin: 2% 0;
     max-width: 35%;
+  }
+
+  .container-fluid {
+    font-size: small;
+  }
+
+  button[type=button] {
+    margin-top: 20%;
+  }
+
+  li span {
+    font-size: xx-small;
   }
 
   .class_Meet {
     max-width: 55%;
-    margin: 0 2%;
-  }
-
-  .accessibility {
-    margin: 10% 0;
-    max-width: 55%;
+    margin: 2% 2%;
   }
 
   input[type=search] {
-    margin: 1% 0;
+    margin: 3% 0;
+  }
+
+  li button[type=submit] {
+    font-size: xx-small;
   }
 
   .connection {
     margin: 5% 5%;
+    font-size: xx-small;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    font-size: medium;
+  }
+
+  button[type=button] {
+    margin-top: 20%;
+  }
+
+  li span {
+    font-size: small;
+  }
+
+  li button[type=submit] {
+    font-size: small;
+  }
+
+  .connection {
+    margin: 5% 5%;
+    font-size: medium;
   }
 }
 
@@ -74,38 +134,63 @@ export default {
     max-width: 35%;
   }
 
+  button[type=button] {
+    margin-top: 30%;
+  }
+
+  .container-fluid {
+    font-size: medium;
+  }
+
+  li span {
+    font-size: small;
+  }
+
   .class_Meet {
     max-width: 45%;
     margin: 0 2%;
   }
 
-  .accessibility {
-    margin: 7.5% 0;
-    max-width: 30%;
+  .connection {
+    margin: 10% 5%;
   }
 
-  .connection {
-    margin: 2.5% 5%;
+  input[type=search] {
+    margin: 5% 0;
   }
 }
 
 @media (min-width: 1440px) {
   .logo {
+    margin: 2.5% 0;
     max-width: 35%;
+  }
+
+  li span {
+    font-size: medium;
+  }
+
+  button[type=button] {
+    margin-top: 17%;
   }
 
   .class_Meet {
     max-width: 45%;
-    margin: 0 2%;
-  }
-
-  .accessibility {
-    margin: 7.5% 0;
-    max-width: 30%;
+    margin: 2% 2%;
   }
 
   .connection {
-    margin: 2.5% 5%;
+    margin: 3.5% 5%;
+  }
+
+  input[type=search] {
+    margin: 4% 0;
+  }
+}
+
+@media (min-width: 2000px) {
+  li a {
+    font-size: 500%;
   }
 }
 
@@ -114,6 +199,7 @@ export default {
 }
 
 .row {
+  margin: 0 auto;
   flex-wrap: nowrap;
 }
 

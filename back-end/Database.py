@@ -5,7 +5,6 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
 
-
 # Etudiant
 class Etudiant(db.Model):
     __tablename__ = 'etudiant'
@@ -25,12 +24,16 @@ class Publication(db.Model):
     __tablename__ = 'publication'
     id = db.Column(db.Integer, primary_key=True)
     idEtudiant = db.Column(db.Integer, ForeignKey('etudiant.id'))
-    auteur = db.Column( db.String(80) )
+    auteur = db.Column(db.String(80))
     # idParentPost
     contenu = db.Column(db.String(200))
-    sous_categorie = db.Column( db.String(20) ) # mettre un sigle
+    sous_categorie = db.Column(db.String(20))  # mettre un sigle
 #    date = db.Column(datetime.now())
     date = db.Column(DateTime(timezone=True), default=func.now())
+
+    def __repr__(self):
+        return "id: %r\nauteur: %r\nsous_categorie: %r\ndate: %r\ncontenu: %r\n" % (self.id, self.auteur, self.sous_categorie, self.date, self.contenu)
+
 
 # Cours
 class Cours(db.Model):
@@ -41,8 +44,7 @@ class Cours(db.Model):
 
 
 # TODO pas fonctionnel encore
-#class Inscription(db.Model):
+# class Inscription(db.Model):
 #    __tablename__ = 'inscription'
 #    db.Column("etudiant_id", db.Integer, ForeignKey('etudiant.id'), primary_key=True)
 #    db.Column("sigle_id", db.Integer, ForeignKey('cours.id'), primary_key=True)
-

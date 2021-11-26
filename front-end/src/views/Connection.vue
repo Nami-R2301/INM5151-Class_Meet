@@ -1,10 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <Connexion msg="Connectez-vous à " />
-      </div>
-    </div>
+  <div>
+    <Connexion msg="Connectez-vous à " />
   </div>
 </template>
 

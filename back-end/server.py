@@ -1,4 +1,3 @@
-import Interation as i
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 import json
@@ -30,3 +29,7 @@ def hello_world():
 def publications():
     categorie_ = json.loads(request.get_data())
     return i.list_publication( categorie_ ) 
+
+
+# LOL python is weird..
+import Interation as i

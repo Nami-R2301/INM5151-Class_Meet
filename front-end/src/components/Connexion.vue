@@ -27,7 +27,7 @@
               <div class="centered text-center">
                 <button type="submit" @click="connection" title="Soumettre"
                         class="rounded-pill w-30 h-20" name="submit"
-                        disabled>Soumettre
+                      >Soumettre
                 </button>
               </div>
 
@@ -58,16 +58,18 @@ export default {
   methods: {
     connection(e) {
       e.preventDefault();
+
       fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
         method: "POST",
         body: JSON.stringify({email: this.email, password: this.password}),
       })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          }).catch(err => {
-        console.error(err)
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.commit("connect", data)
+          this.$router.push("/")
+        }).catch(err => {
+          console.error(err)
+        });
     },
   },
 };

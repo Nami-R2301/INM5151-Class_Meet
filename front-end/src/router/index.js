@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: () => import('../views/Home.vue')
   },
@@ -13,6 +13,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/Connection.vue')
+  },
+  {
+    path: '/forum/:category',
+    name: 'Forum',
+    component: () => import('../views/Forum.vue')
   }
 ]
 

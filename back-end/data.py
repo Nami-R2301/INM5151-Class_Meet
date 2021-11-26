@@ -3,7 +3,7 @@ import Interation as i
 
 # Etudiant
 def add_testing_data():
-#    Database.db.drop_all()
+    Database.db.drop_all()
     Database.db.create_all()
 
     list_etudiants = [
@@ -20,20 +20,20 @@ def add_testing_data():
     ]
 
 
-#    for etudiant in list_etudiants:
-#        db_etudiant = Database.Etudiant(username=etudiant["username"],
-#                                        email=etudiant["email"],
-#                                        password=etudiant["password"])
-#        Database.db.session.add(db_etudiant)
-#
-#    for cours in list_cours:
-#        db_cours = Database.Cours(sigle=cours["sigle"])
-#        Database.db.session.add(db_cours)
-#
-#    i.ajout_publication('jules', 'INF5151', 'testing post 1')
-#    i.ajout_publication('jules', 'INF5153', 'testing post 2')
-#    i.ajout_publication('jules', 'INF5151', 'testing post 3')
-#    i.ajout_publication('jules', 'INF5151', 'testing post 4')
-#
+    for etudiant in list_etudiants:
+        db_etudiant = Database.Etudiant(username=etudiant["username"],
+                                        email=etudiant["email"],
+                                        password=etudiant["password"])
+        Database.db.session.add(db_etudiant)
+
+    for cours in list_cours:
+        db_cours = Database.Cours(sigle=cours["sigle"])
+        Database.db.session.add(db_cours)
+
+    i.ajout_publication('jules', 'INF5151', 'testing post 1')
+    i.ajout_publication('jules', 'INF5153', 'testing post 2')
+    i.ajout_publication('jules', 'INF5151', 'testing post 3')
+    i.ajout_publication('jules', 'INF5151', 'testing post 4')
+
     Database.db.session.commit()
 

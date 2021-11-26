@@ -25,10 +25,9 @@ def hello_world():
 #    return data
 #
 # comment j'imagine qu'il faudrait appeler la méthode pour envoyer les posts
-@app.route("/api/forum", methods=["POST"])
-def publications():
-    categorie_ = json.loads(request.get_data())
-    return i.list_publication( categorie_ ) 
+@app.route("/api/forum/<categorie_>", methods=["GET"])
+def publications(categorie_):
+    return json.dumps(i.list_publication( categorie_ ))
 
 
 # LOL python is weird..

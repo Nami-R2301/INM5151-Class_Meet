@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" style="padding: 0">
+  <div class="container-fluid">
     <div class="row align-content-center text-center" style="background-color: #f2f5f8;">
       <div class="col-12">
         <a class="navbar-brand" href="#"
@@ -115,6 +115,7 @@ export default {
 
 <style scoped>
 
+
 .container-fluid {
   margin-bottom: 5%;
 }
@@ -198,6 +199,7 @@ h3 {
 .titre-section {
   text-align: left;
   margin-bottom: 5%;
+  margin-left: -5%;
   justify-content: center;
   color: black;
   font-family: "Prompt", Helvetica, Arial, serif;

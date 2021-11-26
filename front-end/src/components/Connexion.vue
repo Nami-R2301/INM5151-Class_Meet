@@ -250,6 +250,14 @@ button[type=submit] {
     margin-right: 36%;
   }
 
+  span {
+    font-size: large;
+  }
+
+  a[role=button] {
+    font-size: small;
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */

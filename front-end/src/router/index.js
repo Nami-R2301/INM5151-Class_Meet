@@ -15,7 +15,7 @@ const routes = [
     component: () => import('../views/Connection.vue')
   },
   {
-    path: '/forum',
+    path: '/forum/:category',
     name: 'Forum',
     component: () => import('../views/Forum.vue')
   }

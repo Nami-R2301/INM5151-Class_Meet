@@ -18,8 +18,8 @@
         </form>
       </li>
       <li class="col-5 col-sm-3 col-md-3 col-lg-3 col-xl-5 col-xxl-5 justify-content-end">
-        <a class="connection" href="Connexion.vue"
-           title="Connectez-vous">Connectez-vous</a>
+        <router-link class="connection" to="/login"
+           title="Connectez-vous">Connectez-vous</router-link>
       </li>
     </ul>
   </nav>

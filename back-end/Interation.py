@@ -3,19 +3,19 @@ import Database
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
 class Objet_publication():
-    def __init__ ( self , auteur_, contenu_,  ):
-#        self.date = date_
+    def __init__ ( self , auteur_, contenu_, date_  ):
+        self.date = date_
         self.auteur = auteur_
         self.contenu = contenu_
 
 def retourne_Publication( Publication_ ):
-    return  Objet_publication( auteur_=Publication_.auteur , contenu_=Publication_.contenu )
+    return  Objet_publication( auteur_=Publication_.auteur , contenu_=Publication_.contenu, date_= Publication_.date)
 
 def list_publication( sous_categorie_ ):
      posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
      list = []
      for Publication in posts:
-         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
+         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu, "dateTime":retourne_Publication(Publication).date})
      return list     
 
 def list_etudiants():
@@ -42,6 +42,7 @@ def ajout_publication(username_, sigle_,  contenu_  ):
     n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ )
     Database.db.session.add(n)
     Database.db.session.commit()
+    return n
 
 #####################################################################################
 

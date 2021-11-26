@@ -18,12 +18,14 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-# @app.route("/api/connection", methods=["POST"])
-# def connection():
-#    data = json.loads(request.get_data())
-#    print(data)
-#    return data
-#
+@app.route("/api/connection", methods=["POST"])
+def connection():
+   data = json.loads(request.get_data())
+   etudiant = i.connection(data['email'], data['password'])
+   if(etudiant['id'] < 1):
+       return "", 404
+   return json.dumps(etudiant), 200
+
 
 @app.route("/api/forum/<categorie_>", methods=["GET", "POST"])
 def publications(categorie_):

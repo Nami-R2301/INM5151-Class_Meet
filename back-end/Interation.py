@@ -18,6 +18,13 @@ def list_publication( sous_categorie_ ):
          list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
      return list     
 
+def list_etudiants():
+     etudiants= Database.Etudiant.query.all()
+     list = []
+     for Etudiant in etudiants:
+         list.append( { "etudiant":Etudiant.username })
+     return list     
+
 #def list_etudiants( sous_categorie_ ):
 #     posts= Database.Etudiant.query.filter_by(sous_categorie=sous_categorie_).all()
 #     list = []

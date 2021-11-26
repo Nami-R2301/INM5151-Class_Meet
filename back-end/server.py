@@ -30,6 +30,11 @@ def publications(categorie_):
     list = i.list_publication( categorie_ )
     return json.dumps(list)
 
+@app.route("/api/etudiants", methods=["GET"])
+def etudiants():
+    list = i.list_etudiants()
+    return json.dumps(list)
+
 #@app.route("/api/listEtudiant/<sigle_>", methods=["GET"])
 #def etudiants(sigle_):
 #    list = i.list_etudiants( sigle_ )

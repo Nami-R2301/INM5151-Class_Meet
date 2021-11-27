@@ -23,7 +23,11 @@
             </button>
           </form>
         </li>
-        <li class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-5 nav-item">
+        <li class="col nav-item">
+          <a class="nav-link active connection my-1 my-sm-2 my-lg-2 my-xxl-3" href="/forum/INF5151"
+             title="Connectez-vous"><span class="glyphicon glyphicon-log-in"></span>Forum</a>
+        </li>
+        <li class="col nav-item">
           <a class="nav-link active connection my-1 my-sm-2 my-lg-2 my-xxl-3" href="/login"
              title="Connectez-vous"><span class="glyphicon glyphicon-log-in"></span>Connectez-vous</a>
         </li>

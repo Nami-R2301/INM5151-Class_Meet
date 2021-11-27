@@ -1,7 +1,7 @@
 @startuml
 allow_mixing
-class main 
 package front-end {
+class main 
 class App
 class main 
 package components {

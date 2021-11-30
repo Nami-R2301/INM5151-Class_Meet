@@ -30,7 +30,7 @@ class Publication(db.Model):
     contenu = db.Column(db.String(200))
     sous_categorie = db.Column(db.String(20))  # mettre un sigle
     #date = db.Column(DateTime, default=datetime.now()-timedelta(hours=5))
-    date = db.Column(DateTime, default=datetime.now())
+    date = db.Column(DateTime, default=datetime.now().replace(microsecond=0))
  #   date = db.Column(DateTime(timezone=True), server_default=(func.now()))
 
     def __repr__(self):

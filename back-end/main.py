@@ -5,7 +5,7 @@ import data
 ### Main 
 
 # add some testing data after reseting database
-data.add_testing_data()
+#data.add_testing_data()
 
 # Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
 list_etudiants = Database.Etudiant.query.all()

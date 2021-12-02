@@ -1,4 +1,6 @@
-from datetime import datetime 
+from datetime import datetime
+
+from sqlalchemy.sql.functions import user 
 import Database
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
@@ -43,6 +45,17 @@ def ajout_publication(username_, sigle_,  contenu_  ):
     Database.db.session.add(n)
     Database.db.session.commit()
     return n
+
+def connection(email, password):
+    try:
+        etudiant = Database.Etudiant.query.filter_by(email=email, password=password).first()
+        return {"id": etudiant.id, "username": etudiant.username, "email": etudiant.email}
+    except AttributeError as err:
+        return {"id": 0}
+    except Exception as err:
+        print(err)
+        return {"id": 0}
+
 
 #####################################################################################
 

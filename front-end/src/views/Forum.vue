@@ -63,18 +63,18 @@ export default {
     },
     sendPost(key) {
       if (key.keyCode !== 13) return;
+      const date = new Date();
       fetch(
         `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
         {
           method: "POST",
           body: JSON.stringify({
-            auteur: this.$store.state.student,
+            auteur: this.$store.state.student.username,
             contenu: this.contenu,
             categorie: this.$route.params.category,
-            dateTime: new Date()
-              .toLocaleString()
-              .slice(0, -3)
-              .replace(", ", " "),
+            dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
+              .toTimeString()
+              .slice(0, 8)}`,
           }),
         }
       )

@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row centered">
         <div class="col-12">
-          <img class="img-fluid col-8 col-sm-2 col-md-2 col-lg-3 col-xl-3 col-xxl-3" alt="Vue logo"
+          <img class="img-fluid col-8 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-3" alt="Vue logo"
                src="../assets/logo.png">
         </div>
         <div class="row centered">
@@ -13,21 +13,21 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row flex-nowrap">
         <div class="col-12">
           <div class="centered_form">
             <form action="login">
 
-              <label class="form-label">Adresse courriel :</label><br>
-              <input type="text" v-model="email" class="form-control w-100 h-auto" name="username"/><br>
+              <label class="form-label">Adresse courriel ou identifiant :</label><br>
+              <input type="text" v-model="email" class="form-control h-auto" name="username"/><br>
               <label class="form-label">Mot de passe :</label><br>
-              <input type="password" v-model="password" class="form-control w-100 h-auto" name="password"/>
+              <input type="password" v-model="password" class="form-control h-auto" name="password"/>
               <p class="forgot-pw">Mot de passe oublié</p>
 
               <div class="centered text-center">
                 <button type="submit" @click="connection" title="Soumettre"
                         class="rounded-pill w-30 h-20" name="submit"
-                        disabled>Soumettre
+                      >Soumettre
                 </button>
               </div>
 
@@ -58,16 +58,18 @@ export default {
   methods: {
     connection(e) {
       e.preventDefault();
+
       fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
         method: "POST",
         body: JSON.stringify({email: this.email, password: this.password}),
       })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          }).catch(err => {
-        console.error(err)
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.commit("connect", data)
+          this.$router.push("/")
+        }).catch(err => {
+          console.error(err)
+        });
     },
   },
 };
@@ -94,7 +96,12 @@ export default {
   margin-bottom: 10%;
 }
 
+span {
+  margin: 0 auto;
+}
+
 .row {
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -163,7 +170,7 @@ input[type=password] {
 button[type=submit] {
   max-width: 100%;
   margin: 10% 0;
-  padding: 10% 20%;
+  padding: 5% 10%;
   border: none;
   background-color: #87ceeb;
   color: black;
@@ -203,9 +210,7 @@ button[type=submit] {
   }
 
   button[type=submit] {
-    padding: 10% 15%;
     font-size: small;
-    text-align: center;
   }
 
   .centered_form {
@@ -250,16 +255,24 @@ button[type=submit] {
     margin-right: 36%;
   }
 
+  span {
+    font-size: large;
+  }
+
+  a[role=button] {
+    font-size: small;
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 1080px) {
+@media (min-width: 1024px) {
   h1 {
-    font-size: 150%;
+    font-size: 135%;
   }
 
   label {
-    font-size: large;
+    font-size: medium;
   }
 
   .centered_form {
@@ -299,11 +312,19 @@ button[type=submit] {
 
 @media (min-width: 2000px) {
   h1 {
-    font-size: 500%;
+    font-size: 300%;
   }
 
   label {
-    font-size: 200%;
+    font-size: 150%;
+  }
+
+  .forgot-pw {
+    font-size: large;
+  }
+
+  button[type=submit] {
+    font-size: x-large;
   }
 }
 

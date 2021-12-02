@@ -13,15 +13,15 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row flex-nowrap">
         <div class="col-12">
           <div class="centered_form">
             <form action="login">
 
               <label class="form-label">Adresse courriel :</label><br>
-              <input type="text" v-model="email" class="form-control w-100 py-auto h-auto" name="username"/><br>
+              <input type="text" v-model="email" class="form-control h-auto" name="username"/><br>
               <label class="form-label">Mot de passe :</label><br>
-              <input type="password" v-model="password" class="form-control w-100 h-auto" name="password"/>
+              <input type="password" v-model="password" class="form-control h-auto" name="password"/>
               <p class="forgot-pw">Mot de passe oublié</p>
 
               <div class="centered text-center">

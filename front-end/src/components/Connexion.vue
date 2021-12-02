@@ -18,7 +18,7 @@
           <div class="centered_form">
             <form action="login">
 
-              <label class="form-label">Adresse courriel :</label><br>
+              <label class="form-label">Adresse courriel ou identifiant :</label><br>
               <input type="text" v-model="email" class="form-control h-auto" name="username"/><br>
               <label class="form-label">Mot de passe :</label><br>
               <input type="password" v-model="password" class="form-control h-auto" name="password"/>

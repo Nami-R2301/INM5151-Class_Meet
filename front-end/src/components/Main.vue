@@ -102,7 +102,7 @@
       </div>
     </div>
     <div class="container-fluid"
-         style="background-color: #f2f5f8; margin-bottom: 0">
+         style="background-color: #f2f5f8;">
       <div class="row my-5">
         <div class="col-12">
           <h2 class="titre-section centered" style="margin: 0 auto;">Vous êtes partant?</h2>
@@ -134,8 +134,9 @@ body {
   text-align: center;
 }
 
-.container-fluid {
-  margin-bottom: 5%;
+.row {
+  margin: 0 auto;
+  text-align: center;
 }
 
 a[role=button] {

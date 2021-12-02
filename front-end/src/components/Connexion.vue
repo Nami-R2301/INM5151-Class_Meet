@@ -96,7 +96,12 @@ export default {
   margin-bottom: 10%;
 }
 
+span {
+  margin: 0 auto;
+}
+
 .row {
+  margin: 0 auto;
   text-align: center;
 }
 

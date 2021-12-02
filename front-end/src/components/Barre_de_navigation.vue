@@ -2,17 +2,17 @@
   <div id="barre-nav" class="Barre_de_navigation">
     <nav class="container-fluid navbar-nav m-auto navbar-light bg-light sticky-top">
       <ul class="row flex-nowrap py-3" style="background-color: rgb(230,237,248); padding-left: 2%">
-        <li class="col-1 align-content-start py-3">
+        <li class="col-1 centered  py-3">
           <button type="button" class="navbar-toggler" data-bs-target="#collapsibleNavbar" aria-expanded="false"
                   aria-controls="collapseNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
         </li>
-        <li class="col-3 col-xxl-2 py-1 py-lg-0 py-xl-0">
-          <a class="navbar-brand" href="/"
+        <li class="col-3 co-lg-3 col-xl-3 col-xxl-2 py-1 py-lg-0 py-xl-0 py-xxl-0">
+          <a class="navbar-item" href="/"
              title="Cliquez ici pour revenir à la page principale">
-            <img class="logo offset-lg-1 offset-xl-1" alt="logo Class Meet" src="../assets/logo.png">
-            <img class="class_Meet" alt="Class Meet" src="../assets/Class_Meet.png"></a>
+            <img class="logo offset-lg-1 offset-xl-1 offset xxl-0 col-4" alt="logo Class Meet" src="../assets/logo.png">
+            <img class="class_Meet col-6" alt="Class Meet" src="../assets/Class_Meet.png"></a>
         </li>
         <li class="col-4 col-lg-5 col-xxl-4 py-3">
           <form class="d-flex justify-content-sm-start">
@@ -40,12 +40,30 @@ export default {
 
 <style>
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
 .logo {
-  max-width: 30%;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+span, a {
+  text-align: left;
 }
 
 .class_Meet {
-  max-width: 40%;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 

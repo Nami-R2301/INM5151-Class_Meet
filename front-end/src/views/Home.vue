@@ -12,6 +12,9 @@ export default {
   components: {
     Main,
   },
+  mounted() {
+    console.log("dev:", this.$cookies.get("user"))
+  }
 };
 </script>
 

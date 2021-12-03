@@ -69,7 +69,7 @@ export default {
         {
           method: "POST",
           body: JSON.stringify({
-            auteur: this.$store.state.student.username,
+            auteur: this.$cookies.get("user").username,
             contenu: this.contenu,
             categorie: this.$route.params.category,
             dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date

@@ -20,11 +20,11 @@ def hello_world():
 
 @app.route("/api/connection", methods=["POST"])
 def connection():
-   data = json.loads(request.get_data())
-   etudiant = i.connection(data['email'], data['password'])
-   if(etudiant['id'] < 1):
-       return "", 404
-   return json.dumps(etudiant), 200
+    data = json.loads(request.get_data())
+    etudiant = i.connection(data['email'], data['password'])
+    if(etudiant['id'] < 1):
+        return json.dumps(etudiant), 404
+    return json.dumps(etudiant), 200
 
 
 @app.route("/api/forum/<categorie_>", methods=["GET", "POST"])

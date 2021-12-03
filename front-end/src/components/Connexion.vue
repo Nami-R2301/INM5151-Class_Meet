@@ -65,8 +65,13 @@ export default {
       })
         .then((res) => res.json())
         .then((data) => {
-          this.$store.commit("connect", data)
-          this.$router.push("/")
+          if(data.err) {
+            alert(data.err)
+          }
+          else {
+            this.$cookies.set("user", data)
+            this.$router.push("/")
+          }
         }).catch(err => {
           console.error(err)
         });

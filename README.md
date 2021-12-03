@@ -2,10 +2,18 @@
 Dépôt pour notre projet de session dans le cours INM5151 de la session A-21
 
 
-## Comment lancer le projet
+## Comment lancer le projet Front-end
 1. Installer [node.js](https://nodejs.org/en/)
 2. Faites la commande `npm i`
 3. Puis `npm run serve`
+
+## Librairie à installer pour le back-end
+* [Python](https://www.python.org/downloads/) 
+* Flask: `python -m pip install flask`
+* flask sqlalchemy: `python -m pip install Flask-SQLAlchemy`
+* flask cors: `python -m pip install flask-cors`
+
+
 
 ## En savoir plus
 - [Architecture de dossiers](https://itnext.io/how-to-structure-my-vue-js-project-e4468db005ac) avec Vue.

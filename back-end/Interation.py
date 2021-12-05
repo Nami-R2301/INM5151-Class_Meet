@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy.sql.functions import user
 import Database
+import sqlite3
 
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
@@ -56,7 +57,18 @@ def connection(email, password):
         print(err)
         return {"id": 0, "err": err}
 
-
+def register(email, username, password):
+    try:
+        res = Database.Etudiant(email=email, username=username, password=password)
+        Database.db.session.add(res)
+        Database.db.session.commit()
+        return {"username": username, "email": email}
+    except Exception as err:
+        if "UNIQUE constraint failed" in err.args[0]:
+            return {"err": "Email already exists"}
+        else:
+            return {"err": err}
+        
 #####################################################################################
 
 

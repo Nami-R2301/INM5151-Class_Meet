@@ -62,7 +62,7 @@ def register(email, username, password):
         res = Database.Etudiant(email=email, username=username, password=password)
         Database.db.session.add(res)
         Database.db.session.commit()
-        return {"email": email}
+        return {"username": username, "email": email}
     except Exception as err:
         if "UNIQUE constraint failed" in err.args[0]:
             return {"err": "Email already exists"}

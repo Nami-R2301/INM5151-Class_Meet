@@ -53,10 +53,24 @@ export default {
     confirmPassword: "",
   }),
   methods: {
+    validInput() {
+      if(this.email.trim() === "" || this.username.trim() === "" || this.password.trim() === "") {
+        alert("All fields must be completed")
+        return false;
+      }
+      else if (this.password !== this.confirmPassword) {
+        alert("Passwords must be the same");
+        return false;
+      }
+
+      return true;
+    },
     signup(e) {
       e.preventDefault();
 
-      fetch(`${this.$store.getters.baseUrlBackEnd}`, {
+      if (!this.validInput()) return;
+
+      fetch(`${this.$store.getters.baseUrlBackEnd}api/register`, {
         method: "POST",
         body: JSON.stringify({
           email: this.email,

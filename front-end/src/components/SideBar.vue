@@ -53,8 +53,20 @@
 </template>
 
 <script>
+import jQuery from "jQuery";
+
 export default {
-  name: "SideBar"
+  name: "SideBar",
+  mounted() {
+    this.$nextTick(() => {
+      jQuery('.SideBar').ready(function () {
+        jQuery('#sidebarCollapse').on('click', function () {
+          jQuery('#sidebar').toggleClass('active');
+          jQuery(this).toggleClass('active');
+        });
+      });
+    });
+  }
 }
 </script>
 

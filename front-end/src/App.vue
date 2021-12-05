@@ -21,7 +21,7 @@ export default {
   components: {
     Barre_de_navigation,
     Footer,
-  }
+  },
 
   /*beforeCreate() {
     if (

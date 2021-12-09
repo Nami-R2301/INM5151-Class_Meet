@@ -1,6 +1,6 @@
 <template>
   <div id="barre-nav" class="Barre_de_navigation">
-    <nav class="container-fluid navbar-nav m-auto navbar-light bg-light sticky-md-top">
+    <nav class="container-fluid navbar-nav m-auto navbar-light bg-light sticky-md-top" style="padding: 0">
       <ul class="row flex-nowrap" style="background-color: rgb(230,237,248); padding-left: 2%">
         <li class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 align-content-start">
           <button type="button" class="navbar-toggler py-0 px-0 mx-2 my-2 my-md-3" data-bs-target="#collapsibleNavbar" aria-expanded="false"
@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style>
+
+body {
+  overflow-x: hidden;
+}
 
 .logo {
   max-width: 30%;

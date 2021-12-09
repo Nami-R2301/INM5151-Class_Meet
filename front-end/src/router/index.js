@@ -18,6 +18,11 @@ const routes = [
     path: '/forum/:category',
     name: 'Forum',
     component: () => import('../views/Forum.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue')
   }
 ]
 

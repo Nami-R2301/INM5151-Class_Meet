@@ -1,8 +1,6 @@
 <template>
   <div id="sidebar" class="SideBar">
-    <div class="container-fluid">
-      <div class="row flex-nowrap">
-        <div class="col-auto col-sm-3 col-xl-2 px-sm-2 px-3 pt-2 d-flex sticky-lg-top bg-dark">
+        <div class="col-auto d-flex sticky-top bg-light">
           <div
               class="d-flex flex-sm-column flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100 text-white">
             <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
@@ -48,8 +46,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>

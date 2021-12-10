@@ -4,10 +4,10 @@
       <div class="col-2">
         <SideBar/>
       </div>
-      <div class="col-7">
+      <div class="col-8">
         <Dashboard/>
       </div>
-      <div class=" col-3 student_bar">
+      <div class=" col-2 student_bar bg-light">
           <Student_bar :etudiants="students"/>
         </div>
     </div>

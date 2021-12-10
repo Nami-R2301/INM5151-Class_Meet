@@ -12,9 +12,9 @@
       <div
           v-for="etudiant in etudiants"
           :key="etudiant.name"
-          class="offset-1 row col-auto"
+          class="offset-1 col-12"
       >
-        <p>{{ etudiant.name }}</p>
+        <p class="fw-bold">{{ etudiant.name }}</p>
       </div>
     </div>
   </div>

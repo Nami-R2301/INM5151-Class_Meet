@@ -1,6 +1,6 @@
 <template>
   <div id="barre-nav" class="Barre_de_navigation">
-    <nav class="container-fluid navbar-nav m-auto navbar-light bg-light sticky-md-top" style="padding: 0">
+    <nav class="container-fluid navbar-nav m-auto navbar-light bg-light sticky-md-top">
       <ul class="row flex-nowrap" style="background-color: rgb(230,237,248); padding-left: 2%">
         <li class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 align-content-start">
           <button type="button" class="navbar-toggler py-0 px-0 mx-2 my-2 my-md-3" data-bs-target="#collapsibleNavbar" aria-expanded="false"
@@ -23,7 +23,11 @@
             </button>
           </form>
         </li>
-        <li class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-5 nav-item">
+        <li class="col nav-item">
+          <a class="nav-link active connection my-1 my-sm-2 my-lg-2 my-xxl-3" href="/forum/INF5151"
+             title="Connectez-vous"><span class="glyphicon glyphicon-log-in"></span>Forum</a>
+        </li>
+        <li class="col nav-item">
           <a class="nav-link active connection my-1 my-sm-2 my-lg-2 my-xxl-3" href="/login"
              title="Connectez-vous"><span class="glyphicon glyphicon-log-in"></span>Connectez-vous</a>
         </li>

@@ -8,7 +8,7 @@
         <Dashboard/>
       </div>
       <div class=" col-2 student_bar bg-light">
-          <Student_bar :etudiants="students"/>
+          <Contacts :etudiants="students"/>
         </div>
     </div>
   </div>
@@ -17,12 +17,12 @@
 <script>
 import Dashboard from "../components/dashboard";
 import SideBar from "../components/SideBar";
-import Student_bar from "../components/Student_bar";
+import Contacts from "../components/Contacts.vue";
 
 export default {
   name: "Profile",
   components: {
-    Student_bar,
+    Contacts,
     Dashboard,
     SideBar
   },

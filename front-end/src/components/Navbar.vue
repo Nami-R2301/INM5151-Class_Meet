@@ -10,7 +10,7 @@
         <li class="col-1 text-start m-auto">
           <a class="navbar-brand my-auto" href="/home"
              title="Cliquez ici pour revenir à la page principale">
-            <img class="col-lg-12 col-xxl-10 my-auto" alt="logo Class Meet" src="../assets/logo.png"></a>
+            <img class=" col-12 col-lg-12 col-xxl-10 my-auto" alt="logo Class Meet" src="../assets/logo.png"></a>
         </li>
         <li class="col-5 text-start m-auto">
           <form class="d-flex">
@@ -21,11 +21,11 @@
             </button>
           </form>
         </li>
-        <li class="col-2 m-auto text-end">
+        <li class="col-1 my-auto text-end">
           <a class="nav-link active connection my-auto" href="/forum/INF5151"
              title="Connectez-vous">Forum</a>
         </li>
-        <li class="col-3 m-auto text-end">
+        <li class="col-3 my-auto text-end">
           <a class="nav-link active connection" href="/login"
              title="Connectez-vous">Connectez-vous</a>
         </li>
@@ -40,10 +40,6 @@ export default {
 </script>
 
 <style>
-
-nav {
-  z-index: 10000;
-}
 
 .connection {
   padding: 0;

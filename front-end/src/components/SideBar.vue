@@ -1,6 +1,6 @@
 <template>
-  <div id="sidebar" class="sidebar">
-        <div class="col-auto d-flex sticky-top bg-light">
+  <div id="sidebar">
+        <div class="col-auto d-flex sticky-top">
           <div
               class="d-flex flex-sm-column flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100 text-white">
             <ul class="nav nav-pills fw-bold flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
@@ -64,23 +64,9 @@ export default {
 <style scoped>
 
 ul li a {
+  z-index: auto;
   font-family: Sen, Helvetica, Arial, sans-serif;
   color: black;
   margin: 5% auto;
-}
-
-.brand {
-  color: #06b8f6;
-  font-weight: bolder;
-  font-size: x-large;
-}
-
-.logo {
-  margin-right: 5%;
-  max-width: 20%;
-}
-
-.sidebar {
-  border-right: 1px solid black;
 }
 </style>

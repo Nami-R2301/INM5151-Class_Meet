@@ -85,6 +85,11 @@ export default {
 </script>
 
 <style scoped>
+
+body {
+  overflow-x: hidden;
+}
+
 .centered {
   display: flex;
   align-items: center;

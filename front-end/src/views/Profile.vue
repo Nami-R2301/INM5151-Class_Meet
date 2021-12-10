@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid m-auto p-0">
+  <div class="container-fluid m-autov p-0">
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 sidebar bg-light">
         <SideBar/>
       </div>
       <div class="col-8">
@@ -49,6 +49,10 @@ export default {
 
 .student_bar {
   border-left: 1px solid black;
+}
+
+.sidebar {
+  border-right: 1px solid black;
 }
 
 </style>

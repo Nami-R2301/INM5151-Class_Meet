@@ -6,11 +6,6 @@
              src="../assets/user.png">
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center" style="margin: 2% 25%;">
-        <i class="bi-pie-chart bi-align-end"></i>
-      </div>
-    </div>
     <div class="row centered text-center">
       <p class="name fw-bold fs-5 mt-4 mb-0">Nami Reghbati</p>
       <p class="programme text-decoration-underline mt-2">Baccalauréat en génie logiciel et informatique</p>

@@ -1,20 +1,19 @@
 <template>
   <div>
-    <div class="row title mb-3">
-      <div class="col-auto">
-        <span>Logo</span>
-      </div>
-      <div class="col-auto">
-        <h4>Contacts</h4>
+    <div class="row title mb-3 m-auto">
+      <div class="col-12 m-auto">
+        <i class="bi-person-lines-fill fs-2"></i>
+        <span class="ms-3 fs-5">Contacts</span>
       </div>
     </div>
     <div class="row">
       <div
           v-for="etudiant in etudiants"
           :key="etudiant.name"
-          class="offset-1 col-12"
+          class="mb-3"
       >
-        <p class="fw-bold">{{ etudiant.name }}</p>
+        <i class="bi-person-circle me-3 fs-3"></i>
+        <span class="fw-bold">{{ etudiant.name }}</span>
       </div>
     </div>
   </div>
@@ -28,7 +27,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+
+body {
+  overflow-x: hidden;
+}
 .title {
   border-bottom: 1px solid black;
 }

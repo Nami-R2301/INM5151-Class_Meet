@@ -7,16 +7,16 @@
                 id="menu">
               <li>
                 <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-speedometer2"></i><span class=" fs-6 ms-1 px-3 d-none d-sm-inline">Dashboard</span> </a>
+                  <i class="fs-5 bi-speedometer2"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Dashboard</span> </a>
               </li>
               <li>
                 <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-table"></i><span class=" fs-6 ms-1 px-3 d-none d-sm-inline">Orders</span></a>
+                  <i class="fs-5 bi-table"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Orders</span></a>
               </li>
               <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                  <i class="fs-5 bi-bootstrap"></i><span class=" fs-6 ms-1 px-3 d-none d-sm-inline">Bootstrap</span>
+                  <i class="fs-5 bi-bootstrap"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Bootstrap</span>
                 </a>
                 <ul class="dropdown-menu fs-6 dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
                   <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -30,11 +30,11 @@
               </li>
               <li>
                 <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-grid"></i><span class="fs-6 ms-1 px-3 d-none d-sm-inline">Products</span></a>
+                  <i class="fs-5 bi-grid"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Products</span></a>
               </li>
               <li>
                 <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-people"></i><span class="fs-6 ms-1 px-3 d-none d-sm-inline">Customers</span> </a>
+                  <i class="fs-5 bi-people"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Customers</span> </a>
               </li>
             </ul>
             <hr>
@@ -67,5 +67,21 @@ ul li a {
   font-family: Sen, Helvetica, Arial, sans-serif;
   color: black;
   margin: 5% auto;
+}
+
+.text-size {
+
+}
+
+@media (min-width: 768px) {
+  .text-size {
+    font-size: small;
+  }
+}
+
+@media (min-width: 1080px) {
+  .text-size {
+    font-size: medium;
+  }
 }
 </style>

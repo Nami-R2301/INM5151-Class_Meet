@@ -28,13 +28,23 @@ def list_etudiants():
          list.append( { "etudiant":Etudiant.username })
      return list
 
-#def list_etudiants( sous_categorie_ ):
-#     posts= Database.Etudiant.query.filter_by(sous_categorie=sous_categorie_).all()
-#     list = []
-#     for Publication in posts:
-#         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
-#     return list
+def afficher_etudiant_de( sigle_):
+    print("Etudiants inscris à " + sigle_)
+    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    cours.listeEtudiants
+    for etudiant in cours.listeEtudiants:
+       print( __repr_etudiant__(etudiant))
 
+def ajout_inscription( email_, sigle_):
+    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    cours.listeEtudiants.append(etudiant)
+    Database.db.session.commit()
+
+def ajout_cours( sigle_, session_):
+    nouveau_cours = Database.Cours( sigle=sigle_, session=session_ )
+    Database.db.session.add( nouveau_cours )
+    Database.db.session.commit()
 
 def ajout_utilisateur( username_, psw_, email_ ):
    n = Database.Etudiant( username=username_, password=psw_, email=email_)

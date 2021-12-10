@@ -52,7 +52,7 @@ def ajout_utilisateur( username_, psw_, email_ ):
    Database.db.session.commit()
 
 def ajout_publication(username_, sigle_,  contenu_  ):
-    n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ )
+    n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ , date=datetime.now().replace(microsecond=0) )
     Database.db.session.add(n)
     Database.db.session.commit()
     return n
@@ -60,7 +60,7 @@ def ajout_publication(username_, sigle_,  contenu_  ):
 def connection(email, password):
     try:
         etudiant = Database.Etudiant.query.filter_by(email=email, password=password).first()
-        return {"id": etudiant.id, "username": etudiant.username, "email": etudiant.email}
+        return {"id": etudiant.etudiantId, "username": etudiant.username, "email": etudiant.email}
     except AttributeError as err:
         return {"id": 0, "err": "Incorrect email or password"}
     except Exception as err:

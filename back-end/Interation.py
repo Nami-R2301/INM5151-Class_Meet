@@ -28,6 +28,25 @@ def list_etudiants():
          list.append( { "etudiant":Etudiant.username })
      return list
 
+def retourner_cours_de( email_ ):
+    etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    print( "Cours de l'étudiant " + etudiant.username )
+    list = []
+    for Database.Cours in etudiant.listeCours:
+        list.append(  Database.Cours.sigle  )
+    return list
+    
+
+def retourner_etudiants_de( sigle_):
+    print("Etudiants inscris à " + sigle_)
+    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    cours.listeEtudiants
+    list = []
+    for etudiant in cours.listeEtudiants:
+        list.append(  etudiant.username  )
+    return list
+
+
 def afficher_cours_de( email_ ):
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
     print( "Cours de l'étudiant " + etudiant.username )

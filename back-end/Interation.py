@@ -28,7 +28,7 @@ def list_etudiants():
          list.append( { "etudiant":Etudiant.username })
      return list
 
-def afficher_etudiant_de( sigle_):
+def afficher_etudiants_de( sigle_):
     print("Etudiants inscris à " + sigle_)
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
     cours.listeEtudiants

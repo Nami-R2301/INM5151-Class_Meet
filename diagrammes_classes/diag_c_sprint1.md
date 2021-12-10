@@ -1,12 +1,16 @@
 @startuml
+allow_mixing
 package front-end {
-
-}
-package back-end {
-    class main {
-        + Data Database
-        + Inter Interaction
-
+class App
+    package view {
+        class Connection
     }
 }
+view -- App
+package back-end {
+    class main 
+}
+
+
+
 @enduml

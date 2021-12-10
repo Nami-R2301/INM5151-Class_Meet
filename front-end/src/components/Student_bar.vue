@@ -1,20 +1,20 @@
 <template>
-  <div class="container-fluid">
-    <div class="row title">
-      <div class="col-2">
-        Logo
+  <div>
+    <div class="row title mb-3">
+      <div class="col-auto">
+        <span>Logo</span>
       </div>
-      <div class="col-10">
-        <h4>Liste des etudiant(e)s</h4>
+      <div class="col-auto">
+        <h4>Contacts</h4>
       </div>
     </div>
     <div class="row">
       <div
-        v-for="etudiant in etudiants"
-        :key="etudiant.name"
-        class="offset-2 col-10"
+          v-for="etudiant in etudiants"
+          :key="etudiant.name"
+          class="offset-1 col-12"
       >
-        <p>{{ etudiant.name }}</p>
+        <p class="fw-bold">{{ etudiant.name }}</p>
       </div>
     </div>
   </div>

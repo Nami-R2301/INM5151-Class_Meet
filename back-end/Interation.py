@@ -1,7 +1,8 @@
 from datetime import datetime
-
-from sqlalchemy.sql.functions import user 
+from sqlalchemy.sql.functions import user
 import Database
+import sqlite3
+
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
 class Objet_publication():
@@ -18,25 +19,25 @@ def list_publication( sous_categorie_ ):
      list = []
      for Publication in posts:
          list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu, "dateTime":retourne_Publication(Publication).date})
-     return list     
+     return list
 
 def list_etudiants():
      etudiants= Database.Etudiant.query.all()
      list = []
      for Etudiant in etudiants:
          list.append( { "etudiant":Etudiant.username })
-     return list     
+     return list
 
 #def list_etudiants( sous_categorie_ ):
 #     posts= Database.Etudiant.query.filter_by(sous_categorie=sous_categorie_).all()
 #     list = []
 #     for Publication in posts:
 #         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
-#     return list     
+#     return list
 
 
 def ajout_utilisateur( username_, psw_, email_ ):
-   n = Database.Etudiant( username=username_, password=psw_, email=email_) 
+   n = Database.Etudiant( username=username_, password=psw_, email=email_)
    Database.db.session.add(n)
    Database.db.session.commit()
 
@@ -51,12 +52,23 @@ def connection(email, password):
         etudiant = Database.Etudiant.query.filter_by(email=email, password=password).first()
         return {"id": etudiant.id, "username": etudiant.username, "email": etudiant.email}
     except AttributeError as err:
-        return {"id": 0}
+        return {"id": 0, "err": "Incorrect email or password"}
     except Exception as err:
         print(err)
-        return {"id": 0}
+        return {"id": 0, "err": err}
 
-
+def register(email, username, password):
+    try:
+        res = Database.Etudiant(email=email, username=username, password=password)
+        Database.db.session.add(res)
+        Database.db.session.commit()
+        return {"username": username, "email": email}
+    except Exception as err:
+        if "UNIQUE constraint failed" in err.args[0]:
+            return {"err": "Email already exists"}
+        else:
+            return {"err": err}
+        
 #####################################################################################
 
 
@@ -65,7 +77,7 @@ def __repr_etudiant__(self):
 
 
 def __repr_post__(self):
-    return '%r\n%r\n%r' % (self.date , self.contenu, self.auteur) 
+    return '%r\n%r\n%r' % (self.date , self.contenu, self.auteur)
 
 # Print passe la liste passé en paramêtre dans une boucle qui affiche le contenu avec repr
 def print_etudiant(Etudiants):

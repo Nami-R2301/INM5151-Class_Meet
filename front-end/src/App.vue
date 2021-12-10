@@ -5,8 +5,9 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
-    <NavBar/>
+    <Navbar/>
     <router-view/>
     <Footer/>
   </div>
@@ -14,31 +15,29 @@
 
 <script>
 import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 
 export default {
   name: "App",
   components: {
-    NavBar,
+    Navbar,
     Footer,
   },
 
-  /*beforeCreate() {
+  beforeCreate() {
     if (
-        this.$router.currentRoute.fullPath !== "/login" &&
-        !this.$store.state.session_id
+        window.location.pathname !== "/login" &&
+        !this.$cookies.get("user")
     ) {
       this.$router.push("/login");
     } else if (
-        this.$router.currentRoute.fullPath === "/login" &&
-        this.$store.state.session_id
+      window.location.pathname === "/login" &&
+        this.$cookies.get("user")
     ) {
       this.$router.push("/");
     }
   },
 };
-*/
-}
 </script>
 
 <style>

@@ -6,20 +6,20 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
-    <Barre_de_navigation/>
+    <NavBar/>
     <router-view/>
     <Footer/>
   </div>
 </template>
 
 <script>
-import Barre_de_navigation from "./components/Barre_de_navigation";
 import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 export default {
   name: "App",
   components: {
-    Barre_de_navigation,
+    NavBar,
     Footer,
   },
 

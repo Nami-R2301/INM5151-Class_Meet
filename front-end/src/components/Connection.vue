@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: "Connexion",
+  name: "Connection",
   props: {
     msg: String,
     msg2: String,

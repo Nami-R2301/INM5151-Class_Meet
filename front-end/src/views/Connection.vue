@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Connexion from "../components/Connexion.vue";
+import Connexion from "../components/Connection.vue";
 
 export default {
   name: "Connection",

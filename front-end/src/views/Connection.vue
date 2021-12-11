@@ -7,13 +7,12 @@
               v-if="isRegistered"
             class="
               img-fluid
-              col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2
-            "
+              col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2 mt-2"
             alt="Vue logo"
             src="../assets/logo.png"
           />
           <img v-else class="img-fluid
-              col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2"
+              col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2 mt-2"
                alt="Ajout utilisateur."
                src="../assets/add-user.png"
                />
@@ -68,17 +67,32 @@ export default {
       title: "Connectez-vous à ",
       labelRegister: "Première fois ?",
       buttonRegister: "Inscrivez-vous",
+      email: "",
+      pw: "",
     },
     inscription: {
       title: "Inscrivez-vous à ",
       labelRegister: "Déjà un compte ?",
       buttonRegister: "Connectez-vous",
+      email: "",
+      name: "",
+      pw: "",
+      confirm_password: "",
     },
   }),
   methods: {
     registerPage() {
       this.isRegistered = !this.isRegistered;
     },
+
+  },
+  mounted() {
+    let validator_sign_in = document.createElement('script')
+      validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
+      document.head.appendChild(validator_sign_in)
+    let validator_sign_up = document.createElement('script')
+      validator_sign_up.setAttribute('src', '../store/onSubmit_sign_up.js')
+      document.head.appendChild(validator_sign_up)
   },
   beforeCreate() {
     if (this.$route.path === "/login") this.isRegistered = 1;

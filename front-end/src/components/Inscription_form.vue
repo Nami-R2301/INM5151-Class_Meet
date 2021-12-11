@@ -1,5 +1,5 @@
 <template>
-  <form action="/login" class="mt-3 justify-content-center align-content-center mx-auto">
+  <form action="/login" onsubmit="return onSubmit() !== false" class="mt-3 justify-content-center align-content-center mx-auto">
     <label class="form-label fw-bold mb-2 mx-auto fs-5">Adresse courriel :</label>
     <input
       type="text"

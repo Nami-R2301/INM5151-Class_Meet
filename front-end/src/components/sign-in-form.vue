@@ -14,8 +14,8 @@
       class="form-control fs-5 py-1 px-3 rounded-pill border-2 border-bottom border-secondary m-auto"
       name="password"
     />
-    <i class="bi-eye-slash"></i>
-    <p class="fw-bold text-decoration-underline fs-6 m-auto">Mot de passe oublié</p>
+<!--    <i class="bi-eye-slash"></i>-->
+    <p class="fw-bold text-decoration-underline small mt-2 mx-auto">Mot de passe oublié</p>
 
     <div class="d-flex m-auto">
       <button

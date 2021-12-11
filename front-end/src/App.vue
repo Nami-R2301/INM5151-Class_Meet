@@ -11,22 +11,17 @@
       <Navbar/>
       <router-view/>
     </div>
-    <footer>
-      <Footer/>
-    </footer>
   </div>
 </template>
 
 <script>
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/main-navbar";
 import jQuery from "jQuery";
 
 export default {
   name: "App",
   components: {
     Navbar,
-    Footer,
   },
   mounted() {
     let popper = document.createElement('script')
@@ -73,9 +68,5 @@ html {
 
 .content-body {
   min-height: 100%;
-}
-
-.text-responsive {
-  font-size: calc(100% + 1vw + 1vh);
 }
 </style>

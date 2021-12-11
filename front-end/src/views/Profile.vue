@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid m-auto p-0">
     <div class="row mx-auto">
-      <div class="col-2 sidebar bg-light">
+      <div class="col-2 bg-light">
         <SideBar/>
       </div>
       <div class="col-8">
@@ -16,8 +16,8 @@
 
 <script>
 import Dashboard from "../components/dashboard";
-import SideBar from "../components/SideBar";
-import Contacts from "../components/Contacts.vue";
+import SideBar from "../components/sidebar-signed-in";
+import Contacts from "../components/contact-list.vue";
 
 export default {
   name: "Profile",
@@ -49,10 +49,6 @@ export default {
 
 .student_bar {
   border-left: 1px solid black;
-}
-
-.sidebar {
-  border-right: 1px solid black;
 }
 
 </style>

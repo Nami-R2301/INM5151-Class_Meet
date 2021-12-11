@@ -11,8 +11,8 @@
               alt="Vue logo"
               src="../assets/logo.png"
           />
-          <img v-else class="img-fluid
-              col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2 mt-2"
+          <img v-else class="img-fluid sign-up-pic
+              col-3 col-xl-2 col-xxl-2 mt-2"
                alt="Ajout utilisateur."
                src="../assets/add-user.png"
           />
@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import Connexion from "../components/Connection_form.vue";
-import Inscription from "../components/Inscription_form.vue";
+import Connexion from "../components/sign-in-form.vue";
+import Inscription from "../components/sign-up-form.vue";
 
 export default {
   name: "Connection",
@@ -131,6 +131,10 @@ img {
 
   img.col-xxl-2 {
     width: 20% !important;
+  }
+
+  .sign-up-pic.col-xxl-2 {
+    width: 15% !important;
   }
 }
 

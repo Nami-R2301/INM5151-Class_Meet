@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="row title mb-3 mx-auto">
-      <div class="col-12">
+    <div class="title mb-3">
+      <ul class="flex-column mx-auto">
+        <li>
         <i class="bi-person-lines-fill fs-2"></i>
         <span class="ms-3 fs-5">Camarades</span>
-      </div>
+      </li>
+      </ul>
     </div>
     <div class="row mx-auto">
       <div

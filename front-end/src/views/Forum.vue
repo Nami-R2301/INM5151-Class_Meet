@@ -1,9 +1,11 @@
 <template>
-  <div class="container-fluid">
-    <div class="row forum">
-      <div class="col-1"></div>
-      <div class="col-9 posts">
-        <div class="row post">
+  <div class="container-fluid p-0">
+    <div class="row justify-content-evenly forum mx-auto">
+      <div class="col-auto flex-grow-0 bg-light">
+        <sidebarSignedIn/>
+      </div>
+      <div class="col-auto mx-auto posts">
+        <div class="row text-start post">
           <Post
             v-for="post in posts"
             :key="post.dateTime + '_' + generateHexString()"
@@ -11,13 +13,14 @@
             :contenu="post.contenu"
             :dateTime="post.dateTime"
           ></Post>
-          <div class="row">
-            <div class="col-10">
-              <div class="row">
-                <div class="col-12 input-post">
-                  logo
+          <div class="row mx-auto p-0">
+            <div class="col-12">
+              <div class="row mx-auto">
+                <div class="col-12 mx-auto input-post">
+                  <i class="bi-chat-dots m-auto"></i>
                   <input
                     id="send-post"
+                    class="mx-auto p-3"
                     type="text"
                     placeholder="Envoyer un message"
                     @keypress="sendPost"
@@ -29,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="col-2 student_bar mx-auto">
+      <div class="col-2 float-end student_bar bg-light p-0">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -38,12 +41,14 @@
 
 <script>
 import Post from "../components/Post.vue";
-import Student_bar from "../components/Student_bar.vue";
+import student_list from "../components/student-list.vue";
+import sidebarSignedIn from "../components/sidebar-signed-in";
 
 export default {
   components: {
     Post,
-    Student_bar,
+    Student_bar: student_list,
+    sidebarSignedIn
   },
   data: () => ({
     posts: [],
@@ -111,7 +116,14 @@ export default {
 };
 </script>
 
+
 <style scoped>
+
+.right {
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
 .forum {
   overflow-y: hidden;
 }
@@ -119,7 +131,7 @@ export default {
 .posts {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 75vh;
+  height: 85vh;
   /* Reverse scroll bar */
   display: flex;
   flex-direction: column-reverse;
@@ -136,14 +148,11 @@ export default {
 .input-post {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 0.5em;
-  margin-left: 1em;
 }
 
 input#send-post {
-  width: 95%;
+  width: 85%;
   border: none;
-  border-bottom: 1px solid gray;
   outline: none;
 }
 </style>

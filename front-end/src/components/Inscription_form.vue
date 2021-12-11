@@ -1,5 +1,5 @@
 <template>
-  <form action="login">
+  <form action="/login">
     <label class="form-label">Adresse courriel :</label><br />
     <input
       type="text"

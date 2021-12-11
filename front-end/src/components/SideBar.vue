@@ -6,35 +6,35 @@
             <ul class="nav nav-pills fw-bold flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
                 id="menu">
               <li>
-                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-speedometer2"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Dashboard</span> </a>
+                <a href="/profile/dashboard" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
+                  <i class="fs-5 bi-clipboard-data"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Tableau de bord</span> </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-table"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Orders</span></a>
+                <a href="/profile/parcours" class="nav-link px-sm-0 px-2">
+                  <i class="fs-5 bi-table"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Mon parcours</span></a>
               </li>
               <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                  <i class="fs-5 bi-bootstrap"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Bootstrap</span>
+                  <i class="fs-5 bi-bootstrap"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Mes salons</span>
                 </a>
                 <ul class="dropdown-menu fs-6 dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">INM5151</a></li>
+                  <li><a class="dropdown-item" href="#">INF5153</a></li>
+                  <li><a class="dropdown-item" href="#">INF5130</a></li>
+                  <li><a class="dropdown-item" href="#">INM6000</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
               </li>
               <li>
                 <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-grid"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Products</span></a>
+                  <i class="fs-5 bi-grid"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Contactez une personne</span></a>
               </li>
               <li>
                 <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-people"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Customers</span> </a>
+                  <i class="fs-5 bi-people"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Déconnexion</span> </a>
               </li>
             </ul>
             <hr>

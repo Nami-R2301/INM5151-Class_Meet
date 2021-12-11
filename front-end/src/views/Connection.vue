@@ -4,6 +4,7 @@
       <div class="row centered">
         <div class="col-12">
           <img
+              v-if="isRegistered"
             class="
               img-fluid
               col-8 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-3
@@ -11,6 +12,11 @@
             alt="Vue logo"
             src="../assets/logo.png"
           />
+          <img v-else class="img-fluid
+              col-8 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-3"
+               alt="Ajout utilisateur."
+               src="../assets/add-user.png"
+               />
         </div>
         <div class="row centered">
           <div class="col-12">

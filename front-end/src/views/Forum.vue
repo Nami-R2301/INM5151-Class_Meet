@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="col-2 student_bar">
+      <div class="col-2 student_bar mx-auto">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -102,9 +102,9 @@ export default {
     },
     getStudents() {
       this.students = [
-        { profilPicture: "", name: "Nami iydrgitfy" },
-        { profilPicture: "", name: "Jules gfdsgfdg" },
-        { profilPicture: "", name: "Mehdi fgdsggds" },
+        { profilPicture: "", name: "Nami Reghbati" },
+        { profilPicture: "", name: "Jules Hauchecorne" },
+        { profilPicture: "", name: "Mehdi Collomb" },
       ];
     },
   },

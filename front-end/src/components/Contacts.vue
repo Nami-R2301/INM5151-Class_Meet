@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="row title mb-3">
+    <div class="row title mb-3 mx-auto">
       <div class="col-12">
         <i class="bi-person-lines-fill fs-2"></i>
         <span class="ms-3 fs-5">Contacts</span>
       </div>
     </div>
-    <div class="row">
+    <div class="row mx-auto">
       <div
           v-for="etudiant in etudiants"
           :key="etudiant.name"
           class="col-12 mb-3"
       >
-        <i class="bi-person-circle me-3 fs-3 fs-lg-4 fs-sm-4 "></i>
+        <i class="bi-person-circle me-3 fs-3 fs-lg-4 fs-sm-4"></i>
         <span class="fw-bold fs-sm-4 fs-xl-3">{{ etudiant.name }}</span>
       </div>
     </div>

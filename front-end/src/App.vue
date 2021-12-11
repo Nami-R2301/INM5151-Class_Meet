@@ -20,6 +20,7 @@
 <script>
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import jQuery from "jQuery";
 
 export default {
   name: "App",
@@ -27,7 +28,20 @@ export default {
     Navbar,
     Footer,
   },
+  mounted() {
+    let popper = document.createElement('script')
+    popper.setAttribute('src', 'node_modules/@popperjs/core/dist/cjs/popper.js')
+    document.head.appendChild(popper)
+    let dropdown = document.createElement('script')
+    dropdown.setAttribute('src', 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+    document.head.appendChild(dropdown)
 
+  },
+  methods: {
+    function() {
+      jQuery('.dropdown-toggle').dropdown()
+    }
+  },
   beforeCreate() {
     if (
         window.location.pathname !== "/login" &&
@@ -59,5 +73,9 @@ html {
 
 .content-body {
   min-height: 100%;
+}
+
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
 }
 </style>

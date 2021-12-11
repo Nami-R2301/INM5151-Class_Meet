@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid m-auto p-0">
-    <div class="row m-auto">
+    <div class="row mx-auto">
       <div class="col-2 sidebar bg-light">
         <SideBar/>
       </div>
       <div class="col-8">
         <Dashboard/>
       </div>
-      <div class=" col-2 student_bar bg-light">
+      <div class="col-2 student_bar bg-light">
           <Contacts :etudiants="students"/>
         </div>
     </div>
@@ -36,9 +36,9 @@ export default {
   methods: {
     getStudents() {
       this.students = [
-        {profilPicture: "", name: "Nami iydrgitfy"},
-        {profilPicture: "", name: "Jules gfdsgfdg"},
-        {profilPicture: "", name: "Mehdi fgdsggds"},
+        {profilPicture: "", name: "Nami Reghbati"},
+        {profilPicture: "", name: "Jules Hauchecorne"},
+        {profilPicture: "", name: "Mehdi Collomb"},
       ];
     },
   }

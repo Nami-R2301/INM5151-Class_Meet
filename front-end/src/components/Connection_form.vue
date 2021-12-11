@@ -1,5 +1,5 @@
 <template>
-  <form action="/profile" onsubmit="return onSubmit()" class="mt-3 justify-content-center align-content-center mx-auto">
+  <form action="/profile" onsubmit="return onSubmit()" class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mt-3 text-start mx-auto">
     <label class="form-label fw-bold mx-auto fs-5">Adresse courriel :</label><br />
     <input
       type="text"
@@ -22,7 +22,7 @@
         type="submit"
         @click="connection"
         title="Soumettre"
-        class="btn btn-outline-primary shadow rounded-pill text-center px-5 py-4 fw-bold my-4 mx-auto"
+        class="btn btn-outline-primary shadow rounded-pill text-center col-6 py-4 fw-bold my-4 mx-auto"
         name="submit"
       >
         Soumettre
@@ -66,40 +66,7 @@ export default {
 <style scoped>
 
 .fs-5 {
-  font-size: 1.15rem!important;
-}
-
-@media (min-width: 1440px) {
-  form {
-    max-width: 22.5%;
-  }
-}
-
-@media (max-width: 1440px) {
-  form {
-    max-width: 30%;
-  }
-}
-
-@media (max-width: 1080px) {
-  form {
-    max-width: 30%;
-  }
-}
-
-@media (max-width: 1024px) {
-  form {
-    max-width: 37.5%;
-  }
-}
-
-@media (max-width: 768px) {
-  form {
-    max-width: 35%;
-  }
-}
-form {
-  text-align: left;
+  font-size: 1.10rem!important;
 }
 
 </style>

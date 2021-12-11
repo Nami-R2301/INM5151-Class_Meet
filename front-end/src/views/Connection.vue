@@ -5,40 +5,40 @@
         <div class="col-12">
           <img
               v-if="isRegistered"
-            class="
+              class="
               img-fluid
-              col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2 mt-2"
-            alt="Vue logo"
-            src="../assets/logo.png"
+              col-4 col-xl-3 col-xxl-2 mt-2"
+              alt="Vue logo"
+              src="../assets/logo.png"
           />
           <img v-else class="img-fluid
               col-3 col-sm-2 col-md-3 col-lg-3 col-xl-3 col-xxl-2 mt-2"
                alt="Ajout utilisateur."
                src="../assets/add-user.png"
-               />
+          />
         </div>
         <div class="row centered">
           <div class="col-12 mt-4">
-            <h1 class="fs-2 fw-bold">{{ this[connectOrRegister].title }}</h1>
-            <h1 class="msg_connexion fs-2 fw-bold">Class Meet</h1>
+            <h1 class="fw-bold">{{ this[connectOrRegister].title }}</h1>
+            <h1 class="msg_connexion fs-2 text-responsive fw-bold">Class Meet</h1>
           </div>
         </div>
         <div class="row">
           <div class="col-12 mt-2 fs-6">
-              <Connexion v-if="isRegistered" />
-              <Inscription v-else />
+            <Connexion v-if="isRegistered"/>
+            <Inscription v-else/>
           </div>
         </div>
         <div class="text-center fw-bold mx-auto mt-4 text-info fs-5">
           <span class="me-4"
-            >{{this[connectOrRegister].labelRegister}}
+          >{{ this[connectOrRegister].labelRegister }}
           </span>
           <a
-            @click="registerPage"
-            title="Inscription"
-            class="btn btn-outline-info m-auto rounded-pill px-4 fs-5"
-            role="button"
-            >{{this[connectOrRegister].buttonRegister}}</a
+              @click="registerPage"
+              title="Inscription"
+              class="btn btn-outline-info m-auto rounded-pill px-4 fs-5"
+              role="button"
+          >{{ this[connectOrRegister].buttonRegister }}</a
           >
         </div>
       </div>
@@ -88,11 +88,11 @@ export default {
   },
   mounted() {
     let validator_sign_in = document.createElement('script')
-      validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
-      document.head.appendChild(validator_sign_in)
+    validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
+    document.head.appendChild(validator_sign_in)
     let validator_sign_up = document.createElement('script')
-      validator_sign_up.setAttribute('src', '../store/onSubmit_sign_up.js')
-      document.head.appendChild(validator_sign_up)
+    validator_sign_up.setAttribute('src', '../store/onSubmit_sign_up.js')
+    document.head.appendChild(validator_sign_up)
   },
   beforeCreate() {
     if (this.$route.path === "/login") this.isRegistered = 1;
@@ -114,11 +114,24 @@ export default {
 }
 
 h1 {
+  font-size: 1.70rem !important;
   display: inline;
 }
 
+img {
+  -webkit-filter: drop-shadow(3px 3px 3px #2b2b2b);
+  filter: drop-shadow(3px 3px 3px #2b2b2b);
+}
+
 .fs-5 {
-  font-size: 1.15rem!important;
+  font-size: 1.15rem !important;
+}
+
+@media (min-width: 1440px) {
+
+  img.col-xxl-2 {
+    width: 20% !important;
+  }
 }
 
 button:hover {
@@ -128,5 +141,10 @@ button:hover {
 button:disabled {
   opacity: 50%;
 }
+
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
+}
+
 
 </style>

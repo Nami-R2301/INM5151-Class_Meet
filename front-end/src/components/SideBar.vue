@@ -1,40 +1,40 @@
 <template>
   <div id="sidebar">
-        <div class="col-auto d-flex">
+        <div class="col-auto">
           <div
-              class="d-flex flex-sm-column flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100 text-white">
-            <ul class="nav nav-pills fw-bold flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
+              class="d-flex flex-column align-items-sm-start min-vh-100 mx-2">
+            <ul class="nav fw-bold mx-auto mt-2 col-auto"
                 id="menu">
-              <li>
-                <a href="/profile/dashboard" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-clipboard-data"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Tableau de bord</span> </a>
+              <li class="nav-item col-auto mb-3">
+                <a href="/profile#dashboard" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
+                  <i class="fs-5 bi-clipboard-data"></i><span class="text-responsive px-3 d-sm-inline">Tableau de bord</span> </a>
               </li>
-              <li>
-                <a href="/profile/parcours" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-table"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Mon parcours</span></a>
+              <li class="nav-item col-auto mb-3">
+                <a href="/profile#parcours" class="nav-link px-sm-0 px-2">
+                  <i class="fs-5 bi-table"></i><span class="text-responsive px-3 d-sm-inline">Mon parcours</span></a>
               </li>
-              <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
+              <li class="nav-item col-auto dropdown mb-3">
+                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" role="button"
                    aria-expanded="false">
-                  <i class="fs-5 bi-bootstrap"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Mes salons</span>
+                  <i class="fs-5 bi-bootstrap"></i><span class="px-3 d-sm-inline">Mes salons</span>
                 </a>
-                <ul class="dropdown-menu fs-6 dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                <ul class="dropdown-menu fs-sm-4 shadow" aria-labelledby="dropdown">
                   <li><a class="dropdown-item" href="#">INM5151</a></li>
                   <li><a class="dropdown-item" href="#">INF5153</a></li>
                   <li><a class="dropdown-item" href="#">INF5130</a></li>
                   <li><a class="dropdown-item" href="#">INM6000</a></li>
                   <li>
-                    <hr class="dropdown-divider">
+                    <hr class="dropdown-divider mt-2">
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-grid"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Contactez une personne</span></a>
+                <a href="#" class="nav-link px-sm-0 px-2 mb-3">
+                  <i class="bi-telephone-outbound"></i><span class="px-3 d-sm-inline">Contactez une personne</span></a>
               </li>
               <li>
-                <a href="#" class="nav-link px-sm-0 px-2">
-                  <i class="fs-5 bi-people"></i><span class="text-size ms-1 px-3 d-none d-sm-inline">Déconnexion</span> </a>
+                <a href="#" class="nav-link px-sm-0 px-2 mb-3">
+                  <i class="fs-5 bi-people"></i><span class="px-3 d-sm-inline">Déconnexion</span> </a>
               </li>
             </ul>
             <hr>
@@ -61,27 +61,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
-ul li a {
-  font-family: Sen, Helvetica, Arial, sans-serif;
+.nav-link a, i, span {
   color: black;
-  margin: 5% auto;
 }
 
-.text-size {
-
+.nav-link.dropdown-toggle {
+  color: black;
 }
 
-@media (min-width: 768px) {
-  .text-size {
-    font-size: small;
-  }
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
 }
 
-@media (min-width: 1080px) {
-  .text-size {
-    font-size: medium;
-  }
-}
 </style>

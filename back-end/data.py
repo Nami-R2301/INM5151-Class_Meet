@@ -15,7 +15,7 @@ def add_testing_data():
     # ajout d'étudiants
     i.ajout_utilisateur("Jules", "xxx", "youle21@yahoo.ca")
     i.ajout_utilisateur("Mehdi", "xxx", "test@test.test")
-    i.ajout_utilisateur("Nami", "xxx", "foo@foo.foo")
+    i.ajout_utilisateur("Nami", "xxx", "nami.reghbati@gmail.ca")
     
     # ajout cours
     i.ajout_cours("INF5151", "AU21")
@@ -28,7 +28,7 @@ def add_testing_data():
     i.ajout_inscription( "youle21@yahoo.ca", "INF5153" )
     i.ajout_inscription( "test@test.test", "INF1132" )
     i.ajout_inscription( "test@test.test", "INF5151" )
-    i.ajout_inscription( "foo@foo.foo", "INF5151" )
+    i.ajout_inscription( "nami.reghbati@gmail.ca", "INF5151" )
 
     
 

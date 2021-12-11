@@ -1,27 +1,28 @@
 <template>
-  <form action="login">
-    <label class="form-label">Adresse courriel :</label><br />
+  <form action="/profile" class="mt-3 justify-content-center align-content-center mx-auto">
+    <label class="form-label fw-bold mx-auto fs-5">Adresse courriel :</label><br />
     <input
       type="text"
       v-model="email"
-      class="form-control w-100 py-auto h-auto"
+      class="form-control py-1 px-3 rounded-pill border-2 border-secondary m-auto fs-5"
       name="username"
     /><br />
-    <label class="form-label">Mot de passe :</label><br />
+    <label class="form-label fw-bold mx-auto fs-5">Mot de passe :</label><br />
     <input
       type="password"
       v-model="password"
-      class="form-control w-100 h-auto"
+      class="form-control fs-5 py-1 px-3 rounded-pill border-2 border-bottom border-secondary m-auto"
       name="password"
     />
-    <p class="forgot-pw">Mot de passe oublié</p>
+    <i class="bi-eye-slash"></i>
+    <p class="fw-bold text-decoration-underline fs-6 m-auto">Mot de passe oublié</p>
 
-    <div class="centered text-center">
+    <div class="d-flex m-auto">
       <button
         type="submit"
         @click="connection"
         title="Soumettre"
-        class="rounded-pill w-30 h-20"
+        class="btn btn-outline-primary shadow rounded-pill text-center px-5 py-4 fw-bold my-4 mx-auto"
         name="submit"
       >
         Soumettre
@@ -63,54 +64,42 @@ export default {
 </script>
 
 <style scoped>
+
+.fs-5 {
+  font-size: 1.15rem!important;
+}
+
+@media (min-width: 1440px) {
+  form {
+    max-width: 22.5%;
+  }
+}
+
+@media (max-width: 1440px) {
+  form {
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 1080px) {
+  form {
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 1024px) {
+  form {
+    max-width: 37.5%;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    max-width: 35%;
+  }
+}
 form {
-  margin-top: 5%;
   text-align: left;
-  font-family: Sen, "Times New Roman", serif;
-  font-size: 120%;
-  font-weight: bold;
 }
 
-input[type="text"] {
-  display: inline-block;
-  max-width: 100%;
-  margin: 0 auto 3% auto;
-  padding: 0.3%;
-  text-align: left;
-  border: 3px groove black;
-  border-radius: 5px;
-  color: black;
-  background: white;
-}
-
-input[type="password"] {
-  display: inline-block;
-  max-width: 100%;
-  margin: 0 auto 3% auto;
-  padding: 0.3%;
-  text-align: left;
-  border: 3px solid black;
-  border-radius: 5px;
-  color: black;
-  background: white;
-}
-
-.forgot-pw {
-  margin: 0;
-  text-decoration-line: underline;
-  font-size: medium;
-}
-
-button[type="submit"] {
-  max-width: 100%;
-  margin: 10% 0;
-  padding: 5% 10%;
-  border: none;
-  background-color: #87ceeb;
-  color: black;
-  cursor: pointer;
-  text-align: center;
-  font-size: large;
-  font-weight: bolder;
-}
 </style>

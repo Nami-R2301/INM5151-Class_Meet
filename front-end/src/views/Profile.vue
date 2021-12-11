@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid m-autov p-0">
-    <div class="row">
+  <div class="container-fluid m-auto p-0">
+    <div class="row m-auto">
       <div class="col-2 sidebar bg-light">
         <SideBar/>
       </div>

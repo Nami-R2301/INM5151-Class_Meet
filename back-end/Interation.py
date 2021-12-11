@@ -1,9 +1,12 @@
+from os import wait
+import re
 from datetime import datetime
 from sqlalchemy.sql.functions import user
 from  sqlalchemy.orm.exc import NoResultFound
 import Database
 import sqlite3
 
+regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
 class Objet_publication():
@@ -97,9 +100,12 @@ def ajout_cours( sigle_, session_):
     Database.db.session.commit()
 
 def ajout_utilisateur( username_, psw_, email_ ):
-   n = Database.Etudiant( username=username_, password=psw_, email=email_)
-   Database.db.session.add(n)
-   Database.db.session.commit()
+    if ( email_valide( email_ ) ):
+       n = Database.Etudiant( username=username_, password=psw_, email=email_)
+       Database.db.session.add(n)
+       Database.db.session.commit()
+    else:
+        print ( "Email " + email_ + " invalide!" )
 
 def ajout_publication(username_, sigle_,  contenu_  ):
     n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ , date=datetime.now().replace(microsecond=0) )
@@ -122,17 +128,27 @@ def connection(email, password):
         print(err)
         return {"id": 0, "err": err}
 
+def email_valide( email_ ):
+    if ( re.fullmatch( regex, email_ )):
+        return True
+    else:
+        return False
+
 def register(email, username, password):
-    try:
-        res = Database.Etudiant(email=email, username=username, password=password)
-        Database.db.session.add(res)
-        Database.db.session.commit()
-        return {"username": username, "email": email}
-    except Exception as err:
-        if "UNIQUE constraint failed" in err.args[0]:
-            return {"err": "Email already exists"}
-        else:
-            return {"err": err}
+    if ( email_valide( email ) ):
+        try:
+            res = Database.Etudiant(email=email, username=username, password=password)
+            Database.db.session.add(res)
+            Database.db.session.commit()
+            return {"username": username, "email": email}
+        except Exception as err:
+            if "UNIQUE constraint failed" in err.args[0]:
+                return {"err": "Email already exists"}
+            else:
+                return {"err": err}
+    else:
+        print("Email invalide!")
+
         
 #####################################################################################
 

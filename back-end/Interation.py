@@ -64,6 +64,11 @@ def ajout_publication(username_, sigle_,  contenu_  ):
     Database.db.session.commit()
     return n
 
+def supprimer_publications_de( sigle_ ):
+    publications = Database.Publication.query.filter_by(sous_categorie=sigle_)
+    publications.delete( synchronize_session=False )
+    Database.db.session.commit()
+
 def connection(email, password):
     try:
         etudiant = Database.Etudiant.query.filter_by(email=email, password=password).first()
@@ -102,11 +107,8 @@ def print_etudiant(Etudiants):
        print( __repr_etudiant__(Etudiant))
 
 # pas fonctionnel encore
-def print_inscription(etudiant):
-    for  assoc in etudiant.cours :
-        print( assoc.sigle )
 
-def print_publications( sous_categorie_ ):
+def afficher_publications( sous_categorie_ ):
      posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
      for Publication in posts:
          print(__repr_post__( Publication))

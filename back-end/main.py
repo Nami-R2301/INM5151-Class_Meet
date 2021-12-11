@@ -7,12 +7,10 @@ import data
 # add some testing data after reseting database
 data.add_testing_data()
 
-i.afficher_etudiants_de("INF5151")
-i.afficher_etudiants_de("INF5171")
-i.afficher_etudiants_de("INF5153")
-i.afficher_etudiants_de("INF1132")
-
-i.afficher_cours_de("youle21@yahoo.ca")
+i.afficher_publications( "INF5151" )
+print( " ---" )
+i.supprimer_publications_de( "INF5151" )
+i.afficher_publications( "INF5151" )
 
 # Accède à la db pour faire une liste actuelle des étudiants dans la table étudiant
 #list_etudiants = Database.Etudiant.query.all()

@@ -1,5 +1,6 @@
 from datetime import datetime
 from sqlalchemy.sql.functions import user
+from  sqlalchemy.orm.exc import NoResultFound
 import Database
 import sqlite3
 
@@ -30,6 +31,9 @@ def list_etudiants():
 
 def retourner_cours_de( email_ ):
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    if ( etudiant is None ):
+        print( "Étudiant avec " + email_ + " non inscris!" )
+        return
     print( "Cours de l'étudiant " + etudiant.username )
     list = []
     for Database.Cours in etudiant.listeCours:
@@ -40,6 +44,9 @@ def retourner_cours_de( email_ ):
 def retourner_etudiants_de( sigle_):
     print("Etudiants inscris à " + sigle_)
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    if( cours is None ):
+        print( "Cours " + sigle_ + " non éxistant!" )
+        return
     cours.listeEtudiants
     list = []
     for etudiant in cours.listeEtudiants:
@@ -49,23 +56,39 @@ def retourner_etudiants_de( sigle_):
 
 def afficher_cours_de( email_ ):
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    if ( etudiant is None ):
+        print ( "Étudiant avec " + email_ + " non inscris!" )
+        return
     print( "Cours de l'étudiant " + etudiant.username )
     for Database.Cours in etudiant.listeCours:
         print( Database.Cours.sigle ) 
     
 
 def afficher_etudiants_de( sigle_):
-    print("Etudiants inscris à " + sigle_)
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    if ( cours is None ):
+        print ( "Cours " + sigle_ + " non éxistant!" )
+        return
+    print("Etudiants inscris à " + sigle_)
     cours.listeEtudiants
     for etudiant in cours.listeEtudiants:
        print( __repr_etudiant__(etudiant))
 
 def ajout_inscription( email_, sigle_):
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    if ( cours is None ):
+        print ( "Cours " + sigle_ + " non disponible!" )
+        return 
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
-    cours.listeEtudiants.append(etudiant)
-    Database.db.session.commit()
+    nbr = 0
+    for Database.Cours in etudiant.listeCours:
+        ++nbr
+    if ( nbr < 5 ):
+        cours.listeEtudiants.append(etudiant)
+        Database.db.session.commit()
+    else:
+        print( "Maximum de cours atteint!" )
+        
 
 def ajout_cours( sigle_, session_):
     nouveau_cours = Database.Cours( sigle=sigle_, session=session_ )

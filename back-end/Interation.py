@@ -82,12 +82,13 @@ def ajout_inscription( email_, sigle_):
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
     nbr = 0
     for Database.Cours in etudiant.listeCours:
-        ++nbr
+        nbr+=1
     if ( nbr < 5 ):
         cours.listeEtudiants.append(etudiant)
         Database.db.session.commit()
     else:
         print( "Maximum de cours atteint!" )
+
         
 
 def ajout_cours( sigle_, session_):

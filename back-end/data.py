@@ -77,7 +77,7 @@ def add_testing_data():
     i.ajout_inscription( "foo@foo.foo", "INF5151" )
     i.ajout_inscription( "youle21@yahoo.ca", "INF5151" )
     i.ajout_inscription( "youle21@yahoo.ca", "INF5153" )
-    i.ajout_inscription( "youle21@yahoo.ca", "INF5171" )
+    i.ajout_inscription( "youle21@yahoo.ca", "INF4170" )
     i.ajout_inscription( "youle21@yahoo.ca", "INF1132" )
     i.ajout_inscription( "youle21@yahoo.ca", "INF1070" )
     i.ajout_inscription( "youle21@yahoo.ca", "INF3271" )

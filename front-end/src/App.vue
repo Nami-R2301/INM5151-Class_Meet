@@ -21,24 +21,21 @@ export default {
   components: {
     Barre_de_navigation,
     Footer,
-  }
-
-  /*beforeCreate() {
+  },
+  beforeCreate() {
     if (
-        this.$router.currentRoute.fullPath !== "/login" &&
-        !this.$store.state.session_id
+        window.location.pathname !== "/login" &&
+        !this.$cookies.get("user")
     ) {
       this.$router.push("/login");
     } else if (
-        this.$router.currentRoute.fullPath === "/login" &&
-        this.$store.state.session_id
+      window.location.pathname === "/login" &&
+        this.$cookies.get("user")
     ) {
       this.$router.push("/");
     }
   },
 };
-*/
-}
 </script>
 
 <style>

@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy.sql.functions import user
 import Database
+import sqlite3
 
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
@@ -27,13 +28,49 @@ def list_etudiants():
          list.append( { "etudiant":Etudiant.username })
      return list
 
-#def list_etudiants( sous_categorie_ ):
-#     posts= Database.Etudiant.query.filter_by(sous_categorie=sous_categorie_).all()
-#     list = []
-#     for Publication in posts:
-#         list.append({"auteur":retourne_Publication( Publication ).auteur, "contenu":retourne_Publication(Publication).contenu})
-#     return list
+def retourner_cours_de( email_ ):
+    etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    print( "Cours de l'étudiant " + etudiant.username )
+    list = []
+    for Database.Cours in etudiant.listeCours:
+        list.append(  Database.Cours.sigle  )
+    return list
+    
 
+def retourner_etudiants_de( sigle_):
+    print("Etudiants inscris à " + sigle_)
+    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    cours.listeEtudiants
+    list = []
+    for etudiant in cours.listeEtudiants:
+        list.append(  etudiant.username  )
+    return list
+
+
+def afficher_cours_de( email_ ):
+    etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    print( "Cours de l'étudiant " + etudiant.username )
+    for Database.Cours in etudiant.listeCours:
+        print( Database.Cours.sigle ) 
+    
+
+def afficher_etudiants_de( sigle_):
+    print("Etudiants inscris à " + sigle_)
+    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    cours.listeEtudiants
+    for etudiant in cours.listeEtudiants:
+       print( __repr_etudiant__(etudiant))
+
+def ajout_inscription( email_, sigle_):
+    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    cours.listeEtudiants.append(etudiant)
+    Database.db.session.commit()
+
+def ajout_cours( sigle_, session_):
+    nouveau_cours = Database.Cours( sigle=sigle_, session=session_ )
+    Database.db.session.add( nouveau_cours )
+    Database.db.session.commit()
 
 def ajout_utilisateur( username_, psw_, email_ ):
    n = Database.Etudiant( username=username_, password=psw_, email=email_)
@@ -41,22 +78,38 @@ def ajout_utilisateur( username_, psw_, email_ ):
    Database.db.session.commit()
 
 def ajout_publication(username_, sigle_,  contenu_  ):
-    n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ )
+    n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ , date=datetime.now().replace(microsecond=0) )
     Database.db.session.add(n)
     Database.db.session.commit()
     return n
 
+def supprimer_publications_de( sigle_ ):
+    publications = Database.Publication.query.filter_by(sous_categorie=sigle_)
+    publications.delete( synchronize_session=False )
+    Database.db.session.commit()
+
 def connection(email, password):
     try:
         etudiant = Database.Etudiant.query.filter_by(email=email, password=password).first()
-        return {"id": etudiant.id, "username": etudiant.username, "email": etudiant.email}
+        return {"id": etudiant.etudiantId, "username": etudiant.username, "email": etudiant.email}
     except AttributeError as err:
         return {"id": 0, "err": "Incorrect email or password"}
     except Exception as err:
         print(err)
         return {"id": 0, "err": err}
 
-
+def register(email, username, password):
+    try:
+        res = Database.Etudiant(email=email, username=username, password=password)
+        Database.db.session.add(res)
+        Database.db.session.commit()
+        return {"username": username, "email": email}
+    except Exception as err:
+        if "UNIQUE constraint failed" in err.args[0]:
+            return {"err": "Email already exists"}
+        else:
+            return {"err": err}
+        
 #####################################################################################
 
 
@@ -73,11 +126,8 @@ def print_etudiant(Etudiants):
        print( __repr_etudiant__(Etudiant))
 
 # pas fonctionnel encore
-def print_inscription(etudiant):
-    for  assoc in etudiant.cours :
-        print( assoc.sigle )
 
-def print_publications( sous_categorie_ ):
+def afficher_publications( sous_categorie_ ):
      posts= Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
      for Publication in posts:
          print(__repr_post__( Publication))

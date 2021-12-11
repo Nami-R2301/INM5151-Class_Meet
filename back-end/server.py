@@ -27,6 +27,18 @@ def connection():
     return json.dumps(etudiant), 200
 
 
+@app.route("/api/register", methods=["POST"])
+def register():
+    try:
+        data = json.loads(request.get_data())
+        student = i.register(data['email'], data['username'], data['password'])
+        if("err" in student.keys()):
+            return json.dumps(student), 404
+        return json.dumps(student), 201
+    except Exception as err:
+        return {"err": err}
+
+
 @app.route("/api/forum/<categorie_>", methods=["GET", "POST"])
 def publications(categorie_):
     if request.method == "POST":

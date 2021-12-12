@@ -1,11 +1,14 @@
 <template>
   <div>
-    <Main />
+    <Main/>
+    <footer>
+      <Footer/>
+    </footer>
   </div>
 </template>
 
 <script>
-import Main from "../components/Main";
+import Main from "../components/homepage";
 
 export default {
   name: "Home",
@@ -15,5 +18,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

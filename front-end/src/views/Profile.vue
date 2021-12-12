@@ -1,0 +1,50 @@
+<template>
+  <div class="container-fluid m-auto p-0">
+    <div class="row mx-auto px-0">
+      <div class="col-lg-3 col-xxl-2 bg-light">
+        <sidebar/>
+      </div>
+      <div class="col-lg-7 col-xxl-8">
+        <Dashboard/>
+      </div>
+      <div class="col-lg-2 col-xxl-2 px-0 ms-auto me-0 bg-light">
+          <Contacts :etudiants="students"/>
+        </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Dashboard from "../components/dashboard";
+import Contacts from "../components/contact-list.vue";
+import Sidebar from "../components/sidebar-user";
+
+export default {
+  name: "Profile",
+  components: {
+    Sidebar,
+    Contacts,
+    Dashboard,
+  },
+  data: () => ({
+    posts: [],
+    students: [],
+  }),
+  mounted() {
+    this.getStudents();
+  },
+  methods: {
+    getStudents() {
+      this.students = [
+        {profilPicture: "", name: "Nami Reghbati"},
+        {profilPicture: "", name: "Jules Hauchecorne"},
+        {profilPicture: "", name: "Mehdi Collomb"},
+      ];
+    },
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

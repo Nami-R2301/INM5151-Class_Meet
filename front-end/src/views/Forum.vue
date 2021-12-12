@@ -1,35 +1,34 @@
 <template>
-  <div class="container-fluid">
-    <div class="row forum">
-      <div class="col-1"></div>
-      <div class="col-9 posts">
-        <div class="row post">
-          <Post
-            v-for="post in posts"
-            :key="post.dateTime + '_' + generateHexString()"
-            :auteur="post.auteur"
-            :contenu="post.contenu"
-            :dateTime="post.dateTime"
-          ></Post>
-          <div class="row">
-            <div class="col-10">
-              <div class="row">
-                <div class="col-12 input-post">
-                  logo
-                  <input
-                    id="send-post"
-                    type="text"
-                    placeholder="Envoyer un message"
-                    @keypress="sendPost"
-                    v-model="contenu"
-                  />
-                </div>
-              </div>
-            </div>
+  <div class="container-fluid p-0">
+    <div class="row forum mx-auto pe-0">
+      <div class="col-2 col-lg-3 col-xxl-2 flex-wrap flex-column position-fixed bg-light shadow">
+        <sidebar-forum/>
+      </div>
+      <div class="col-8 col-lg-8 col-xl-8 col-xxl-8 mx-auto mt-auto mb-auto posts">
+        <div class="row text-start post">
+          <div class="col-lg-9 col-xxl-12 offset-0 offset-lg-1 offset-xl-1 offset-xxl-0 m-auto">
+            <Post
+                v-for="post in posts"
+                :key="post.dateTime + '_' + generateHexString()"
+                :auteur="post.auteur"
+                :contenu="post.contenu"
+                :dateTime="post.dateTime"
+            ></Post>
+          </div>
+        </div>
+        <div class="row fixed-bottom m-auto">
+          <div class="col-6 m-auto">
+            <input
+                class="input-post ms-5 me-auto p-3 w-75"
+                type="text"
+                placeholder="Envoyer un message"
+                @keypress="sendPost"
+                v-model="contenu"
+            />
           </div>
         </div>
       </div>
-      <div class="col-2 student_bar">
+      <div class="col-2 col-lg-3 col-xxl-2 px-0 end-0 position-fixed overflow-scroll bg-light">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -38,12 +37,14 @@
 
 <script>
 import Post from "../components/Post.vue";
-import Student_bar from "../components/Student_bar.vue";
+import student_list from "../components/student-list.vue";
+import SidebarForum from "../components/sidebar-forum";
 
 export default {
   components: {
+    SidebarForum,
     Post,
-    Student_bar,
+    Student_bar: student_list,
   },
   data: () => ({
     posts: [],
@@ -58,92 +59,82 @@ export default {
     // Used only to make the post unique.
     generateHexString() {
       return [...Array(20)]
-        .map(() => Math.floor(Math.random() * 16).toString(16))
-        .join("");
+          .map(() => Math.floor(Math.random() * 16).toString(16))
+          .join("");
     },
     sendPost(key) {
       if (key.keyCode !== 13) return;
       const date = new Date();
       fetch(
-        `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            auteur: this.$cookies.get("user").username,
-            contenu: this.contenu,
-            categorie: this.$route.params.category,
-            dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
-              .toTimeString()
-              .slice(0, 8)}`,
-          }),
-        }
+          `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              auteur: this.$cookies.get("user").username,
+              contenu: this.contenu,
+              categorie: this.$route.params.category,
+              dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
+                  .toTimeString()
+                  .slice(0, 8)}`,
+            }),
+          }
       )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          this.contenu = "";
-          this.getPost();
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            this.contenu = "";
+            this.getPost();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
     },
     getPost() {
       fetch(
-        `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`
+          `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`
       )
-        .then((res) => res.json())
-        .then((data) => {
-          this.posts = data;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            this.posts = data;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
     },
     getStudents() {
       this.students = [
-        { profilPicture: "", name: "Nami iydrgitfy" },
-        { profilPicture: "", name: "Jules gfdsgfdg" },
-        { profilPicture: "", name: "Mehdi fgdsggds" },
+        {profilPicture: "", name: "Nami Reghbati"},
+        {profilPicture: "", name: "Jules Hauchecorne"},
+        {profilPicture: "", name: "Mehdi Collomb"},
       ];
     },
   },
 };
 </script>
 
+
 <style scoped>
+
 .forum {
   overflow-y: hidden;
 }
 
 .posts {
-  overflow-y: scroll;
+  max-height: 75vh!important;
+  clear: both;
   overflow-x: hidden;
-  height: 75vh;
-  /* Reverse scroll bar */
   display: flex;
   flex-direction: column-reverse;
 }
 
 .post {
-  gap: 1.5em;
-}
-
-.student_bar {
-  border-left: 1px solid black;
+  gap: 1.05rem;
 }
 
 .input-post {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 0.5em;
-  margin-left: 1em;
+  transition: border-color .15s linear, box-shadow .15s linear;
 }
 
-input#send-post {
-  width: 95%;
-  border: none;
-  border-bottom: 1px solid gray;
-  outline: none;
-}
 </style>

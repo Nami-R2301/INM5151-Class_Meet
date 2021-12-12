@@ -28,7 +28,7 @@ def add_testing_data():
     # ajout d'étudiants
     i.ajout_utilisateur("Jules", "xxx", "youle21@yahoo.ca")
     i.ajout_utilisateur("Mehdi", "xxx", "test@test.test")
-    i.ajout_utilisateur("Nami", "xxx", "foo@foo.foo")
+    i.ajout_utilisateur("Nami", "xxx", "nami.reghbati@gmail.ca")
     i.ajout_utilisateur("Emma", "xxx", "Emma@gmail.com")
     i.ajout_utilisateur("Liam", "xxx", "Liam@gmail.com")
     i.ajout_utilisateur("Olivia", "xxx", "Olivia@gmail.com")

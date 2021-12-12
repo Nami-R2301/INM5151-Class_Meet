@@ -12,12 +12,17 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Connexion.vue')
+    component: () => import('../views/Connection.vue')
   },
   {
     path: '/forum/:category',
     name: 'Forum',
     component: () => import('../views/Forum.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue')
   }
 ]
 
@@ -25,5 +30,7 @@ const router = new VueRouter({
   mode: 'history',
   routes
 })
+
+Vue.load
 
 export default router

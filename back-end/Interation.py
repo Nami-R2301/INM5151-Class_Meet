@@ -1,8 +1,12 @@
+from os import wait
+import re
 from datetime import datetime
 from sqlalchemy.sql.functions import user
+from  sqlalchemy.orm.exc import NoResultFound
 import Database
 import sqlite3
 
+regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 #######################################################################
 # Méthode que l'on doit utiliser/appeler pour le moment
 class Objet_publication():
@@ -30,6 +34,9 @@ def list_etudiants():
 
 def retourner_cours_de( email_ ):
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    if ( etudiant is None ):
+        print( "Étudiant avec " + email_ + " non inscris!" )
+        return
     print( "Cours de l'étudiant " + etudiant.username )
     list = []
     for Database.Cours in etudiant.listeCours:
@@ -40,6 +47,9 @@ def retourner_cours_de( email_ ):
 def retourner_etudiants_de( sigle_):
     print("Etudiants inscris à " + sigle_)
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    if( cours is None ):
+        print( "Cours " + sigle_ + " non éxistant!" )
+        return
     cours.listeEtudiants
     list = []
     for etudiant in cours.listeEtudiants:
@@ -49,23 +59,40 @@ def retourner_etudiants_de( sigle_):
 
 def afficher_cours_de( email_ ):
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
+    if ( etudiant is None ):
+        print ( "Étudiant avec " + email_ + " non inscris!" )
+        return
     print( "Cours de l'étudiant " + etudiant.username )
     for Database.Cours in etudiant.listeCours:
         print( Database.Cours.sigle ) 
     
 
 def afficher_etudiants_de( sigle_):
-    print("Etudiants inscris à " + sigle_)
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    if ( cours is None ):
+        print ( "Cours " + sigle_ + " non éxistant!" )
+        return
+    print("Etudiants inscris à " + sigle_)
     cours.listeEtudiants
     for etudiant in cours.listeEtudiants:
        print( __repr_etudiant__(etudiant))
 
 def ajout_inscription( email_, sigle_):
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
+    if ( cours is None ):
+        print ( "Cours " + sigle_ + " non disponible!" )
+        return 
     etudiant = Database.Etudiant.query.filter_by(email=email_).first()
-    cours.listeEtudiants.append(etudiant)
-    Database.db.session.commit()
+    nbr = 0
+    for Database.Cours in etudiant.listeCours:
+        nbr+=1
+    if ( nbr < 5 ):
+        cours.listeEtudiants.append(etudiant)
+        Database.db.session.commit()
+    else:
+        print( "Maximum de cours atteint!" )
+
+        
 
 def ajout_cours( sigle_, session_):
     nouveau_cours = Database.Cours( sigle=sigle_, session=session_ )
@@ -73,9 +100,12 @@ def ajout_cours( sigle_, session_):
     Database.db.session.commit()
 
 def ajout_utilisateur( username_, psw_, email_ ):
-   n = Database.Etudiant( username=username_, password=psw_, email=email_)
-   Database.db.session.add(n)
-   Database.db.session.commit()
+    if ( email_valide( email_ ) ):
+       n = Database.Etudiant( username=username_, password=psw_, email=email_)
+       Database.db.session.add(n)
+       Database.db.session.commit()
+    else:
+        print ( "Email " + email_ + " invalide!" )
 
 def ajout_publication(username_, sigle_,  contenu_  ):
     n = Database.Publication( contenu=contenu_, auteur=username_ , sous_categorie=sigle_ , date=datetime.now().replace(microsecond=0) )
@@ -98,17 +128,27 @@ def connection(email, password):
         print(err)
         return {"id": 0, "err": err}
 
+def email_valide( email_ ):
+    if ( re.fullmatch( regex, email_ )):
+        return True
+    else:
+        return False
+
 def register(email, username, password):
-    try:
-        res = Database.Etudiant(email=email, username=username, password=password)
-        Database.db.session.add(res)
-        Database.db.session.commit()
-        return {"username": username, "email": email}
-    except Exception as err:
-        if "UNIQUE constraint failed" in err.args[0]:
-            return {"err": "Email already exists"}
-        else:
-            return {"err": err}
+    if ( email_valide( email ) ):
+        try:
+            res = Database.Etudiant(email=email, username=username, password=password)
+            Database.db.session.add(res)
+            Database.db.session.commit()
+            return {"username": username, "email": email}
+        except Exception as err:
+            if "UNIQUE constraint failed" in err.args[0]:
+                return {"err": "Email already exists"}
+            else:
+                return {"err": err}
+    else:
+        print("Email invalide!")
+
         
 #####################################################################################
 

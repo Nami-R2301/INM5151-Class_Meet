@@ -13,7 +13,7 @@
           </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
-          <a href="/profile#dashboard" data-bs-toggle="collapse" class="nav-link">
+          <a href="/profile#dashboard" class="nav-link">
             <i class="fs-3 bi-table"></i><span class="px-3">Tableau de bord</span> </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
@@ -26,10 +26,10 @@
             <i class="fs-3 bi-chat-text"></i><span class="px-3">Mes salons</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
-            <li><a class="dropdown-item" href="#">INM5151</a></li>
-            <li><a class="dropdown-item" href="#">INF5153</a></li>
-            <li><a class="dropdown-item" href="#">INF5130</a></li>
-            <li><a class="dropdown-item" href="#">INM6000</a></li>
+            <li><a class="dropdown-item" href="/forum/INM5151">INM5151</a></li>
+            <li><a class="dropdown-item" href="/forum/INF5153">INF5153</a></li>
+            <li><a class="dropdown-item" href="/forum/INF5130">INF5130</a></li>
+            <li><a class="dropdown-item" href="/forum/INM6000">INM6000</a></li>
           </ul>
         </li>
         <li class="ms-0 me-auto mb-3">

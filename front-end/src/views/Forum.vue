@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid p-0">
-    <div class="row forum mx-auto">
-      <div class="col-2 col-lg-3 col-xxl-2 flex-wrap flex-column bg-light">
-        <sidebarSignedIn/>
+    <div class="row forum mx-auto pe-0">
+      <div class="col-2 col-lg-3 col-xxl-2 flex-wrap flex-column position-fixed bg-light shadow">
+        <sidebar-forum/>
       </div>
-      <div class="col-lg-6 col-xl-6 col-xxl-7 ms-0 me-auto my-5">
-        <div class="row text-start">
+      <div class="col-8 col-lg-8 col-xl-8 col-xxl-8 mx-auto my-5">
+        <div class="row offset-0 offset-lg-1 offset-xl-1 offset-xxl-0 text-start">
           <Post
               v-for="post in posts"
               :key="post.dateTime + '_' + generateHexString()"
@@ -14,8 +14,8 @@
               :dateTime="post.dateTime"
           ></Post>
         </div>
-        <div class="row mx-auto align-content-end mt-5">
-          <div class="col-12 mx-auto">
+        <div class="row fixed-bottom bg-light">
+          <div class="col-6 mx-auto">
             <input
                 class="input-post mx-auto p-3 w-100"
                 type="text"
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-2 col-xl-2 col-xxl-2 ps-0 flex-wrap student_bar bg-light">
+      <div class="col-2 col-lg-3 col-xxl-2 px-0 end-0 position-fixed overflow-scroll bg-light">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -36,13 +36,13 @@
 <script>
 import Post from "../components/Post.vue";
 import student_list from "../components/student-list.vue";
-import sidebarSignedIn from "../components/sidebar-signed-in";
+import SidebarForum from "../components/sidebar-forum";
 
 export default {
   components: {
+    SidebarForum,
     Post,
     Student_bar: student_list,
-    sidebarSignedIn
   },
   data: () => ({
     posts: [],
@@ -126,10 +126,6 @@ export default {
 
 .post {
   gap: 1.5em;
-}
-
-.student_bar {
-  border-left: 1px solid black;
 }
 
 .input-post {

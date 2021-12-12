@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid m-auto p-0">
-    <div class="row mx-auto">
+    <div class="row mx-auto px-0">
       <div class="col-2 bg-light">
-        <SideBar/>
+        <sidebar/>
       </div>
       <div class="col-8">
         <Dashboard/>
       </div>
-      <div class="col-2 student_bar bg-light">
+      <div class="col-2 px-0 ms-auto me-0 bg-light">
           <Contacts :etudiants="students"/>
         </div>
     </div>
@@ -16,15 +16,15 @@
 
 <script>
 import Dashboard from "../components/dashboard";
-import SideBar from "../components/sidebar-signed-in";
 import Contacts from "../components/contact-list.vue";
+import Sidebar from "../components/sidebar-user";
 
 export default {
   name: "Profile",
   components: {
+    Sidebar,
     Contacts,
     Dashboard,
-    SideBar
   },
   data: () => ({
     posts: [],
@@ -46,9 +46,5 @@ export default {
 </script>
 
 <style scoped>
-
-.student_bar {
-  border-left: 1px solid black;
-}
 
 </style>

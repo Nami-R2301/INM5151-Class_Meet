@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <div class="row title mb-3 mx-auto">
-      <div class="col-12">
-        <i class="bi-person-lines-fill fs-2"></i>
-        <span class="ms-3 fs-5">Contacts</span>
-      </div>
-    </div>
-    <div class="row mx-auto">
+  <div class="shadow min-vh-100">
+    <ul class="title-contacts m-auto mb-3 ps-1 pe-0 ps-lg-2 ps-xl-3 ps-xxl-3 pb-3" style="font-size: medium">
+      <li>
+        <i class="bi-person-lines-fill m-auto fs-4"></i>
+        <span class="ms-2 fs-5 fw-bold">Contacts</span>
+      </li>
+    </ul>
+    <div class="row mx-auto ps-0">
       <div
           v-for="etudiant in etudiants"
           :key="etudiant.name"
-          class="col-12 mb-3"
+          class="mb-3 mx-auto"
       >
-        <i class="bi-person-circle me-3 fs-3 fs-lg-4 fs-sm-4"></i>
-        <span class="fw-bold fs-sm-4 fs-xl-3">{{ etudiant.name }}</span>
+        <i class="bi-person-circle me-2 fs-4"></i>
+        <span class="fs-6 me-0">{{ etudiant.name }}</span>
       </div>
     </div>
   </div>
@@ -29,23 +29,10 @@ export default {
 
 <style>
 
-body {
-  overflow-x: hidden;
-}
-
-@media (min-width: 768px) {
-  .row span {
-    font-size: small;
-  }
-}
-
-@media (min-width: 1080px) {
-  .row span {
-    font-size: medium;
-  }
-}
-
-.title {
+.title-contacts {
   border-bottom: 1px solid black;
+  border-bottom-width: thin;
+  align-content: center;
 }
+
 </style>

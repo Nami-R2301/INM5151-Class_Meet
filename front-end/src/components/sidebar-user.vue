@@ -2,7 +2,7 @@
   <div id="sidebar">
     <div
         class="min-vh-100">
-      <ul class="title-nav-user nav navbar mx-auto p-0" style="font-size: medium; font-family: Loma,sans-serif;"
+      <ul class="title-nav-user nav navbar ms-0 me-auto p-0" style="font-size: medium; font-family: Loma,sans-serif;"
           id="menu">
         <li class="title-nav-user text-center mt-0 pt-0">
           <a href="/profile#dashboard" data-bs-toggle="collapse" class="nav-link">

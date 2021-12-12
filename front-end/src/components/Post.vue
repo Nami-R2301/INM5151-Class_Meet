@@ -5,13 +5,13 @@
         <div class="col-auto text-start ms-2 me-auto">
           <p class="fw-bold"><i class="bi-person-circle mx-2"></i>{{ auteur }}</p>
         </div>
-        <div class="col-auto text-end ms-auto me-auto me-md-3 me-xl-auto me-xxl-5">
+        <div class="col-auto text-end ms-auto me-auto me-lg-0 me-xxl-0">
           <small class="fst-italic text-muted">{{ dateTime }}</small>
         </div>
       </div>
-      <div class="row flex-wrap mx-auto">
-        <div class="col-auto ms-5 me-auto">
-          <p class="ms-auto me-2" style="line-height: 1.25rem">{{ contenu }}</p>
+      <div class="row text-break text-wrap justify-content-center mx-xxl-5 mx-lg-5">
+        <div>
+          <p class="mx-auto" style="line-height: 1.25rem">{{ contenu }}</p>
         </div>
       </div>
     </a>

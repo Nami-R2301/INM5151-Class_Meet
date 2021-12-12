@@ -1,6 +1,6 @@
 <template>
   <div class="shadow min-vh-100">
-    <ul class="title-contacts m-auto mb-3 ps-1 pe-0 ps-lg-2 ps-xl-3 ps-xxl-3 pb-3" style="font-size: medium">
+    <ul class="title-contacts m-auto mb-3 ps-1 ps-lg-2 ps-xl-3 ps-xxl-3 pb-1" style="font-size: medium">
       <li>
         <i class="bi-person-lines-fill m-auto fs-4"></i>
         <span class="ms-2 fs-5 fw-bold">Contacts</span>

@@ -4,20 +4,22 @@
       <div class="col-2 col-lg-3 col-xxl-2 flex-wrap flex-column position-fixed bg-light shadow">
         <sidebar-forum/>
       </div>
-      <div class="col-8 col-lg-8 col-xl-8 col-xxl-8 mx-auto my-5">
-        <div class="row offset-0 offset-lg-1 offset-xl-1 offset-xxl-0 text-start">
-          <Post
-              v-for="post in posts"
-              :key="post.dateTime + '_' + generateHexString()"
-              :auteur="post.auteur"
-              :contenu="post.contenu"
-              :dateTime="post.dateTime"
-          ></Post>
+      <div class="col-8 col-lg-8 col-xl-8 col-xxl-8 mx-auto mt-auto mb-auto posts">
+        <div class="row text-start post">
+          <div class="col-lg-9 col-xxl-12 offset-0 offset-lg-1 offset-xl-1 offset-xxl-0 m-auto">
+            <Post
+                v-for="post in posts"
+                :key="post.dateTime + '_' + generateHexString()"
+                :auteur="post.auteur"
+                :contenu="post.contenu"
+                :dateTime="post.dateTime"
+            ></Post>
+          </div>
         </div>
-        <div class="row fixed-bottom bg-light">
-          <div class="col-6 mx-auto">
+        <div class="row fixed-bottom m-auto">
+          <div class="col-6 m-auto">
             <input
-                class="input-post mx-auto p-3 w-100"
+                class="input-post ms-5 me-auto p-3 w-75"
                 type="text"
                 placeholder="Envoyer un message"
                 @keypress="sendPost"
@@ -118,20 +120,21 @@ export default {
 }
 
 .posts {
-  overflow-y: auto;
+  max-height: 75vh!important;
+  clear: both;
   overflow-x: hidden;
   display: flex;
   flex-direction: column-reverse;
 }
 
 .post {
-  gap: 1.5em;
+  gap: 1.05rem;
 }
 
 .input-post {
   border: 1px solid black;
   border-radius: 10px;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: border-color .15s linear, box-shadow .15s linear;
 }
 
 </style>

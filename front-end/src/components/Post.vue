@@ -1,8 +1,8 @@
 <template>
   <div class="posts-hover" id="forum">
-      <div class="row flex-wrap mx-auto">
-        <div class="col-auto text-start ms-2 me-auto">
-          <p class="fw-bold"><i class="bi-person-circle mx-2"></i>{{ auteur }}</p>
+      <div class="row flex-wrap m-auto">
+        <div class="col-auto align-content-start me-auto">
+          <i class="fs-2 bi-person-circle ms-0 me-3"></i><span class="fw-bold">{{ auteur }}</span>
         </div>
         <div class="col-auto text-end ms-auto me-auto me-lg-0 me-xxl-0">
           <small class="fst-italic text-muted">{{ dateTime }}</small>

@@ -15,16 +15,16 @@
         </li>
         <li class="mb-3 ms-0 me-auto">
           <a href="/profile#dashboard" data-bs-toggle="collapse" class="nav-link">
-            <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Tableau de bord</span> </a>
+            <i class="fs-3 bi-table"></i><span class="px-3">Tableau de bord</span> </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
           <a href="/profile#parcours" class="nav-link">
-            <i class="fs-3 bi-table"></i><span class="px-3">Mon parcours</span></a>
+            <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Mon parcours</span></a>
         </li>
         <li class="mb-3 ms-0 me-auto">
           <a href="#" class="nav-link dropdown-toggle" role="button"
              aria-expanded="false">
-            <i class="fs-3 bi-bootstrap"></i><span class="px-3">Mes salons</span>
+            <i class="fs-3 bi-chat-text"></i><span class="px-3">Mes salons</span>
           </a>
           <ul class="dropdown-menu shadow mx-auto flex-wrap" aria-labelledby="dropdown">
             <li><a class="dropdown-item" href="#">INM5151</a></li>

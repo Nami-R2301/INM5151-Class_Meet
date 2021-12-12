@@ -14,18 +14,18 @@
         </li>
         <li class="mb-3 ms-0 me-auto">
           <a href="/profile#dashboard" data-bs-toggle="collapse" class="nav-link">
-            <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Tableau de bord</span> </a>
+            <i class="fs-3 bi-table"></i><span class="px-3">Tableau de bord</span> </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
           <a href="/profile#parcours" class="nav-link">
-            <i class="fs-3 bi-table"></i><span class="px-3">Mon parcours</span></a>
+            <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Mon parcours</span></a>
         </li>
         <li class="mb-3 ms-0 me-auto">
-          <a href="#" class="nav-link dropdown-toggle" role="button"
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdown"
              aria-expanded="false">
-            <i class="fs-3 bi-bootstrap"></i><span class="px-3">Mes salons</span>
+            <i class="fs-3 bi-chat-text"></i><span class="px-3">Mes salons</span>
           </a>
-          <ul class="dropdown-menu shadow mx-auto flex-wrap" aria-labelledby="dropdown">
+          <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
             <li><a class="dropdown-item" href="#">INM5151</a></li>
             <li><a class="dropdown-item" href="#">INF5153</a></li>
             <li><a class="dropdown-item" href="#">INF5130</a></li>
@@ -48,7 +48,12 @@
 
 <script>
 export default {
-  name: "sidebar-forum"
+  name: "sidebar-forum",
+  mounted() {
+    let dropdown = document.createElement('script')
+    dropdown.setAttribute('src', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js')
+    document.head.appendChild(dropdown)
+  }
 }
 </script>
 
@@ -65,6 +70,26 @@ export default {
 
 .nav-link.dropdown-toggle {
   color: black;
+}
+
+.dropdown-menu {
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 0.25rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: auto;
 }
 
 </style>

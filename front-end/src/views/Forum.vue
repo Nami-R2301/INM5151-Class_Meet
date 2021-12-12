@@ -25,6 +25,7 @@
                 @keypress="sendPost"
                 v-model="contenu"
             />
+            <i class="fs-2 ms-3 me-auto my-auto bi-plus-circle"></i>
           </div>
         </div>
       </div>

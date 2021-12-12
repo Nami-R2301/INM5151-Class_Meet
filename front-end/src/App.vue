@@ -60,7 +60,7 @@ html {
 }
 
 #app {
-  font-family: Sen, Helvetica, Arial, serif;
+  font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

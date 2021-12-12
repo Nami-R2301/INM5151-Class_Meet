@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="row">
-      <div class="offset-1 col-3 mx-auto">
-        <p>{{ auteur }}</p>
+    <div class="row flex-wrap mx-auto">
+      <div class="col-auto text-start ms-4 me-auto">
+        <p class="fw-bold">{{ auteur }}</p>
       </div>
-      <div class="col-2 mx-auto">
-        <p>{{ dateTime }}</p>
+      <div class="col-auto text-end ms-auto me-0">
+        <small class="fst-italic">{{ dateTime }}</small>
       </div>
     </div>
-    <div class="row mx-auto">
-      <div class="offset-1 col-10">
-        <p>{{ contenu }}</p>
+    <div class="row flex-wrap mx-auto">
+      <div class="col-auto me-auto">
+        <p class="ms-auto me-2" style="line-height: 1.25rem">{{ contenu }}</p>
       </div>
     </div>
   </div>

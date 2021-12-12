@@ -1,21 +1,19 @@
 <template>
   <div>
-    <div class="title mb-3">
-      <ul class="flex-column mx-auto">
-        <li>
-        <i class="bi-person-lines-fill fs-2"></i>
-        <span class="ms-3 fs-5">Camarades</span>
+    <ul class="title-camarade m-auto mb-3 pb-3" style="font-size: medium">
+      <li>
+        <i class="bi-person-lines-fill m-auto fs-3"></i>
+        <span class="ms-3 fs-5 fw-bold">Camarades</span>
       </li>
-      </ul>
-    </div>
-    <div class="row mx-auto">
+    </ul>
+    <div class="row mx-auto ps-1">
       <div
           v-for="etudiant in etudiants"
           :key="etudiant.name"
-          class="col-12 mb-3"
+          class="mb-3 mx-auto"
       >
-        <i class="bi-person-circle me-3 fs-3 fs-lg-4 fs-sm-4"></i>
-        <span class="fw-bold fs-sm-4 fs-xl-3">{{ etudiant.name }}</span>
+        <i class="bi-person-circle me-3 fs-3 fs-lg-4 fs-4"></i>
+        <span class="fs-6">{{ etudiant.name }}</span>
       </div>
     </div>
   </div>
@@ -31,7 +29,9 @@ export default {
 
 <style>
 
-.title {
+.title-camarade {
   border-bottom: 1px solid black;
+  border-bottom-width: thin;
+  align-content: center;
 }
 </style>

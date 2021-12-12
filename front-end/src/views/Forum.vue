@@ -1,38 +1,32 @@
 <template>
   <div class="container-fluid p-0">
-    <div class="row justify-content-evenly forum mx-auto">
-      <div class="col-auto flex-grow-0 bg-light">
+    <div class="row forum mx-auto">
+      <div class="col-2 col-lg-3 col-xxl-2 flex-wrap flex-column bg-light">
         <sidebarSignedIn/>
       </div>
-      <div class="col-auto mx-auto posts">
-        <div class="row text-start post">
+      <div class="col-lg-6 col-xl-6 col-xxl-7 mx-auto my-5">
+        <div class="row text-start">
           <Post
-            v-for="post in posts"
-            :key="post.dateTime + '_' + generateHexString()"
-            :auteur="post.auteur"
-            :contenu="post.contenu"
-            :dateTime="post.dateTime"
+              v-for="post in posts"
+              :key="post.dateTime + '_' + generateHexString()"
+              :auteur="post.auteur"
+              :contenu="post.contenu"
+              :dateTime="post.dateTime"
           ></Post>
-          <div class="row mx-auto p-0">
-            <div class="col-12">
-              <div class="row mx-auto">
-                <div class="col-12 mx-auto input-post">
-                  <i class="bi-chat-dots m-auto"></i>
-                  <input
-                    id="send-post"
-                    class="mx-auto p-3"
-                    type="text"
-                    placeholder="Envoyer un message"
-                    @keypress="sendPost"
-                    v-model="contenu"
-                  />
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="row mx-auto align-content-end mt-5">
+          <div class="col-12 mx-auto">
+            <input
+                class="input-post mx-auto p-3 w-100"
+                type="text"
+                placeholder="Envoyer un message"
+                @keypress="sendPost"
+                v-model="contenu"
+            />
           </div>
         </div>
       </div>
-      <div class="col-2 float-end student_bar bg-light p-0">
+      <div class="col-lg-3 col-xl-2 col-xxl-2 ps-0 flex-wrap student_bar bg-light">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -63,53 +57,53 @@ export default {
     // Used only to make the post unique.
     generateHexString() {
       return [...Array(20)]
-        .map(() => Math.floor(Math.random() * 16).toString(16))
-        .join("");
+          .map(() => Math.floor(Math.random() * 16).toString(16))
+          .join("");
     },
     sendPost(key) {
       if (key.keyCode !== 13) return;
       const date = new Date();
       fetch(
-        `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            auteur: this.$cookies.get("user").username,
-            contenu: this.contenu,
-            categorie: this.$route.params.category,
-            dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
-              .toTimeString()
-              .slice(0, 8)}`,
-          }),
-        }
+          `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              auteur: this.$cookies.get("user").username,
+              contenu: this.contenu,
+              categorie: this.$route.params.category,
+              dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
+                  .toTimeString()
+                  .slice(0, 8)}`,
+            }),
+          }
       )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          this.contenu = "";
-          this.getPost();
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            this.contenu = "";
+            this.getPost();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
     },
     getPost() {
       fetch(
-        `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`
+          `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`
       )
-        .then((res) => res.json())
-        .then((data) => {
-          this.posts = data;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            this.posts = data;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
     },
     getStudents() {
       this.students = [
-        { profilPicture: "", name: "Nami Reghbati" },
-        { profilPicture: "", name: "Jules Hauchecorne" },
-        { profilPicture: "", name: "Mehdi Collomb" },
+        {profilPicture: "", name: "Nami Reghbati"},
+        {profilPicture: "", name: "Jules Hauchecorne"},
+        {profilPicture: "", name: "Mehdi Collomb"},
       ];
     },
   },
@@ -119,20 +113,13 @@ export default {
 
 <style scoped>
 
-.right {
-  display: flex;
-  align-items: start;
-  justify-content: end;
-}
 .forum {
   overflow-y: hidden;
 }
 
 .posts {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
-  height: 85vh;
-  /* Reverse scroll bar */
   display: flex;
   flex-direction: column-reverse;
 }
@@ -148,11 +135,7 @@ export default {
 .input-post {
   border: 1px solid black;
   border-radius: 10px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-input#send-post {
-  width: 85%;
-  border: none;
-  outline: none;
-}
 </style>

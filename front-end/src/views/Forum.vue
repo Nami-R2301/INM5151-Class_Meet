@@ -4,7 +4,7 @@
       <div class="col-2 col-lg-3 col-xxl-2 flex-wrap flex-column bg-light">
         <sidebarSignedIn/>
       </div>
-      <div class="col-lg-6 col-xl-6 col-xxl-7 mx-auto my-5">
+      <div class="col-lg-6 col-xl-6 col-xxl-7 ms-0 me-auto my-5">
         <div class="row text-start">
           <Post
               v-for="post in posts"
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-xl-2 col-xxl-2 ps-0 flex-wrap student_bar bg-light">
+      <div class="col-lg-2 col-xl-2 col-xxl-2 ps-0 flex-wrap student_bar bg-light">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>

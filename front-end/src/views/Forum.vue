@@ -19,7 +19,7 @@
         <div class="row fixed-bottom m-auto">
           <div class="col-6 m-auto">
             <input
-                class="input-post ms-5 me-auto p-3 w-75"
+                class="input-post ms-5 me-auto p-3 mb-3 mt-0 w-75"
                 type="text"
                 placeholder="Envoyer un message"
                 @keypress="sendPost"

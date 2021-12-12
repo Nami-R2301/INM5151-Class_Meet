@@ -1,6 +1,5 @@
 <template>
   <div class="posts-hover" id="forum">
-    <a href="#" class="text-black text-decoration-none">
       <div class="row flex-wrap mx-auto">
         <div class="col-auto text-start ms-2 me-auto">
           <p class="fw-bold"><i class="bi-person-circle mx-2"></i>{{ auteur }}</p>
@@ -14,7 +13,6 @@
           <p class="mx-auto" style="line-height: 1.25rem">{{ contenu }}</p>
         </div>
       </div>
-    </a>
   </div>
 </template>
 

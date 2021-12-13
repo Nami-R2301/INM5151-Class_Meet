@@ -1,12 +1,12 @@
 <template>
-  <div class="shadow min-vh-100">
-    <ul class="title-contacts m-auto mb-3 ps-1 ps-lg-2 ps-xl-3 ps-xxl-3 pb-1">
-      <li style="font-size: 1.10rem">
-        <i class="bi-person-lines-fill align-content-center mx-auto fs-3"></i>
+  <div class="min-vh-100">
+    <ul class="title-contacts m-auto mb-3 pb-1 ps-3" style="font-size: 1.00rem">
+      <li>
+        <i class="bi-person-lines-fill m-auto fs-3"></i>
         <span class="ms-2 fw-bold">Camarades</span>
       </li>
     </ul>
-    <div class="row ms-auto me-0 d-flex justify-content-start ps-0">
+    <div class="row ms-auto me-0 ps-0">
       <div
           v-for="etudiant in etudiants"
           :key="etudiant.name"

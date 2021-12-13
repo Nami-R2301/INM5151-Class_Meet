@@ -12,9 +12,9 @@
              title="Cliquez ici pour revenir à la page principale">
             <img class=" col-7 col-xxl-5" alt="logo Class Meet" src="../assets/logo.png"></a>
         </li>
-        <li class="col-auto col-xl-5 text-start my-auto">
-          <form class="d-flex">
-            <input class="form-control w-75" type="search" placeholder="Rechercher des programmes"
+        <li class="col-auto col-xl-5 my-auto">
+          <form class="d-flex justify-content-start">
+            <input class="form-control flex-shrink-1 w-75" type="search" placeholder="Rechercher des programmes"
                    aria-label="Rechercher">
             <button class="btn btn-outline-success text-center my-auto"
                     type="submit">Rechercher

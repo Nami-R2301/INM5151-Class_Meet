@@ -15,21 +15,21 @@
                 :dateTime="post.dateTime"
             ></Post>
           </div>
-        </div>
-        <div class="row fixed-bottom m-auto">
-          <div class="col-6 m-auto">
-            <input
-                class="input-post ms-5 me-auto p-3 mb-3 mt-0 w-75"
-                type="text"
-                placeholder="Envoyer un message"
-                @keypress="sendPost"
-                v-model="contenu"
-            />
-            <i class="fs-2 ms-3 me-auto my-auto bi-plus-circle"></i>
+          <div class="row d-flex position-absolute bottom-0 ms-5 me-auto">
+            <div class="col-12 tm-auto">
+              <input
+                  class="input-post mx-auto p-3 mb-3 mt-0 w-50"
+                  type="text"
+                  placeholder="Envoyer un message"
+                  @keypress="sendPost"
+                  v-model="contenu"
+              />
+              <i class="fs-2 ms-3 me-auto my-auto bi-plus-circle"></i>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light">
+      <div class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light shadow">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>

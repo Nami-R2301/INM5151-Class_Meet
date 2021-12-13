@@ -4,7 +4,7 @@
         <div class="col-auto align-content-start me-auto">
           <i class="fs-2 bi-person-circle ms-0 me-3"></i><span class="fw-bold">{{ auteur }}</span>
         </div>
-        <div class="col-auto text-end ms-auto me-auto me-lg-0 me-xxl-0">
+        <div class="col-auto text-end ms-auto me-0">
           <small class="fst-italic text-muted">{{ dateTime }}</small>
         </div>
       </div>

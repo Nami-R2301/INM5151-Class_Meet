@@ -1,8 +1,5 @@
-from os import wait
 import re
 from datetime import datetime
-from sqlalchemy.sql.functions import user
-from  sqlalchemy.orm.exc import NoResultFound
 import Database
 import sqlite3
 
@@ -63,8 +60,7 @@ def afficher_cours_de( email_ ):
         print ( "Étudiant avec " + email_ + " non inscris!" )
         return
     print( "Cours de l'étudiant " + etudiant.username )
-    for Database.Cours in etudiant.listeCours:
-        print( Database.Cours.sigle ) 
+    return [Database.Cours.sigle for Database.Cours in etudiant.listeCours] 
     
 
 def afficher_etudiants_de( sigle_):

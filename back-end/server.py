@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 from flask_sqlalchemy import SQLAlchemy
 import json
 from flask_cors import CORS
@@ -45,7 +45,7 @@ def publications(categorie_):
         data = json.loads(request.get_data())
         res = i.ajout_publication(
             data['auteur'], data['categorie'], data['contenu'])
-        return json.dumps({"id": res.id,"auteur": res.auteur,
+        return json.dumps({"id": res.id, "auteur": res.auteur,
                            "sous_categorie": res.sous_categorie, "date": str(res.date),
                            "contenu": res.contenu}), 201
 
@@ -62,10 +62,25 @@ def etudiants():
     list = i.list_etudiants()
     return json.dumps(list, default=str)
 
+
+@app.route("/api/etudiant/<email_etudiant>")
+def etudiant(email_etudiant):
+    student = i.afficher_cours_de(email_etudiant)
+    return server_response(student)
+
+
+@app.route("/api/cours/<sigle>")
+def cours(sigle)
+
+
 # @app.route("/api/listEtudiant/<sigle_>", methods=["GET"])
 # def etudiants(sigle_):
 #    list = i.list_etudiants( sigle_ )
 #    return json.dumps(list)
+
+
+def server_response(data, status=200, header={"Content-Type": "application/json"}):
+    return Response(json.dumps(data), status, header)
 
 
 # LOL python is weird..

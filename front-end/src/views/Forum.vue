@@ -1,37 +1,49 @@
 <template>
   <div class="container-fluid p-0">
     <div class="row forum mx-auto pe-0">
-      <div class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow">
-        <sidebar-forum
-            :dateTime="date"
-        ></sidebar-forum>
+      <div
+        class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow"
+      >
+        <sidebar-forum :dateTime="date"></sidebar-forum>
       </div>
       <div class="col-8 m-auto posts">
         <div class="row text-start post">
           <div class="col-12 m-auto">
             <Post
-                v-for="post in posts"
-                :key="post.dateTime + '_' + generateHexString()"
-                :auteur="post.auteur"
-                :contenu="post.contenu"
-                :dateTime="post.dateTime"
+              v-for="post in posts"
+              :key="post.dateTime + '_' + generateHexString()"
+              :auteur="post.auteur"
+              :contenu="post.contenu"
+              :dateTime="post.dateTime"
             ></Post>
           </div>
           <div class="row d-flex position-absolute bottom-0 ms-5 me-auto">
             <div class="col-12 tm-auto">
               <input
-                  class="input-post mx-auto p-3 mb-3 mt-0 w-50"
-                  type="text"
-                  placeholder="Envoyer un message"
-                  @keypress="sendPost"
-                  v-model="contenu"
+                class="input-post mx-auto p-3 mb-3 mt-0 w-50"
+                type="text"
+                placeholder="Envoyer un message"
+                @keypress="sendPost"
+                v-model="contenu"
               />
               <i class="fs-2 ms-3 me-auto my-auto bi-plus-circle"></i>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light shadow">
+      <div
+        class="
+          col-2
+          px-0
+          me-0
+          ms-auto
+          end-0
+          position-fixed
+          overflow-scroll
+          bg-light
+          shadow
+        "
+      >
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -51,7 +63,6 @@ export default {
   },
   data: () => ({
     posts: [],
-    students: [],
     contenu: "",
     date: "",
   }),
@@ -60,68 +71,81 @@ export default {
     this.getStudents();
     this.updateClock();
     this.getTime();
-    let validator_sign_in = document.createElement('script')
-    validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
-    document.head.appendChild(validator_sign_in)
+    let validator_sign_in = document.createElement("script");
+    validator_sign_in.setAttribute("src", "../store/onSubmit_sign_in.js");
+    document.head.appendChild(validator_sign_in);
+  },
+  computed: {
+    students: function () {
+      fetch(`${this.$store.getters.baseUrlBackEnd}api/`).then(res => res.json())
+      return [
+        { profilPicture: "", name: "Nami Reghbati" },
+        { profilPicture: "", name: "Jules Hauchecorne" },
+        { profilPicture: "", name: "Mehdi Collomb" },
+      ];
+    },
   },
   methods: {
     // Used only to make the post unique.
     generateHexString() {
       return [...Array(20)]
-          .map(() => Math.floor(Math.random() * 16).toString(16))
-          .join("");
+        .map(() => Math.floor(Math.random() * 16).toString(16))
+        .join("");
     },
     sendPost(key) {
       if (key.keyCode !== 13) return;
       const date = new Date();
       fetch(
-          `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              auteur: this.$cookies.get("user").username,
-              contenu: this.contenu,
-              categorie: this.$route.params.category,
-              dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
-                  .toTimeString()
-                  .slice(0, 8)}`,
-            }),
-          }
+        `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            auteur: this.$cookies.get("user").username,
+            contenu: this.contenu,
+            categorie: this.$route.params.category,
+            dateTime: `${date.toJSON().slice(0, 10).replaceAll("-", "/")} ${date
+              .toTimeString()
+              .slice(0, 8)}`,
+          }),
+        }
       )
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            this.contenu = "";
-            this.getPost();
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          this.contenu = "";
+          this.getPost();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
     getPost() {
       fetch(
-          `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`
+        `${this.$store.getters.baseUrlBackEnd}api/forum/${this.$route.params.category}`
       )
-          .then((res) => res.json())
-          .then((data) => {
-            this.posts = data;
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-    },
-    getStudents() {
-      this.students = [
-        {profilPicture: "", name: "Nami Reghbati"},
-        {profilPicture: "", name: "Jules Hauchecorne"},
-        {profilPicture: "", name: "Mehdi Collomb"},
-      ];
+        .then((res) => res.json())
+        .then((data) => {
+          this.posts = data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
     getTime() {
       const today = new Date();
-      const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      const time = today.getHours() + ":" + ("0" + today.getMinutes()).slice(-2) + ":" + ("0" + today.getSeconds()).slice(-2);
-      this.date = date + ' ' + time;
+      const date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+      const time =
+        today.getHours() +
+        ":" +
+        ("0" + today.getMinutes()).slice(-2) +
+        ":" +
+        ("0" + today.getSeconds()).slice(-2);
+      this.date = date + " " + time;
     },
     updateClock() {
       setInterval(this.getTime, 1000);
@@ -132,7 +156,6 @@ export default {
 
 
 <style scoped>
-
 .forum {
   overflow-y: hidden;
 }
@@ -154,7 +177,6 @@ export default {
   max-height: 25vh !important;
   border: 1px solid black;
   border-radius: 10px;
-  transition: border-color .15s linear, box-shadow .15s linear;
+  transition: border-color 0.15s linear, box-shadow 0.15s linear;
 }
-
 </style>

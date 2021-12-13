@@ -1,29 +1,29 @@
 <template>
   <div id="sidebar">
     <div class="min-vh-100">
-      <ul class="title-nav-user nav navbar ms-0 me-auto p-0" style="font-size: medium; font-family: Loma,sans-serif;"
+      <ul class="title-nav-user nav navbar ms-0 me-auto p-0" style="font-size: 1.00rem; font-family: Loma,sans-serif;"
           id="menu">
         <li class="title-course mt-0 pt-0 ms-0 me-auto">
           <a href="#" data-bs-toggle="collapse" class="nav-link">
-            <i class="fs-2 mx-auto bi-chat-dots"></i><h4
-              class="d-inline text-black fw-bold text-decoration-underline ms-3"
+            <i class="fs-2 d-inline-flex justify-content-start mx-auto bi-chat-dots"></i><h4
+              class="text-black d-inline d-print-inline fw-bold text-decoration-underline ms-1"
               style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
             INF5151</h4>
-            <p class="small mt-0 mx-auto" style="font-size: 0.95rem; color: #2b2b2b">DD/MM/YYYY HH:MM:SS</p>
+            <p class="small d-flex justify-content-center mt-0 mx-auto" style="font-size: 0.95rem; color: #2b2b2b">DD/MM/YYYY HH:MM:SS</p>
           </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
-          <a href="/profile#dashboard" class="nav-link">
-            <i class="fs-3 bi-table"></i><span class="px-3">Tableau de bord</span> </a>
+          <a href="/profile#dashboard" class="nav-link px-lg-0 px-xxl-3">
+            <i class="fs-3 bi-table"></i><span class="px-lg-2 px-xxl-3">Tableau de bord</span> </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
-          <a href="/profile#parcours" class="nav-link">
-            <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Mon parcours</span></a>
+          <a href="/profile#parcours" class="nav-link px-lg-0 px-xxl-3">
+            <i class="fs-3 bi-clipboard-data"></i><span class="px-lg-2 px-xxl-3">Mon parcours</span></a>
         </li>
         <li class="mb-3 ms-0 me-auto">
-          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdown"
+          <a href="#" class="nav-link px-lg-0 px-xxl-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdown"
              aria-expanded="false">
-            <i class="fs-3 bi-chat-text"></i><span class="px-3">Mes salons</span>
+            <i class="fs-3 bi-chat-text"></i><span class="px-lg-2 px-xxl-3">Mes salons</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
             <li><a class="dropdown-item" href="/forum/INM5151">INM5151</a></li>
@@ -33,12 +33,12 @@
           </ul>
         </li>
         <li class="ms-0 me-auto mb-3">
-          <a href="#" class="nav-link">
-            <i class="fs-3 bi-telephone-outbound"></i><span class="px-3">Contactez une personne</span></a>
+          <a href="#" class="nav-link px-lg-0 px-xxl-3">
+            <i class="fs-3 d-lg-inline bi-telephone-outbound"></i><span class="px-lg-2 px-xxl-3">Contactez une personne</span></a>
         </li>
         <li class="ms-0 me-auto mb-3">
-          <a href="#" class="nav-link">
-            <i class="fs-3 bi-people"></i><span class="px-3">Déconnexion</span> </a>
+          <a href="#" class="nav-link px-lg-0 px-xxl-3">
+            <i class="fs-3 bi-people"></i><span class="px-lg-2 px-xxl-3 text-truncate">Déconnexion</span> </a>
         </li>
       </ul>
     </div>

@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid p-0">
     <div class="row forum mx-auto pe-0">
-      <div class="col-2 col-lg-3 col-xl-2 col-xxl-2 flex-wrap flex-column position-fixed bg-light shadow">
+      <div class="col-2 flex-wrap flex-column position-fixed bg-light shadow">
         <sidebar-forum/>
       </div>
-      <div class="col-8 mx-auto mt-auto mb-auto posts">
+      <div class="col-8 m-auto posts">
         <div class="row text-start post">
-          <div class="col-lg-9 col-xl-12 col-xxl-12 offset-0 offset-lg-1 offset-xl-0 m-auto">
+          <div class="col-12 m-auto">
             <Post
                 v-for="post in posts"
                 :key="post.dateTime + '_' + generateHexString()"
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="col-2 col-md-2 col-lg-3 col-xl-2 col-xxl-2 px-0 end-0 position-fixed overflow-scroll bg-light">
+      <div class="col-2 px-0 mx-auto end-0 position-fixed overflow-scroll bg-light">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -55,6 +55,9 @@ export default {
   mounted() {
     this.getPost();
     this.getStudents();
+    let validator_sign_in = document.createElement('script')
+    validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
+    document.head.appendChild(validator_sign_in)
   },
   methods: {
     // Used only to make the post unique.
@@ -121,8 +124,9 @@ export default {
 }
 
 .posts {
-  max-height: 75vh!important;
+  max-height: 75vh !important;
   clear: both;
+  overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column-reverse;
@@ -133,6 +137,7 @@ export default {
 }
 
 .input-post {
+  max-height: 25vh !important;
   border: 1px solid black;
   border-radius: 10px;
   transition: border-color .15s linear, box-shadow .15s linear;

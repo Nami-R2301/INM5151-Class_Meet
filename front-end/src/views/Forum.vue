@@ -53,7 +53,7 @@ export default {
     posts: [],
     students: [],
     contenu: "",
-    date: Date,
+    date: "",
   }),
   mounted() {
     this.getPost();

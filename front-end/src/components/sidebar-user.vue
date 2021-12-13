@@ -1,6 +1,6 @@
 <template>
   <div id="sidebar">
-    <div class="min-vh-100">
+    <div class="min-vh-100" style="border-right: 1px solid rgba(0, 0, 0, .2);">
       <ul class="border-bottom border-dark nav navbar-nav flex-column"
           style="font-size: 1.00rem; font-family: Loma,sans-serif;"
           id="menu">
@@ -11,7 +11,7 @@
               style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
             Nami Reghbati</h5>
             <p class="small mt-0 mx-auto text-break"
-               style="font-size: 0.95rem; color: #2b2b2b">DD/MM/YYYY HH:MM:SS</p>
+               style="font-size: 0.95rem; color: #2b2b2b">{{ dateTime }}</p>
           </a>
         </li>
         <li class="mb-3 ms-0 me-auto ps-1">
@@ -56,19 +56,13 @@
 <script>
 export default {
   name: "sidebar-forum",
-  mounted() {
-    let dropdown = document.createElement('script')
-    dropdown.setAttribute('src', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js')
-    document.head.appendChild(dropdown)
-  }
+  props: {
+    dateTime: String
+  },
 }
 </script>
 
-<style scoped>
-
-.title-course {
-  border-bottom: 1px solid black;
-}
+<style>
 
 .nav-link a, i, span {
   color: black;

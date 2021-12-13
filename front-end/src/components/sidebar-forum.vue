@@ -1,6 +1,6 @@
 <template>
   <div id="sidebar">
-    <div class="min-vh-100">
+    <div class="min-vh-100" style="border-right: 1px solid rgba(0, 0, 0, .2);">
       <ul class="border-bottom border-dark nav navbar-nav flex-column"
           style="font-size: 1.00rem; font-family: Loma,sans-serif;"
           id="menu">
@@ -58,20 +58,12 @@ export default {
   name: "sidebar-forum",
   props: {
     dateTime: String,
-  },
-  mounted() {
-    let dropdown = document.createElement('script')
-    dropdown.setAttribute('src', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js')
-    document.head.appendChild(dropdown)
-  },
+  }
 }
 </script>
 
-<style scoped>
+<style>
 
-.title-course {
-  border-bottom: 1px solid black;
-}
 
 .nav-link a, i, span {
   color: black;
@@ -82,8 +74,9 @@ export default {
 }
 
 .dropdown-menu {
+  position: absolute;
   z-index: 1000;
-  display: none;
+  display: flex;
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0;
@@ -97,8 +90,5 @@ export default {
   border-radius: 0.25rem;
 }
 
-.dropdown-menu[data-bs-popper] {
-  top: auto;
-}
 
 </style>

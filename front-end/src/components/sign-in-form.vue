@@ -22,7 +22,7 @@
         type="submit"
         @click="connection"
         title="Soumettre"
-        class="btn btn-outline-primary shadow rounded-pill text-center col-6 py-4 fw-bold my-4 mx-auto"
+        class="btn btn-outline-primary rounded-pill text-center col-6 py-4 fw-bold my-4 mx-auto"
         name="submit"
       >
         Soumettre
@@ -52,7 +52,7 @@ export default {
             alert(data.err);
           } else {
             this.$cookies.set("user", data);
-            this.$router.push("/");
+            this.$router.push("/profile");
           }
         })
         .catch((err) => {
@@ -67,6 +67,11 @@ export default {
 
 .fs-5 {
   font-size: 1.10rem!important;
+}
+
+button[type=submit] {
+  -webkit-filter: drop-shadow(3px 3px 3px #2b2b2b);
+  filter: drop-shadow(3px 3px 3px #2b2b2b);
 }
 
 </style>

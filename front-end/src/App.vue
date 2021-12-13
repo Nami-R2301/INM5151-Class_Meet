@@ -8,27 +8,27 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     <div class="content-body">
-      <Navbar/>
+      <main-navbar/>
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from "./components/main-navbar";
+import mainNavbar from "./components/main-navbar";
 import jQuery from "jQuery";
 
 export default {
   name: "App",
   components: {
-    Navbar,
+    mainNavbar,
   },
   mounted() {
     let popper = document.createElement('script')
     popper.setAttribute('src', 'node_modules/@popperjs/core/dist/cjs/popper.js')
     document.head.appendChild(popper)
     let dropdown = document.createElement('script')
-    dropdown.setAttribute('src', 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+    dropdown.setAttribute('src', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js')
     document.head.appendChild(dropdown)
 
   },

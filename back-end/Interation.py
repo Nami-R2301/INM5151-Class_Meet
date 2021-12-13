@@ -54,25 +54,6 @@ def retourner_etudiants_de( sigle_):
     return list
 
 
-def afficher_cours_de( email_ ):
-    etudiant = Database.Etudiant.query.filter_by(email=email_).first()
-    if ( etudiant is None ):
-        print ( "Étudiant avec " + email_ + " non inscris!" )
-        return
-    print( "Cours de l'étudiant " + etudiant.username )
-    return [Database.Cours.sigle for Database.Cours in etudiant.listeCours] 
-    
-
-def afficher_etudiants_de( sigle_):
-    cours = Database.Cours.query.filter_by(sigle=sigle_).first()
-    if ( cours is None ):
-        print ( "Cours " + sigle_ + " non éxistant!" )
-        return
-    print("Etudiants inscris à " + sigle_)
-    cours.listeEtudiants
-    for etudiant in cours.listeEtudiants:
-       print( __repr_etudiant__(etudiant))
-
 def ajout_inscription( email_, sigle_):
     cours = Database.Cours.query.filter_by(sigle=sigle_).first()
     if ( cours is None ):

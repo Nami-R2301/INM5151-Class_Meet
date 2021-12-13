@@ -65,12 +65,14 @@ def etudiants():
 
 @app.route("/api/etudiant/<email_etudiant>")
 def etudiant(email_etudiant):
-    student = i.afficher_cours_de(email_etudiant)
+    student = i.retourner_cours_de(email_etudiant)
     return server_response(student)
 
 
 @app.route("/api/cours/<sigle>")
-def cours(sigle)
+def cours(sigle):
+    cours = i.retourner_etudiants_de(sigle)
+    return server_response(cours)
 
 
 # @app.route("/api/listEtudiant/<sigle_>", methods=["GET"])

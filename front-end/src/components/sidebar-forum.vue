@@ -11,7 +11,7 @@
               style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
             INF5151</h4>
             <p class="small mt-0 mx-auto text-break"
-               style="font-size: 0.95rem; color: #2b2b2b">DD/MM/YYYY HH:MM:SS</p>
+               style="font-size: 0.95rem; color: #2b2b2b"> {{dateTime}}</p>
           </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
@@ -56,11 +56,14 @@
 <script>
 export default {
   name: "sidebar-forum",
+  props: {
+    dateTime: String,
+  },
   mounted() {
     let dropdown = document.createElement('script')
     dropdown.setAttribute('src', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js')
     document.head.appendChild(dropdown)
-  }
+  },
 }
 </script>
 

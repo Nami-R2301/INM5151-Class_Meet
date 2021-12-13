@@ -2,7 +2,9 @@
   <div class="container-fluid p-0">
     <div class="row forum mx-auto pe-0">
       <div class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow">
-        <sidebar-forum/>
+        <sidebar-forum
+            :dateTime="date"
+        ></sidebar-forum>
       </div>
       <div class="col-8 m-auto posts">
         <div class="row text-start post">
@@ -51,10 +53,13 @@ export default {
     posts: [],
     students: [],
     contenu: "",
+    date: Date,
   }),
   mounted() {
     this.getPost();
     this.getStudents();
+    this.updateClock();
+    this.getTime();
     let validator_sign_in = document.createElement('script')
     validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
     document.head.appendChild(validator_sign_in)
@@ -111,6 +116,15 @@ export default {
         {profilPicture: "", name: "Jules Hauchecorne"},
         {profilPicture: "", name: "Mehdi Collomb"},
       ];
+    },
+    getTime() {
+      const today = new Date();
+      const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      const time = today.getHours() + ":" + ("0" + today.getMinutes()).slice(-2) + ":" + ("0" + today.getSeconds()).slice(-2);
+      this.date = date + ' ' + time;
+    },
+    updateClock() {
+      setInterval(this.getTime, 1000);
     },
   },
 };

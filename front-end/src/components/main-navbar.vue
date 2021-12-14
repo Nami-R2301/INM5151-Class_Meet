@@ -11,8 +11,9 @@
           <div class="offcanvas offcanvas-x-axis col-lg-3 col-xxl-2 p-0 mx-auto" tabindex="-1" id="menu"
                data-bs-keyboard="true"
                data-bs-backdrop="false" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header ps-4">
-              <img class="col-8" href="/" title="Class Meet" alt="Logo de Class Meet" src="../assets/ClassMeet+logo-inline.png">
+            <div class="offcanvas-header">
+              <img class="col-8" href="/" title="Class Meet" alt="Logo de Class Meet"
+                   src="../assets/ClassMeet+logo-inline.png">
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                       aria-label="Close"></button>
             </div>
@@ -21,22 +22,22 @@
                   style="font-size: 1.00rem; font-family: Loma,sans-serif; color: black"
                   id="sidebar">
                 <li class="mb-3 ms-0 me-auto">
-                  <a href="/" class="nav-link px-2">
+                  <a href="/" class="nav-link px-3">
                     <i class="fs-3 bi-table"></i><span class="px-3">Accueil</span> </a>
                 </li>
                 <li class="mb-3 ms-0 me-auto">
-                  <a href="/programs" class="nav-link px-2">
+                  <a href="/programs" class="nav-link px-3">
                     <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Programmes</span></a>
                 </li>
                 <li class="mb-3 ms-0 me-auto">
-                  <a href="/Contact-us" class="nav-link px-2 dropdown-toggle text-wrap m-0 fs-6 text-start" role="button"
+                  <a href="/Contact-us" class="nav-link px-3 dropdown-toggle text-wrap" role="button"
                      data-bs-toggle="dropdown"
                      id="dropdown"
                      aria-expanded="false">
                     <i class="fs-3 d-inline bi-chat-text"></i><span
                       class="px-3 text-break fs-6 text-start">Contactez-nous</span>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end shadow flex-column mt-0" aria-labelledby="dropdown">
+                  <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
                     <li><a class="dropdown-item" href="/FAQ">FAQ</a></li>
                     <li><a class="dropdown-item" href="/report-bug">Signaler un bug</a></li>
                     <li><a class="dropdown-item" href="/report-person">Signaler un camarade</a></li>
@@ -44,12 +45,12 @@
                   </ul>
                 </li>
                 <li class="ms-0 me-auto mb-3">
-                  <a href="#" class="nav-link px-2">
+                  <a href="#" class="nav-link px-3">
                     <i class="fs-3 d-lg-inline bi-telephone-outbound"></i><span
                       class="px-3">Messages privés</span></a>
                 </li>
                 <li class="ms-0 me-auto mb-3">
-                  <a href="#" class="nav-link px-2">
+                  <a href="#" class="nav-link px-3">
                     <i class="fs-3 d-inline bi-people"></i><span
                       class="px-3 text-break">S'inscrire</span>
                   </a>
@@ -65,16 +66,29 @@
         </li>
         <li class="col-auto col-xl-5 my-auto">
           <form class="d-flex justify-content-start">
-            <input class="form-control flex-shrink-1 w-75" type="search" placeholder="Rechercher des programmes"
+            <input class="form-control flex-shrink-1 w-75" type="search" placeholder="Rechercher des étudiant(e)s"
                    aria-label="Rechercher">
             <button class="btn btn-outline-success text-center my-auto"
                     type="submit">Rechercher
             </button>
           </form>
         </li>
-        <li class="col-auto my-auto ms-auto me-0 text-end">
-          <a v-if="$store.state.connected" class="nav-link active fw-bold" @click="disconnect"
-             title="Deconnectez-vous">Se Deconnecter</a>
+        <li v-if="$store.state.connected" class="col-auto my-auto ms-auto me-0 text-end">
+          <a href="#" class="nav-link p-0 m-auto bg-transparent dropdown-toggle text-wrap"
+             role="button"
+             data-bs-toggle="dropdown"
+             id="dropdown-user"
+             aria-expanded="false"
+             style="color: royalblue; font-size: 1.10rem;"><i class="d-inline fs-3 me-2 bi-person-circle"></i>Nami
+            Reghbati</a>
+          <ul class="dropdown-menu dropdown-menu-end shadow flex-column fixed-top" aria-labelledby="dropdown-user">
+            <li><a class="dropdown-item" href="/profile#dashboard">Tableau de bord</a></li>
+            <li><a class="dropdown-item" @click="disconnect" href="/">Déconnexion</a></li>
+          </ul>
+        </li>
+        <li v-else class="col-auto my-auto ms-auto me-0 text-end">
+          <a class="nav-link active fw-bold" href="/login"
+             title="Connectez-vous">Connectez-vous</a>
         </li>
       </ul>
     </nav>
@@ -88,7 +102,7 @@ export default {
     disconnect() {
       this.$store.dispatch("connection")
       this.$cookies.remove("user")
-      this.$router.push("/login")
+      this.$router.push("/")
     }
   }
 }

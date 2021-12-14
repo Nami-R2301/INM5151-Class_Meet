@@ -9,9 +9,9 @@
             <i class="fs-2 ms-0 me-2 bi-chat-dots"></i><h4
               class="text-black d-inline fw-bold mx-auto"
               style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
-            {{title}}</h4>
+            {{ title }}</h4>
             <p class="small mt-0 mx-auto text-break"
-               style="font-size: 0.95rem; color: #2b2b2b"> {{dateTime}}</p>
+               style="font-size: 0.95rem; color: #2b2b2b"> {{ dateTime }}</p>
           </a>
         </li>
         <li class="mb-3 ms-0 me-auto">
@@ -23,15 +23,17 @@
             <i class="fs-3 bi-clipboard-data"></i><span class="px-lg-2 px-xl-3 px-xxl-3">Mon parcours</span></a>
         </li>
         <li class="mb-3 ms-0 me-auto">
-          <a href="#" class="nav-link px-lg-0 px-xl-2 px-xxl-3 dropdown-toggle text-wrap" role="button"
+          <a href="#" class="nav-link p-0 m-0 bg-transparent px-lg-0 px-xl-2 px-xxl-3 dropdown-toggle text-wrap"
+             role="button"
              data-bs-toggle="dropdown"
              id="dropdown"
-             aria-expanded="false">
+             aria-expanded="false"
+             style="font-size: 1.00rem">
             <i class="fs-3 d-inline bi-chat-text"></i><span
               class="px-lg-2 px-xl-3 px-xxl-3 text-break">Mes salons</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
-            <li v-for="c in cours" :key="c" ><a class="dropdown-item" :href="`/forum/${c}`">{{c}}</a></li>
+            <li v-for="c in cours" :key="c"><a class="dropdown-item" :href="`/forum/${c}`">{{ c }}</a></li>
           </ul>
         </li>
         <li class="ms-0 me-auto mb-3">
@@ -63,10 +65,10 @@ export default {
   methods: {
     getCours() {
       fetch(`${this.$store.getters.baseUrlBackEnd}api/etudiant/${this.$cookies.get('user').email}`)
-        .then(res => res.json())
-        .then(data => {
-          this.cours = data
-        })
+          .then(res => res.json())
+          .then(data => {
+            this.cours = data
+          })
     },
     getTime() {
       const today = new Date();

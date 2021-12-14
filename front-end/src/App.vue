@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     <div class="content-body">
-      <Signed_inNavbar/>
+      <main-navbar/>
       <router-view/>
     </div>
   </div>
@@ -16,12 +16,12 @@
 
 <script>
 import jQuery from "jQuery";
-import Signed_inNavbar from "./components/signed_in-navbar";
+import mainNavbar from "./components/main-navbar";
 
 export default {
   name: "App",
   components: {
-    Signed_inNavbar,
+    mainNavbar,
   },
   mounted() {
     this.initOnReload()
@@ -49,12 +49,12 @@ export default {
         window.location.pathname !== "/login" &&
         !this.$cookies.get("user")
     ) {
-      this.$router.push("/login");
+      this.$router.push("/");
     } else if (
         window.location.pathname === "/login" &&
         this.$cookies.get("user")
     ) {
-      this.$router.push("/");
+      this.$router.push("/profile");
     }
   },
 };

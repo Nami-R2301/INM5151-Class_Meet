@@ -72,13 +72,9 @@
             </button>
           </form>
         </li>
-        <li class="col-auto m-auto text-center">
-          <a class="nav-link active fw-bold" href="/forum/INF5151"
-             title="Connectez-vous">Forum</a>
-        </li>
         <li class="col-auto my-auto ms-auto me-0 text-end">
-          <a class="nav-link active fw-bold" href="/login"
-             title="Connectez-vous">Connectez-vous</a>
+          <a v-if="$store.state.connected" class="nav-link active fw-bold" @click="disconnect"
+             title="Deconnectez-vous">Se Deconnecter</a>
         </li>
       </ul>
     </nav>
@@ -88,6 +84,13 @@
 <script>
 export default {
   name: "Navbar",
+  methods: {
+    disconnect() {
+      this.$store.dispatch("connection")
+      this.$cookies.remove("user")
+      this.$router.push("/login")
+    }
+  }
 }
 </script>
 

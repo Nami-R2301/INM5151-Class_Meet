@@ -24,6 +24,8 @@ export default {
     mainNavbar,
   },
   mounted() {
+    this.initOnReload()
+
     let popper = document.createElement('script')
     popper.setAttribute('src', 'node_modules/@popperjs/core/dist/cjs/popper.js')
     document.head.appendChild(popper)
@@ -33,6 +35,11 @@ export default {
 
   },
   methods: {
+    initOnReload() {
+      if(this.$cookies.get("user")) {
+        this.$store.state.connected = true
+      }
+    },
     function() {
       jQuery('.dropdown-toggle').dropdown()
     }

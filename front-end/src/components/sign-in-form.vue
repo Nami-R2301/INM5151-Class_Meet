@@ -51,6 +51,7 @@ export default {
           if (data.err) {
             alert(data.err);
           } else {
+            this.$store.dispatch("connection")
             this.$cookies.set("user", data);
             this.$router.push("/profile");
           }

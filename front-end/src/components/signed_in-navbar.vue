@@ -66,16 +66,12 @@
         </li>
         <li class="col-auto col-xl-5 my-auto">
           <form class="d-flex justify-content-start">
-            <input class="form-control flex-shrink-1 w-75" type="search" placeholder="Rechercher des programmes"
+            <input class="form-control flex-shrink-1 w-75" type="search" placeholder="Rechercher des étudiant(e)s"
                    aria-label="Rechercher">
             <button class="btn btn-outline-success text-center my-auto"
                     type="submit">Rechercher
             </button>
           </form>
-        </li>
-        <li class="col-auto m-auto text-center">
-          <a class="nav-link active fw-bold" href="/forum/INF5151"
-             title="Connectez-vous">Forum</a>
         </li>
         <li class="col-auto my-auto ms-auto me-0 text-end">
           <a href="#" class="nav-link p-0 m-auto bg-transparent dropdown-toggle text-wrap" role="button"
@@ -83,11 +79,9 @@
              id="dropdown-user"
              aria-expanded="false"
           style="color: royalblue; font-size: 1.10rem;"><i class="d-inline fs-3 me-2 bi-person-circle"></i>Nami Reghbati</a>
-          <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown-user">
+          <ul class="dropdown-menu dropdown-menu-end shadow flex-column fixed-top" aria-labelledby="dropdown-user">
             <li><a class="dropdown-item" href="/profile#dashboard">Tableau de bord</a></li>
-            <li><a class="dropdown-item" href="/profile#parcours">Mon parcours</a></li>
-            <li><a class="dropdown-item" href="/profile">Mes contacts</a></li>
-            <li><a class="dropdown-item" href="/forum/INF5151">Mes salons</a></li>
+            <li><a class="dropdown-item" href="/">Déconnexion</a></li>
           </ul>
         </li>
       </ul>

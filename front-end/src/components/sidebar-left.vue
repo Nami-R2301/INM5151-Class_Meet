@@ -9,7 +9,7 @@
             <i class="fs-2 ms-0 me-2 bi-chat-dots"></i><h4
               class="text-black d-inline fw-bold mx-auto"
               style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
-            {{title}}</h5>
+            {{title}}</h4>
             <p class="small mt-0 mx-auto text-break"
                style="font-size: 0.95rem; color: #2b2b2b"> {{dateTime}}</p>
           </a>
@@ -52,7 +52,7 @@ export default {
     title: String,
   },
   data: () => ({
-    dateTime: Date,
+    dateTime: "",
     cours: Array
   }),
   mounted() {
@@ -71,7 +71,7 @@ export default {
     getTime() {
       const today = new Date();
       const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      const time = today.getHours() + ":" + ("0" + today.getMinutes()).slice(-2) + ":" + ("0" + today.getSeconds()).slice(-2);
+      const time = today.getHours() + ":" + ("0" + today.getMinutes()).slice(-2);
       this.dateTime = date + ' ' + time;
     },
     updateClock() {

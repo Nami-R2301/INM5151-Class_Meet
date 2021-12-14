@@ -4,10 +4,10 @@
       <div class="col-2 px-0 flex-wrap flex-column bg-light shadow">
         <Sidebar :title="$cookies.get('user').username" />
       </div>
-      <div class="col-8 m-auto">
+      <div class="col-8">
         <Dashboard/>
       </div>
-      <div class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light shadow">
+      <div class="col-2 px-0 me-0 ms-auto end-0 position-sticky overflow-scroll bg-light shadow">
         <Contacts :etudiants="students"/>
       </div>
     </div>

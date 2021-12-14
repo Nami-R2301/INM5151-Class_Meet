@@ -28,19 +28,15 @@ export default {
   },
   data: () => ({
     posts: [],
-    students: [],
   }),
-  mounted() {
-    this.getStudents();
-  },
-  methods: {
-    getStudents() {
-      this.students = [
+  computed: {
+    students: function () {
+      return [
         {profilPicture: "", name: "Nami Reghbati"},
         {profilPicture: "", name: "Jules Hauchecorne"},
         {profilPicture: "", name: "Mehdi Collomb"},
       ];
-    },
+    }
   }
 }
 </script>

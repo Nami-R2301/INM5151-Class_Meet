@@ -2,7 +2,7 @@
   <form action="/login" onsubmit="return onSubmit() !== false" class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mt-3 text-start mx-auto">
     <label class="form-label fw-bold mb-2 mx-auto fs-5">Adresse courriel :</label>
     <input
-      type="text"
+      type="email"
       v-model="email"
       class="form-control  py-1 px-3 rounded-pill border-2 border-secondary mb-4 fs-5"
       name="email"
@@ -55,20 +55,24 @@ export default {
   methods: {
     validInput() {
       if(this.email.trim() === "" || this.username.trim() === "" || this.password.trim() === "") {
-        alert("All fields must be completed")
-        return false;
+        throw new Error("All fields must be completed")
       }
       else if (this.password !== this.confirmPassword) {
-        alert("Passwords must be the same");
-        return false;
+        throw new Error("Passwords must be the same");
       }
-
-      return true;
+      else if (!this.email.match(/\w+@\w+[a-zA-Z]{2,}/i)) {
+        throw new Error("Email does not match")
+      }
     },
     signup(e) {
       e.preventDefault();
 
-      if (!this.validInput()) return;
+      try {
+        this.validInput()
+      } catch(err) {
+        alert(err)
+        return;
+      }
 
       fetch(`${this.$store.getters.baseUrlBackEnd}api/register`, {
         method: "POST",

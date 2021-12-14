@@ -73,22 +73,5 @@ export default {
   color: black;
 }
 
-.dropdown-menu {
-  position: absolute;
-  z-index: 1000;
-  display: flex;
-  min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, .15);
-  border-radius: 0.25rem;
-}
-
 
 </style>

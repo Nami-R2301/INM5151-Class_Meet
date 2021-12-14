@@ -119,12 +119,12 @@ export default {
     },
     getTime() {
       const today = new Date();
-      const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      const time = today.getHours() + ":" + ("0" + today.getMinutes()).slice(-2) + ":" + ("0" + today.getSeconds()).slice(-2);
-      this.date = date + ' ' + time;
+      this.date = today.getFullYear() + '-' + ("0" + (today.getMonth() + 1)).slice(-2) + '-' +
+          ("0" + today.getDate()).slice(-2) + ' ' + ("0" + today.getHours()).slice(-2) + ':' +
+          ("0" + today.getMinutes()).slice(-2);
     },
     updateClock() {
-      setInterval(this.getTime, 1000);
+      setInterval(this.getTime, 1000 / 60);
     },
   },
 };
@@ -154,7 +154,7 @@ export default {
   max-height: 25vh !important;
   border: 1px solid black;
   border-radius: 10px;
-  transition: border-color .15s linear, box-shadow .15s linear;
+  transition: border-color .05s linear, box-shadow .10s linear;
 }
 
 </style>

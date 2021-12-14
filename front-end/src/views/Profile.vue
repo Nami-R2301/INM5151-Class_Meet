@@ -4,12 +4,12 @@
       <div class="col-2 px-0 flex-wrap flex-column bg-light shadow">
         <Sidebar :title="$cookies.get('user').username" />
       </div>
-      <div class="col-8">
+      <div class="col-8 m-auto">
         <Dashboard/>
       </div>
-      <div class="col-2 px-0 flex-wrap flex-column bg-light shadow">
-          <Contacts :etudiants="students"/>
-        </div>
+      <div class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light shadow">
+        <Contacts :etudiants="students"/>
+      </div>
     </div>
   </div>
 </template>
@@ -41,7 +41,6 @@ export default {
         {profilPicture: "", name: "Mehdi Collomb"},
       ];
     },
-
   }
 }
 </script>

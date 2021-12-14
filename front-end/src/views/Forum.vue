@@ -155,6 +155,6 @@ export default {
   max-height: 25vh !important;
   border: 1px solid black;
   border-radius: 10px;
-  transition: border-color 0.15s linear, box-shadow 0.15s linear;
+  transition: border-color .05s linear, box-shadow .10s linear;
 }
 </style>

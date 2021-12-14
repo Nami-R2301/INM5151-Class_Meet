@@ -8,20 +8,20 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     <div class="content-body">
-      <main-navbar/>
+      <Signed_inNavbar/>
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-import mainNavbar from "./components/main-navbar";
 import jQuery from "jQuery";
+import Signed_inNavbar from "./components/signed_in-navbar";
 
 export default {
   name: "App",
   components: {
-    mainNavbar,
+    Signed_inNavbar,
   },
   mounted() {
     this.initOnReload()

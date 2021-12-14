@@ -4,7 +4,7 @@
       <div
         class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow"
       >
-        <sidebar-forum :dateTime="date"></sidebar-forum>
+        <sidebar :title="$route.params.category"></sidebar>
       </div>
       <div class="col-8 m-auto posts">
         <div class="row text-start post">
@@ -53,25 +53,22 @@
 <script>
 import Post from "../components/Post.vue";
 import student_list from "../components/student-list.vue";
-import SidebarForum from "../components/sidebar-forum";
+import Sidebar from "../components/sidebar-left";
 
 export default {
   components: {
-    SidebarForum,
+    Sidebar,
     Post,
     Student_bar: student_list,
   },
   data: () => ({
     posts: [],
     contenu: "",
-    date: "",
     students: [],
   }),
   mounted() {
     this.getPost();
     this.getStudents();
-    this.updateClock();
-    this.getTime();
     let validator_sign_in = document.createElement("script");
     validator_sign_in.setAttribute("src", "../store/onSubmit_sign_in.js");
     document.head.appendChild(validator_sign_in);
@@ -128,33 +125,8 @@ export default {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           this.students = data.map((el) => ({ name: el }));
         });
-      // this.students = [
-      //   { profilPicture: "", name: "Nami Reghbati" },
-      //   { profilPicture: "", name: "Jules Hauchecorne" },
-      //   { profilPicture: "", name: "Mehdi Collomb" },
-      // ];
-    },
-    getTime() {
-      const today = new Date();
-      const date =
-        today.getFullYear() +
-        "-" +
-        (today.getMonth() + 1) +
-        "-" +
-        today.getDate();
-      const time =
-        today.getHours() +
-        ":" +
-        ("0" + today.getMinutes()).slice(-2) +
-        ":" +
-        ("0" + today.getSeconds()).slice(-2);
-      this.date = date + " " + time;
-    },
-    updateClock() {
-      setInterval(this.getTime, 1000);
     },
   },
 };

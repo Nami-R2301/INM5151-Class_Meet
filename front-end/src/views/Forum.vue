@@ -1,9 +1,7 @@
 <template>
-  <div class="container-fluid p-0">
+  <div class="container-fluid m-auto p-0">
     <div class="row forum mx-auto pe-0">
-      <div
-          class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow"
-      >
+      <div class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow">
         <sidebar :title="$route.params.category"></sidebar>
       </div>
       <div class="col-8 m-auto posts">
@@ -32,18 +30,7 @@
         </div>
       </div>
       <div
-          class="
-          col-2
-          px-0
-          me-0
-          ms-auto
-          end-0
-          position-fixed
-          overflow-scroll
-          bg-light
-          shadow
-        "
-      >
+          class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light shadow">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>

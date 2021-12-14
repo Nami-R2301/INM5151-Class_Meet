@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid m-auto p-0">
-    <div class="row mx-auto px-0">
-      <div class="col-2 px-0 flex-wrap flex-column bg-light shadow">
+    <div class="row mx-auto pe-0">
+      <div class="col-2 p-0 flex-wrap flex-column bg-light shadow">
         <Sidebar :title="$cookies.get('user').username" />
       </div>
       <div class="col-8">

@@ -65,6 +65,7 @@ export default {
     posts: [],
     contenu: "",
     date: "",
+    students: [],
   }),
   mounted() {
     this.getPost();
@@ -74,16 +75,6 @@ export default {
     let validator_sign_in = document.createElement("script");
     validator_sign_in.setAttribute("src", "../store/onSubmit_sign_in.js");
     document.head.appendChild(validator_sign_in);
-  },
-  computed: {
-    students: function () {
-      fetch(`${this.$store.getters.baseUrlBackEnd}api/`).then(res => res.json())
-      return [
-        { profilPicture: "", name: "Nami Reghbati" },
-        { profilPicture: "", name: "Jules Hauchecorne" },
-        { profilPicture: "", name: "Mehdi Collomb" },
-      ];
-    },
   },
   methods: {
     // Used only to make the post unique.
@@ -130,6 +121,21 @@ export default {
         .catch((err) => {
           console.error(err);
         });
+    },
+    getStudents() {
+      fetch(
+        `${this.$store.getters.baseUrlBackEnd}api/cours/${this.$route.params.category}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          this.students = data.map((el) => ({ name: el }));
+        });
+      // this.students = [
+      //   { profilPicture: "", name: "Nami Reghbati" },
+      //   { profilPicture: "", name: "Jules Hauchecorne" },
+      //   { profilPicture: "", name: "Mehdi Collomb" },
+      // ];
     },
     getTime() {
       const today = new Date();

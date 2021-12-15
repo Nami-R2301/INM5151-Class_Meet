@@ -3,7 +3,8 @@
     <p v-if="this.error_backend.length === 0" style="color: red; font-size: 1.10rem; font-weight: bold">{{
         error_email
       }}</p>
-    <p v-else style="color: red; font-size: 1.10rem; font-weight: bold">{{ error_backend }}</p>
+    <p v-else-if="this.error_backend.length !== 0" style="color: red; font-size: 1.10rem; font-weight: bold">{{ error_backend }}</p>
+    <p style="color: green; font-size: 1.10rem; font-weight: bold">{{ this.confirm_email }}</p>
     <label class="form-label fw-bold mb-2 mx-auto fs-5">Adresse courriel :</label>
     <input
         type="email"
@@ -37,7 +38,7 @@
     <label class="form-label fw-bold mb-2 mx-auto fs-5">Confirmer le mot de passe :</label>
     <input
         type="password"
-        @focusout="validate_confirm_pw"
+        @keyup="validate_confirm_pw"
         v-model="confirmPassword"
         class="form-control  py-1 px-3 rounded-pill border-3 mb-4 fs-5"
         name="confirmPassword"
@@ -71,6 +72,7 @@ export default {
     confirmPassword: "",
     error_email: "",
     error_username: "",
+    confirm_email: "",
     error_pw: "",
     error_confirm_pw: "",
     error_backend: "",
@@ -80,37 +82,62 @@ export default {
   },
   methods: {
     validate_email() {
+      this.confirm_email = ""
       this.error_email = connection.check_email(this.email)
-      if (this.error_email.length > 1) document.getElementById("email").style.borderColor = "red"
+      if (this.error_email.length > 1) {
+        document.getElementById("email").style.borderColor = "red"
+      }
       else {
         document.getElementById("email").style.borderColor = "#2b2b2b"
         this.error_backend = "";
+        fetch(`${this.$store.getters.baseUrlBackEnd}api/checkEmail`, {
+          method: "POST",
+          body: JSON.stringify({
+            email: this.email,
+          }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.err) {
+                this.confirm_email = "Cette adresse courriel est libre !"
+                document.getElementById('email').style.borderColor = "green"
+              }
+            })
+            .catch((err) => {
+              console.error(err);
+              this.error_email = "Cette adresse courriel est déjà associé à un compte Class Meet !";
+              document.getElementById("email").style.borderColor = "red"
+              this.validate_form()
+            });
       }
       this.validate_form()
     },
     validateUsername() {
+      document.getElementById("username").style.borderColor = "#2b2b2b"
       this.error_username = connection.check_username(this.username)
-      if(this.error_username.length > 1) document.getElementById("username").style.borderColor = "red"
+      if (this.error_username.length > 1) document.getElementById("username").style.borderColor = "red"
       else {
-        document.getElementById("username").style.borderColor = "#2b2b2b"
+        document.getElementById("username").style.borderColor = "green"
         this.error_backend = "";
       }
       this.validate_form()
     },
     validate_pw() {
+      document.getElementById("password").style.borderColor = "#2b2b2b"
       this.error_pw = connection.check_password(this.password)
       if (this.error_pw.length > 1) document.getElementById("password").style.borderColor = "red"
       else {
-        document.getElementById("password").style.borderColor = "#2b2b2b"
+        document.getElementById("password").style.borderColor = "green"
         this.error_backend = "";
       }
       this.validate_form()
     },
     validate_confirm_pw() {
+      document.getElementById("confirmPassword").style.borderColor = "#2b2b2b"
       this.error_confirm_pw = connection.check_confirm_pw(this.password, this.confirmPassword)
       if (this.error_confirm_pw.length > 1) document.getElementById("confirmPassword").style.borderColor = "red"
       else {
-        document.getElementById("confirmPassword").style.borderColor = "#2b2b2b"
+        document.getElementById("confirmPassword").style.borderColor = "green"
         this.error_backend = "";
       }
       this.validate_form()
@@ -143,6 +170,7 @@ export default {
                 this.error_backend = "Cette adresse courriel est déjà associé à un compte Class Meet !";
                 this.validate_form();
               } else {
+                this.$store.dispatch("connection")
                 this.$cookies.set("user", data);
                 this.$router.push("/profile");
               }
@@ -153,7 +181,8 @@ export default {
       }
     },
   }
-};
+}
+;
 </script>
 
 <style scoped>

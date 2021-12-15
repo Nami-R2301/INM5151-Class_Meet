@@ -126,6 +126,22 @@ def register(email, username, password):
     else:
         print("Email invalide!")
 
+
+def check_email(email):
+    try:
+        match = Database.Etudiant.query.filter_by(email=email).first()
+        return {"email": match.email}
+    except AttributeError as err:
+        return {"id": 0, "err": "Incorrect email or password"}
+    except Exception as err:
+        print(err)
+        return {"id": 0, "err": err}
+
+
+
+
+
+
         
 #####################################################################################
 

@@ -20,6 +20,9 @@ import mainNavbar from "./components/main-navbar";
 
 export default {
   name: "App",
+  data: () => ({
+    user: "",
+  }),
   components: {
     mainNavbar,
   },
@@ -36,9 +39,12 @@ export default {
   },
   methods: {
     initOnReload() {
-      if(this.$cookies.get("user")) {
+      if (this.$cookies.get("user")) {
         this.$store.state.connected = true
       }
+    },
+    getUser() {
+      if(this.$cookies.get('user').username !== null) this.user = this.$cookies.get('user').username;
     },
     function() {
       jQuery('.dropdown-toggle').dropdown()

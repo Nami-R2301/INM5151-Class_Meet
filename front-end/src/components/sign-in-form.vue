@@ -18,7 +18,7 @@
     <p style="color: red; font-size: 1.10rem; font-weight: bold">{{ error_pw }}</p>
     <label class="form-label fw-bold mx-auto fs-5">Mot de passe :</label><br/>
     <input
-        @focusout="validate_pw"
+        @keyup="validate_pw"
         type="password"
         v-model="password"
         class="form-control fs-5 py-1 px-3 rounded-pill border-3 m-auto"

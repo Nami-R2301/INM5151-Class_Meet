@@ -62,7 +62,8 @@
         <li class="col-2 text-center my-auto">
           <a class="navbar-brand" href="/"
              title="Cliquez ici pour revenir à la page principale">
-            <img class="ms-2 me-auto d-inline-flex justify-content-center col-7 col-xxl-5" alt="logo Class Meet" src="../assets/logo.png"></a>
+            <img class="ms-2 me-auto d-inline-flex justify-content-center col-7 col-xxl-5" alt="logo Class Meet"
+                 src="../assets/logo.png"></a>
         </li>
         <li class="col-5 my-auto">
           <form class="d-flex justify-content-start">
@@ -79,8 +80,7 @@
              data-bs-toggle="dropdown"
              id="dropdown-user"
              aria-expanded="false"
-             style="color: royalblue; font-size: 1.10rem;"><i class="fs-3 me-2 bi-person-circle"></i>Nami
-            Reghbati</a>
+             style="color: royalblue; font-size: 1.10rem;"><i class="fs-3 me-2 bi-person-circle"></i>{{$cookies.get("user").username}}</a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column fixed-top" aria-labelledby="dropdown-user">
             <li><a class="dropdown-item" href="/profile#dashboard">Tableau de bord</a></li>
             <li><a class="dropdown-item" @click="disconnect" href="/">Déconnexion</a></li>
@@ -103,7 +103,7 @@ export default {
       this.$store.dispatch("connection")
       this.$cookies.remove("user")
       this.$router.push("/")
-    }
+    },
   }
 }
 </script>

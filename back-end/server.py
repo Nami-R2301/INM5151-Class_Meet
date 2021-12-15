@@ -39,6 +39,17 @@ def register():
         return {"err": err}
 
 
+@app.route("/api/checkEmail", methods=["POST"])
+def check_email():
+    data = json.loads(request.get_data())
+    student = i.check_email(data['email'])
+    if student['id'] < 1:
+        return json.dumps(student), 404
+    return json.dumps(student), 200
+
+
+
+
 @app.route("/api/forum/<categorie_>", methods=["GET", "POST"])
 def publications(categorie_):
     if request.method == "POST":

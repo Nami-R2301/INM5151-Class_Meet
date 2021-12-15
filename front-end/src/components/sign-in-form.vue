@@ -15,10 +15,9 @@
         name="username"
         id="email"
     /><br/>
-    <p style="color: red; font-size: 1.10rem; font-weight: bold">{{ error_pw }}</p>
     <label class="form-label fw-bold mx-auto fs-5">Mot de passe :</label><br/>
     <input
-        @keyup="validate_pw"
+        @focusout="validate_pw"
         type="password"
         v-model="password"
         class="form-control fs-5 py-1 px-3 rounded-pill border-3 m-auto"
@@ -33,7 +32,7 @@
           type="submit"
           @click="connection"
           title="Soumettre"
-          class="btn btn-outline-primary text-break rounded-pill border-3 text-center col-sm-9 col-lg-7 py-4 fw-bold my-4 mx-auto"
+          class="btn btn-outline-primary text-break rounded-pill border-3 text-center col-sm-9 col-lg-6 py-4 fw-bold my-4 mx-auto"
           name="submit"
           id="submit"
       >
@@ -44,7 +43,6 @@
 </template>
 
 <script>
-import connection from "../views/Connection";
 
 export default {
   name: "sign-in-form",
@@ -60,20 +58,25 @@ export default {
   },
   methods: {
     validate_email() {
-      this.error_email = connection.check_email(this.email)
-      if (this.error_email.length > 1) document.getElementById("email").style.borderColor = "red"
-      else document.getElementById("email").style.borderColor = "#2b2b2b"
+      this.error_email = ""
+      document.getElementById("email").style.borderColor = "#2b2b2b"
+      if (this.email.length === 0) {
+        document.getElementById("email").style.borderColor = "red"
+      }
+
       this.validate_form()
     },
     validate_pw() {
-      this.error_pw = connection.check_password(this.password)
-      if (this.error_pw.length > 1) document.getElementById("password").style.borderColor = "red"
-      else document.getElementById("password").style.borderColor = "#2b2b2b"
+      this.error_pw = ""
+      document.getElementById("password").style.borderColor = "#2b2b2b"
+      if (this.password.length === 0) {
+        document.getElementById("password").style.borderColor = "red"
+      }
       this.validate_form()
     },
     validate_form() {
       document.getElementById('submit').disabled = this.email.length === 0 ||
-          this.password.length === 0 || this.error_email.length !== 0 || this.error_pw.length !== 0;
+          this.password.length === 0;
     },
     connection(e) {
       e.preventDefault();

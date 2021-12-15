@@ -50,9 +50,9 @@
                       class="px-3">Messages privés</span></a>
                 </li>
                 <li class="ms-0 me-auto mb-3">
-                  <a href="#" class="nav-link px-2">
+                  <a href="/login" class="nav-link px-2">
                     <i class="fs-3 d-inline bi-people"></i><span
-                      class="px-3 text-break">S'inscrire</span>
+                      class="px-3 text-break">Se connecter</span>
                   </a>
                 </li>
               </ul>

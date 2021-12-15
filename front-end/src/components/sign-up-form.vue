@@ -50,7 +50,7 @@
           type="submit"
           @click="signup"
           title="Soumettre"
-          class="btn btn-outline-primary shadow rounded-pill text-center px-5 py-4 fw-bold my-4 mx-auto"
+          class="btn btn-outline-primary text-break rounded-pill border-3 text-center col-sm-9 col-lg-6 py-4 fw-bold my-4 mx-auto"
           name="submit"
           id="submit"
       >

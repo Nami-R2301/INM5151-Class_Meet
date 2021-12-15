@@ -9,7 +9,7 @@
             <img class="class_Meet col-2" alt="Class Meet" src="../assets/Class_Meet.png"></a>
         </div>
       </div>
-      <div class="row my-5">
+      <div class="row mx-auto align-items-center my-5">
         <div class="offset-1 col-2 col-sm-4 col-lg-5 col-xl-5 col-xxl-5">
           <img class="image-description-left" src="../assets/questions.png" title="question-mark"
                alt="Une image avec un point d'interrogation sur un tableau de craie.">

@@ -18,18 +18,18 @@
           />
         </div>
         <div class="row centered">
-          <div class="col-12 mt-4">
-            <h1 class="fw-bold">{{ this[connectOrRegister].title }}</h1>
+          <div class="col-6 mt-4 px-0">
+            <h1 class="fw-bold text-responsive">{{ this[connectOrRegister].title }}</h1>
             <h1 class="msg_connexion fs-2 text-responsive fw-bold">Class Meet</h1>
           </div>
         </div>
         <div class="row">
           <div class="col-12 mt-2 fs-6">
-            <Connexion v-if="isRegistered"/>
-            <Inscription v-else/>
+            <SignInForm v-if="isRegistered"/>
+            <SignUpForm v-else/>
           </div>
         </div>
-        <div class="text-center fw-bold mx-auto mt-4 text-info fs-5">
+        <div class="text-center fw-bold m-auto my-4 text-info fs-5">
           <span class="me-4"
           >{{ this[connectOrRegister].labelRegister }}
           </span>
@@ -47,30 +47,32 @@
 </template>
 
 <script>
-import Connexion from "../components/sign-in-form.vue";
-import Inscription from "../components/sign-up-form.vue";
+import SignInForm from "../components/sign-in-form.vue";
+import SignUpForm from "../components/sign-up-form.vue";
 
 export default {
   name: "Connection",
   components: {
-    Connexion,
-    Inscription,
+    SignUpForm,
+    SignInForm,
   },
   computed: {
     connectOrRegister: function () {
-      return this.isRegistered ? "connection" : "inscription"
+      return this.isRegistered ? "SignInForm" : "SignUpForm"
     },
   },
   data: () => ({
     isRegistered: true,
-    connection: {
+    SignInForm: {
       title: "Connectez-vous à ",
       labelRegister: "Première fois ?",
       buttonRegister: "Inscrivez-vous",
       email: "",
+      error_email: "",
+      error_pw: "",
       pw: "",
     },
-    inscription: {
+    SignUpForm: {
       title: "Inscrivez-vous à ",
       labelRegister: "Déjà un compte ?",
       buttonRegister: "Connectez-vous",
@@ -78,21 +80,54 @@ export default {
       name: "",
       pw: "",
       confirm_password: "",
+      error_email: "",
+      error_pw: "",
+      error_username: "",
+      error_confirm_pw: "",
     },
   }),
   methods: {
     registerPage() {
       this.isRegistered = !this.isRegistered;
     },
-
   },
-  mounted() {
-    let validator_sign_in = document.createElement('script')
-    validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
-    document.head.appendChild(validator_sign_in)
-    let validator_sign_up = document.createElement('script')
-    validator_sign_up.setAttribute('src', '../store/onSubmit_sign_up.js')
-    document.head.appendChild(validator_sign_up)
+  check_email(email) {
+    const reg_email = new RegExp('\\b^([a-zA-z0-9-.]+@[a-zA-Z]+.(\\bcom\\b|\\bca\\b|\\borg\\b|\\bedu\\b|\\bfr\\b))$\\b');
+    this.error_email = "";
+    let msgE2 = "\tL'adresse courriel saisie n'est pas une adresse de format valide !";
+
+    if (email.toString().match(reg_email) === null || email.length < 4) {
+      console.log("Email not valid!\n");
+      this.error_email = msgE2;
+    }
+    return this.error_email
+  },
+  check_username(username) {
+    this.error_username = "";
+    let msgE = "\tLe nom d'utilisateur saisi n'est pas un nom valide !";
+    if(username === "") {
+      console.log("Username is not valid!\n");
+      this.error_username = msgE;
+    }
+    return this.error_username;
+  },
+  check_password(pw) {
+    this.error_pw = "";
+    let msgE = "\tLe mot de passe ne peut être laissé vide !";
+    if (pw === "") {
+      console.log("Pw not valid!\n");
+      this.error_pw = msgE;
+    }
+    return this.error_pw;
+  },
+  check_confirm_pw(pw, confirm_pw) {
+    this.error_confirm_pw = "";
+    let msgE = "\tCe mot de passe n'est pas identique au mot de passe saisi dans le champ précédent !";
+    if (confirm_pw === "" || confirm_pw !== pw) {
+      console.log("Confirm_pw is not valid!\n")
+      this.error_confirm_pw = msgE;
+    }
+    return this.error_confirm_pw;
   },
   beforeCreate() {
     if (this.$route.path === "/login") this.isRegistered = 1;
@@ -133,9 +168,6 @@ img {
     width: 20% !important;
   }
 
-  .sign-up-pic.col-xxl-2 {
-    width: 15% !important;
-  }
 }
 
 button:hover {

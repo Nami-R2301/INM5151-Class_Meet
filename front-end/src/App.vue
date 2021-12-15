@@ -8,31 +8,44 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     <div class="content-body">
-      <Navbar/>
+      <main-navbar/>
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from "./components/main-navbar";
 import jQuery from "jQuery";
+import mainNavbar from "./components/main-navbar";
 
 export default {
   name: "App",
+  data: () => ({
+    user: "",
+  }),
   components: {
-    Navbar,
+    mainNavbar,
   },
   mounted() {
+    this.initOnReload()
+
     let popper = document.createElement('script')
     popper.setAttribute('src', 'node_modules/@popperjs/core/dist/cjs/popper.js')
     document.head.appendChild(popper)
     let dropdown = document.createElement('script')
-    dropdown.setAttribute('src', 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+    dropdown.setAttribute('src', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js')
     document.head.appendChild(dropdown)
 
   },
   methods: {
+    initOnReload() {
+      if (this.$cookies.get("user")) {
+        this.$store.state.connected = true
+      }
+    },
+    getUser() {
+      if(this.$cookies.get('user').username !== null) this.user = this.$cookies.get('user').username;
+    },
     function() {
       jQuery('.dropdown-toggle').dropdown()
     }
@@ -42,12 +55,12 @@ export default {
         window.location.pathname !== "/login" &&
         !this.$cookies.get("user")
     ) {
-      this.$router.push("/login");
+      this.$router.push("/");
     } else if (
         window.location.pathname === "/login" &&
         this.$cookies.get("user")
     ) {
-      this.$router.push("/");
+      this.$router.push("/profile");
     }
   },
 };
@@ -64,6 +77,10 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+i {
+  vertical-align: middle;
 }
 
 .content-body {

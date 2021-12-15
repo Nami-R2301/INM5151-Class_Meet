@@ -1,14 +1,15 @@
 <template>
-  <div class="container-fluid p-0">
-    <div class="row forum mx-auto pe-0">
-      <div class="col-2 flex-wrap flex-column position-fixed bg-light p-0 shadow">
-        <sidebar-forum
-            :dateTime="date"
-        ></sidebar-forum>
+  <div class="container-fluid forum">
+    <div class="row">
+      <div
+          class="col-2 mx-1 mx-sm-0 mx-md-0 mx-lg-0 mx-xl-0 mx-xxl-0 flex-grow-1 flex-xxl-grow-0 flex-wrap
+          flex-column position-fixed bg-light shadow"
+          style="border-right: 1px solid rgba(0, 0, 0, .2);">
+        <sidebar :title="$route.params.category"></sidebar>
       </div>
-      <div class="col-8 m-auto posts">
-        <div class="row text-start post">
-          <div class="col-12 m-auto">
+      <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8 mx-auto flex-shrink-1 posts">
+        <div class="row mx-auto text-start post">
+          <div class="col-12">
             <Post
                 v-for="post in posts"
                 :key="post.dateTime + '_' + generateHexString()"
@@ -17,8 +18,8 @@
                 :dateTime="post.dateTime"
             ></Post>
           </div>
-          <div class="row d-flex position-absolute bottom-0 ms-5 me-auto">
-            <div class="col-12 tm-auto">
+          <div class="row m-auto col-8 col-md-7 col-lg-7 col-xl-7 col-xxl-8 d-flex position-absolute bottom-0">
+            <div class="text-center align-items-center">
               <input
                   class="input-post mx-auto p-3 mb-3 mt-0 w-50"
                   type="text"
@@ -26,12 +27,14 @@
                   @keypress="sendPost"
                   v-model="contenu"
               />
-              <i class="fs-2 ms-3 me-auto my-auto bi-plus-circle"></i>
+              <i class="fs-2 ms-3 me-auto bi-plus-circle"></i>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-2 px-0 me-0 ms-auto end-0 position-fixed overflow-scroll bg-light shadow">
+      <div
+          class="col-2 mx-auto ps-0 pe-1 text-break flex-grow-1 flex-column position-fixed end-0 overflow-scroll bg-light shadow"
+          style="border-left: 1px solid rgba(0, 0, 0, .2);">
         <Student_bar :etudiants="students"></Student_bar>
       </div>
     </div>
@@ -41,28 +44,25 @@
 <script>
 import Post from "../components/Post.vue";
 import student_list from "../components/student-list.vue";
-import SidebarForum from "../components/sidebar-forum";
+import Sidebar from "../components/sidebar-left";
 
 export default {
   components: {
-    SidebarForum,
+    Sidebar,
     Post,
     Student_bar: student_list,
   },
   data: () => ({
     posts: [],
-    students: [],
     contenu: "",
-    date: Date,
+    students: [],
   }),
   mounted() {
     this.getPost();
     this.getStudents();
-    this.updateClock();
-    this.getTime();
-    let validator_sign_in = document.createElement('script')
-    validator_sign_in.setAttribute('src', '../store/onSubmit_sign_in.js')
-    document.head.appendChild(validator_sign_in)
+    let validator_sign_in = document.createElement("script");
+    validator_sign_in.setAttribute("src", "../store/onSubmit_sign_in.js");
+    document.head.appendChild(validator_sign_in);
   },
   methods: {
     // Used only to make the post unique.
@@ -111,20 +111,13 @@ export default {
           });
     },
     getStudents() {
-      this.students = [
-        {profilPicture: "", name: "Nami Reghbati"},
-        {profilPicture: "", name: "Jules Hauchecorne"},
-        {profilPicture: "", name: "Mehdi Collomb"},
-      ];
-    },
-    getTime() {
-      const today = new Date();
-      const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      const time = today.getHours() + ":" + ("0" + today.getMinutes()).slice(-2) + ":" + ("0" + today.getSeconds()).slice(-2);
-      this.date = date + ' ' + time;
-    },
-    updateClock() {
-      setInterval(this.getTime, 1000);
+      fetch(
+          `${this.$store.getters.baseUrlBackEnd}api/cours/${this.$route.params.category}`
+      )
+          .then((res) => res.json())
+          .then((data) => {
+            this.students = data.map((el) => ({name: el}));
+          });
     },
   },
 };
@@ -132,15 +125,18 @@ export default {
 
 
 <style scoped>
-
 .forum {
+  overflow-y: hidden;
+}
+
+body {
   overflow-y: hidden;
 }
 
 .posts {
   max-height: 75vh !important;
   clear: both;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column-reverse;
@@ -151,10 +147,8 @@ export default {
 }
 
 .input-post {
-  max-height: 25vh !important;
   border: 1px solid black;
   border-radius: 10px;
-  transition: border-color .15s linear, box-shadow .15s linear;
+  transition: border-color .05s linear, box-shadow .10s linear;
 }
-
 </style>

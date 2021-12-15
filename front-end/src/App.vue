@@ -73,6 +73,10 @@ html {
   color: #2c3e50;
 }
 
+i {
+  vertical-align: middle;
+}
+
 .content-body {
   min-height: 100%;
 }

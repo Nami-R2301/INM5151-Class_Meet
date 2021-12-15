@@ -1,5 +1,5 @@
 <template>
-  <div class="min-vh-100" style="border-left: 1px solid rgba(0, 0, 0, .2);">
+  <div class="min-vh-100">
     <ul class="title-contacts m-auto mb-3 pb-1 ps-3" style="font-size: 1.00rem">
       <li>
         <i class="bi-person-lines-fill m-auto fs-3"></i>

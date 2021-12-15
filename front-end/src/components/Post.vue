@@ -1,18 +1,21 @@
 <template>
   <div class="posts-hover" id="forum">
-      <div class="row flex-wrap m-auto">
-        <div class="col-auto align-content-start me-auto">
-          <i class="fs-2 bi-person-circle ms-0 me-3"></i><span class="fw-bold">{{ auteur }}</span>
-        </div>
-        <div class="col-auto text-end ms-auto me-0">
-          <small class="fst-italic text-muted">{{ dateTime }}</small>
-        </div>
+    <div class="row flex-wrap">
+      <div class="col-auto align-content-start ms-0 me-auto">
+        <i class="fs-2 bi-person-circle ms-0 me-2"></i><span class="fw-bold">{{ auteur }}</span>
       </div>
-      <div class="row text-break text-wrap justify-content-center mx-xxl-5 mx-lg-5">
-        <div>
-          <p class="mx-auto" style="line-height: 1.25rem">{{ contenu }}</p>
-        </div>
+      <div class="col-auto text-end mx-auto me-0">
+        <small class="fst-italic text-muted mx-auto">{{ dateTime }}</small>
       </div>
+    </div>
+    <div class="row ms-1 me-auto me-xxl-5 p-0 text-break text-wrap">
+      <div>
+        <p class="ps-4"
+           style="line-height: 1.25rem; font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva'
+           , 'Verdana', sans-serif;">
+          {{ contenu }}</p>
+      </div>
+    </div>
   </div>
 </template>
 

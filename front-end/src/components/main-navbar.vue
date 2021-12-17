@@ -23,18 +23,18 @@
                   id="sidebar">
                 <li class="mb-3 ms-0 me-auto">
                   <a href="/" class="nav-link px-2">
-                    <i class="fs-3 bi-table"></i><span class="px-3">Accueil</span> </a>
+                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span class="px-3">Accueil</span> </a>
                 </li>
                 <li class="mb-3 ms-0 me-auto">
                   <a href="/programs" class="nav-link px-2">
-                    <i class="fs-3 bi-clipboard-data"></i><span class="px-3">Programmes</span></a>
+                   <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span class="px-3">Programmes</span></a>
                 </li>
                 <li class="mb-3 ms-0 me-auto">
                   <a href="/Contact-us" class="nav-link px-2 dropdown-toggle text-wrap" role="button"
                      data-bs-toggle="dropdown"
                      id="dropdown"
                      aria-expanded="false">
-                    <i class="fs-3 d-inline bi-chat-text"></i><span
+                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span
                       class="px-3 text-break fs-6 text-start">Contactez-nous</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
@@ -46,12 +46,12 @@
                 </li>
                 <li class="ms-0 me-auto mb-3">
                   <a href="#" class="nav-link px-2">
-                    <i class="fs-3 d-lg-inline bi-telephone-outbound"></i><span
+                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span
                       class="px-3">Messages privés</span></a>
                 </li>
                 <li class="ms-0 me-auto mb-3">
                   <a href="/login" class="nav-link px-2">
-                    <i class="fs-3 d-inline bi-people"></i><span
+                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span
                       class="px-3 text-break">Se connecter</span>
                   </a>
                 </li>
@@ -80,7 +80,7 @@
              data-bs-toggle="dropdown"
              id="dropdown-user"
              aria-expanded="false"
-             style="color: royalblue; font-size: 1.10rem;"><i class="fs-3 me-2 bi-person-circle"></i>{{$cookies.get("user").username}}</a>
+             style="color: royalblue; font-size: 1.10rem;"><b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="1.5"></b-icon-person-circle>{{$cookies.get("user").username}}</a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column fixed-top" aria-labelledby="dropdown-user">
             <li><a class="dropdown-item" href="/profile#dashboard">Tableau de bord</a></li>
             <li><a class="dropdown-item" @click="disconnect" href="/">Déconnexion</a></li>

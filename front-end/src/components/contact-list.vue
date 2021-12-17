@@ -2,8 +2,8 @@
   <div class="min-vh-100">
     <ul class="title-contacts m-auto mb-3 pb-1" style="font-size: 1.00rem">
       <li>
-        <i class="bi-person-lines-fill m-auto fs-4"></i>
-        <span class="ms-2 fs-5 fw-bold">Contacts</span>
+        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="2"></b-icon-person-circle>
+        <span style="vertical-align: middle" class="ms-2 fs-5 fw-bold">Contacts</span>
       </li>
     </ul>
     <div class="row ms-0 me-auto px-0">
@@ -12,7 +12,7 @@
           :key="etudiant.name"
           class="mb-3"
       >
-        <i class="bi-person-circle me-2 fs-4"></i>
+        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="1.5"></b-icon-person-circle>
         <span class="fs-6 me-0">{{ etudiant.name }}</span>
       </div>
     </div>

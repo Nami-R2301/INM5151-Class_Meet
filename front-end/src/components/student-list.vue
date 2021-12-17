@@ -2,7 +2,7 @@
   <div class="min-vh-100">
     <ul class="title-contacts m-auto mb-3 pb-1 ps-3" style="font-size: 1.00rem">
       <li>
-        <i class="bi-person-lines-fill m-auto fs-3"></i>
+        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="1"></b-icon-person-circle>
         <span class="ms-2 fw-bold">Camarades</span>
       </li>
     </ul>

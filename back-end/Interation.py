@@ -26,6 +26,17 @@ def retourne_Publication(Publication_):
 def list_publication(sous_categorie_):
     posts = Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
     list = []
+    if ( len(posts) == 0 or posts == None ):
+        msgBienvenue = Database.Publication (
+        contenu= ("Bienvenue sur la page de forum pour le cours " + sous_categorie_ + ", veuillez garder le respect dans vos propos, ClassMeet est une plateforme d'entraide avant tout, et sur ce, bon clavardage."),
+        auteur= "Forum_Master",
+        sous_categorie=sous_categorie_,
+        date=datetime.now().replace(microsecond=0),
+                )
+        Database.db.session.add(msgBienvenue)
+        Database.db.session.commit()
+        posts = Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
+    
     for Publication in posts:
         list.append(
             {
@@ -123,6 +134,7 @@ def ajout_utilisateur(username_, psw_, email_):
 
 
 def ajout_publication(username_, sigle_, contenu_):
+        
     n = Database.Publication(
         contenu=contenu_,
         auteur=username_,

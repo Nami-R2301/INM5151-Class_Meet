@@ -92,7 +92,7 @@ export default {
     },
   },
   check_email(email) {
-    const reg_email = new RegExp('\\b^([a-zA-z0-9-.]+@[a-zA-Z]+.(\\bcom\\b|\\bca\\b|\\borg\\b|\\bedu\\b|\\bfr\\b))$\\b');
+    const reg_email = new RegExp('\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b');
     this.error_email = "";
     let msgE2 = "\tL'adresse courriel saisie n'est pas une adresse de format valide !";
 

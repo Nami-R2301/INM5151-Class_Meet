@@ -85,6 +85,9 @@ export default {
       if (this.error_pw.length === 0 && this.error_email.length === 0) {
         fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
           method: "POST",
+          headers: new Headers({
+            "Content-Type": "application/json; charset=utf-8"
+          }),
           body: JSON.stringify({email: this.email, password: this.password}),
         })
             .then((res) => res.json())

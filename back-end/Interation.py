@@ -154,9 +154,10 @@ def supprimer_publications_de(sigle_):
 
 def connection(email, password):
     try:
-        etudiant = Database.Etudiant.query.filter_by(
-            email=email, password=password
-        ).first()
+        salt_etudiant = Database.Etudiant.query.with_entities(Database.Etudiant.salt).filter_by(email=email).first()
+        hash_password = hashlib.sha512((password + salt_etudiant[0]).encode("utf-8")).hexdigest()
+        etudiant = Database.Etudiant.query.filter_by(email=email, password=hash_password).first()
+
         return {
             "id": etudiant.etudiantId,
             "username": etudiant.username,

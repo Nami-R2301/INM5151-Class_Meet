@@ -20,7 +20,7 @@ def hello_world():
 
 @app.route("/api/connection", methods=["POST"])
 def connection():
-    data = json.loads(request.get_data())
+    data = request.get_json()
     etudiant = i.connection(data["email"], data["password"])
     if etudiant["id"] < 1:
         return json.dumps(etudiant), 404

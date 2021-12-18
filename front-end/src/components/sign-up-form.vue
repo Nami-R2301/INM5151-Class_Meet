@@ -90,24 +90,22 @@ export default {
       else {
         document.getElementById("email").style.borderColor = "#2b2b2b"
         this.error_backend = "";
-        fetch(`${this.$store.getters.baseUrlBackEnd}api/checkEmail`, {
-          method: "POST",
-          body: JSON.stringify({
-            email: this.email,
-          }),
+        fetch(`${this.$store.getters.baseUrlBackEnd}api/checkEmail/${this.email}`, {
         })
             .then((res) => res.json())
             .then((data) => {
-              if (data.err) {
+              if (!data.email) {
                 this.confirm_email = "Cette adresse courriel est libre !"
                 document.getElementById('email').style.borderColor = "green"
+              }
+              else {
+                this.error_email = "Cette adresse courriel est déjà associé à un compte Class Meet !";
+                document.getElementById("email").style.borderColor = "red"
+                this.validate_form()
               }
             })
             .catch((err) => {
               console.error(err);
-              this.error_email = "Cette adresse courriel est déjà associé à un compte Class Meet !";
-              document.getElementById("email").style.borderColor = "red"
-              this.validate_form()
             });
       }
       this.validate_form()
@@ -158,6 +156,9 @@ export default {
 
         fetch(`${this.$store.getters.baseUrlBackEnd}api/register`, {
           method: "POST",
+          headers: new Headers({
+            "Content-Type": "application/json; charset=utf-8"
+          }),
           body: JSON.stringify({
             email: this.email,
             username: this.username,

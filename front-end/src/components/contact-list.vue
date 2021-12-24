@@ -3,7 +3,7 @@
     <ul class="title-contacts m-auto mb-3 pb-1" style="font-size: 1.00rem">
       <li>
         <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="2"></b-icon-person-circle>
-        <span style="vertical-align: middle" class="ms-2 fs-5 fw-bold">Contacts</span>
+        <span style="vertical-align: middle" class="fs-5 fw-bold">Contacts</span>
       </li>
     </ul>
     <div class="row ms-0 me-auto px-0">
@@ -13,7 +13,7 @@
           class="mb-3"
       >
         <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="1.5"></b-icon-person-circle>
-        <span class="fs-6 me-0">{{ etudiant.name }}</span>
+        <span style="vertical-align: middle" class="fs-6 me-0">{{ etudiant.name }}</span>
       </div>
     </div>
   </div>

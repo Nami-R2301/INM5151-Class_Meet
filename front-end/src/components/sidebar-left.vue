@@ -6,21 +6,26 @@
           id="menu">
         <li class="border-bottom border-dark text-center align-items-center mt-0 pt-0">
           <a href="#" class="nav-link">
-            <b-icon icon="chat-dots" scale="1.5" shift-h="-4" shift-v="4" class="text-black"></b-icon><h4
-              class="text-black d-inline fw-bold mx-auto"
-              style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
-            {{ title }}</h4>
+            <b-icon icon="chat-dots" scale="1.5" shift-h="-4" shift-v="4" class="text-black"></b-icon>
+            <h4
+                class="text-black d-inline fw-bold mx-auto"
+                style="font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">
+              {{ title }}</h4>
             <p class="small mt-0 mx-auto text-break"
                style="font-size: 0.95rem; color: #2b2b2b"> {{ dateTime }}</p>
           </a>
         </li>
         <li class="my-3 ms-0 me-auto">
           <a href="/profile#dashboard" class="nav-link px-lg-0 px-xl-2">
-            <b-icon-table scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-table><span class="px-2">Tableau de bord</span></a>
+            <b-icon-table scale="1" shift-h="-4" style="vertical-align: middle"
+                          class="text-black mx-auto"></b-icon-table>
+            <span style="vertical-align: middle" class="px-2">Tableau de bord</span></a>
         </li>
         <li class="mb-4 ms-0 me-auto">
           <a href="/profile#parcours" class="nav-link px-lg-0 px-xl-2">
-            <b-icon-clipboard-data scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-clipboard-data><span class="px-2">Mon parcours</span></a>
+            <b-icon-clipboard-data scale="1" shift-h="-4" style="vertical-align: middle"
+                                   class="text-black mx-auto"></b-icon-clipboard-data>
+            <span style="vertical-align: middle" class="px-2">Mon parcours</span></a>
         </li>
         <li class="mb-4 ms-0 me-auto">
           <a href="#" class="nav-link p-0 m-0 bg-transparent px-lg-0 px-xl-2 dropdown-toggle text-wrap"
@@ -29,8 +34,10 @@
              id="dropdown"
              aria-expanded="false"
              style="font-size: 1.00rem">
-            <b-icon-chat-text scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-chat-text><span
-              class="px-2 text-break">Mes salons</span>
+            <b-icon-chat-text scale="1" shift-h="-4" style="vertical-align: middle"
+                              class="text-black mx-auto"></b-icon-chat-text>
+            <span
+                style="vertical-align: middle" class="px-2 text-break">Mes salons</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
             <li v-for="c in cours" :key="c"><a class="dropdown-item" :href="`/forum/${c}`">{{ c }}</a></li>
@@ -38,8 +45,10 @@
         </li>
         <li class="ms-0 me-auto mb-3">
           <a href="#" class="nav-link px-lg-0 px-xl-2">
-            <b-icon-telephone-forward scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-telephone-forward><span
-              class="px-2">Messages privés</span></a>
+            <b-icon-telephone-forward scale="1" shift-h="-4" style="vertical-align: middle"
+                                      class="text-black mx-auto"></b-icon-telephone-forward>
+            <span
+                style="vertical-align: middle" class="px-2">Messages privés</span></a>
         </li>
       </ul>
     </div>

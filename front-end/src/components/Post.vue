@@ -2,7 +2,9 @@
   <div class="posts-hover" id="forum">
     <div class="row flex-wrap">
       <div class="col-auto align-content-start ms-0 me-auto">
-        <i class="fs-2 bi-person-circle ms-0 me-2"></i><span class="fw-bold">{{ auteur }}</span>
+        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle"
+                              font-scale="1.5"></b-icon-person-circle>
+        <span class="fw-bold">{{ auteur }}</span>
       </div>
       <div class="col-auto text-end mx-auto me-0">
         <small class="fst-italic text-muted mx-auto">{{ dateTime }}</small>

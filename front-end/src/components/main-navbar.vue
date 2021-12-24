@@ -3,39 +3,33 @@
     <nav class="container-fluid m-auto p-0 navbar-light bg-light sticky-top">
       <ul class="row m-auto" style="background-color: rgb(230,237,248);">
         <li class="col-1 text-start my-auto px-1 py-3">
-          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#menu"
-                  aria-expanded="false"
-                  aria-controls="collapseNavbar">
-            <span class="navbar-toggler-icon my-auto"></span>
-          </button>
-          <div class="offcanvas offcanvas-x-axis col-4 col-md-3 col-lg-3 col-xxl-2 p-0 mx-auto" tabindex="-1" id="menu"
-               data-bs-keyboard="true"
-               data-bs-backdrop="false" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-              <img class="col-8" href="/" title="Class Meet" alt="Logo de Class Meet"
-                   src="../assets/ClassMeet+logo-inline.png">
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                      aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body fw-bold">
-              <ul class="border-bottom border-dark nav navbar-nav flex-column"
+          <b-button v-b-toggle.sidebar variant="transparent" class="navbar-toggler-icon p-3"></b-button>
+          <div>
+            <b-sidebar id="sidebar" title="Class Meet" shadow>
+              <ul class="border-bottom border-dark nav navbar-nav flex-column ms-3"
                   style="font-size: 1.00rem; font-family: Loma,sans-serif; color: black"
                   id="sidebar">
-                <li class="mb-3 ms-0 me-auto">
+                <li class="mb-3 me-auto">
                   <a href="/" class="nav-link px-2">
-                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span class="px-3">Accueil</span> </a>
+                    <b-icon-person-circle scale="1" shift-h="4" style="vertical-align: middle"
+                                          class="text-black mx-auto"></b-icon-person-circle>
+                    <span style="vertical-align: middle" class="px-3">Accueil</span> </a>
                 </li>
-                <li class="mb-3 ms-0 me-auto">
+                <li class="mb-3 me-auto">
                   <a href="/programs" class="nav-link px-2">
-                   <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span class="px-3">Programmes</span></a>
+                    <b-icon-person-circle scale="1" shift-h="4" style="vertical-align: middle"
+                                          class="text-black mx-auto"></b-icon-person-circle>
+                    <span style="vertical-align: middle" class="px-3">Programmes</span></a>
                 </li>
-                <li class="mb-3 ms-0 me-auto">
+                <li class="mb-3 me-auto">
                   <a href="/Contact-us" class="nav-link px-2 dropdown-toggle text-wrap" role="button"
                      data-bs-toggle="dropdown"
                      id="dropdown"
                      aria-expanded="false">
-                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span
-                      class="px-3 text-break fs-6 text-start">Contactez-nous</span>
+                    <b-icon-person-circle scale="1" shift-h="4" style="vertical-align: middle"
+                                          class="text-black mx-auto"></b-icon-person-circle>
+                    <span
+                        style="vertical-align: middle" class="px-3 text-break fs-6 text-start">Contactez-nous</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end shadow flex-column" aria-labelledby="dropdown">
                     <li><a class="dropdown-item" href="/FAQ">FAQ</a></li>
@@ -44,21 +38,24 @@
                     <li><a class="dropdown-item" href="/donate">Faire un don</a></li>
                   </ul>
                 </li>
-                <li class="ms-0 me-auto mb-3">
+                <li class="me-auto mb-3">
                   <a href="#" class="nav-link px-2">
-                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span
-                      class="px-3">Messages privés</span></a>
+                    <b-icon-person-circle scale="1" shift-h="4" style="vertical-align: middle"
+                                          class="text-black mx-auto"></b-icon-person-circle>
+                    <span
+                        style="vertical-align: middle" class="px-3">Messages privés</span></a>
                 </li>
-                <li class="ms-0 me-auto mb-3">
+                <li class="me-auto mb-3">
                   <a href="/login" class="nav-link px-2">
-                    <b-icon-person-circle scale="1" shift-h="-4" style="vertical-align: middle" class="text-black mx-auto" ></b-icon-person-circle><span
-                      class="px-3 text-break">Se connecter</span>
+                    <b-icon-person-circle scale="1" shift-h="4" style="vertical-align: middle"
+                                          class="text-black mx-auto"></b-icon-person-circle>
+                    <span
+                        style="vertical-align: middle" class="px-3 text-break">Se connecter</span>
                   </a>
                 </li>
               </ul>
-            </div>
+            </b-sidebar>
           </div>
-        </li>
         <li class="col-2 text-center my-auto">
           <a class="navbar-brand" href="/"
              title="Cliquez ici pour revenir à la page principale">
@@ -80,7 +77,10 @@
              data-bs-toggle="dropdown"
              id="dropdown-user"
              aria-expanded="false"
-             style="color: royalblue; font-size: 1.10rem;"><b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="1.5"></b-icon-person-circle>{{$cookies.get("user").username}}</a>
+             style="color: royalblue; font-size: 1.10rem; vertical-align: middle;">
+            <b-icon-person-circle class="text-black" shift-v="1" shift-h="-1" style="vertical-align: middle"
+                                  font-scale="2"></b-icon-person-circle>
+            {{ $cookies.get("user").username }}</a>
           <ul class="dropdown-menu dropdown-menu-end shadow flex-column fixed-top" aria-labelledby="dropdown-user">
             <li><a class="dropdown-item" href="/profile#dashboard">Tableau de bord</a></li>
             <li><a class="dropdown-item" @click="disconnect" href="/">Déconnexion</a></li>
@@ -118,12 +118,8 @@ li {
   color: rgba(0, 0, 0, 1) !important;
 }
 
-.offcanvas-x-axis {
-  top: 0;
-  left: 0;
-  width: auto;
-  border-right: 1px solid rgba(0, 0, 0, .2);
-  transform: translateX(-100%);
+header.b-sidebar-header {
+  color: #06b8f6;
 }
 
 a:hover {

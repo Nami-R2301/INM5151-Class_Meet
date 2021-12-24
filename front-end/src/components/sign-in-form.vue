@@ -2,24 +2,24 @@
   <form action="/profile"
         class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 col-xxl-3 mt-3 text-start mx-auto">
     <p v-if="this.error_backend.length === 0" style="color: red; font-size: 1.10rem; font-weight: bold">{{
-        error_email
-      }}</p>
-    <p v-else style="color: red; font-size: 1.10rem; font-weight: bold">{{ error_backend }}</p>
+          error_email
+        }}</p>
+      <p v-else style="color: red; font-size: 1.10rem; font-weight: bold">{{ error_backend }}</p>
     <label class="form-label fw-bold mx-auto fs-5">Adresse courriel :</label><br/>
-    <input
-        @focusout="validate_email"
-        @keypress="validate_form"
+    <b-form-input
         type="text"
         v-model="email"
+        :state="checkEmail"
+        placeholder="Entrez votre courriel"
         class="form-control py-1 px-3 rounded-pill border-3 m-auto fs-5"
         name="username"
         id="email"
-    /><br/>
+    ></b-form-input>
     <label class="form-label fw-bold mx-auto fs-5">Mot de passe :</label><br/>
-    <input
-        @focusout="validate_pw"
+    <b-form-input
         type="password"
         v-model="password"
+        :state="checkPw"
         class="form-control fs-5 py-1 px-3 rounded-pill border-3 m-auto"
         name="password"
         id="password"
@@ -46,6 +46,16 @@
 
 export default {
   name: "sign-in-form",
+  computed: {
+    checkEmail() {
+      if(this.email.length === 0) return
+      return this.check_email(this.email)
+    },
+    checkPw() {
+      if(this.password.length === 0) return
+      return this.validate_pw()
+    },
+  },
   data: () => ({
     error_backend: "",
     email: "",
@@ -57,14 +67,20 @@ export default {
     this.validate_form();
   },
   methods: {
-    validate_email() {
-      this.error_email = ""
-      document.getElementById("email").style.borderColor = "#2b2b2b"
-      if (this.email.length === 0) {
-        document.getElementById("email").style.borderColor = "red"
-      }
+    check_email(email) {
+      const reg_email = new RegExp('\\b(^[a-zA-z0-9-.]+@[a-zA-Z]+.(\\bcom\\b|\\bca\\b|\\borg\\b|\\bedu\\b|\\bfr\\b)$)\\b');
+      this.error_email = "";
+      let msgE2 = "\tL'adresse courriel saisie n'est pas une adresse de format valide !";
 
+      document.getElementById("email").style.borderColor = "#2b2b2b"
+      if(email.length === 0) return false;
+      if (email.toString().match(reg_email) === null || email.length < 4) {
+        console.log("Email not valid!\n");
+        document.getElementById("email").style.borderColor = "red"
+        this.error_email = msgE2;
+      }
       this.validate_form()
+      return this.error_email.length === 0
     },
     validate_pw() {
       this.error_pw = ""
@@ -80,8 +96,6 @@ export default {
     },
     connection(e) {
       e.preventDefault();
-      this.validate_email(this.email);
-      this.validate_pw(this.password);
       if (this.error_pw.length === 0 && this.error_email.length === 0) {
         fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
           method: "POST",

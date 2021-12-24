@@ -20,14 +20,15 @@
           </div>
           <div class="row m-auto col-8 col-md-7 col-lg-7 col-xl-7 col-xxl-8 d-flex position-absolute bottom-0">
             <div class="text-center align-items-center">
-              <input
-                  class="input-post mx-auto p-3 mb-3 mt-0 w-50"
-                  type="text"
+              <b-form-input
+                  size="medium"
+                  class="m-auto"
                   placeholder="Envoyer un message"
                   @keypress="sendPost"
                   v-model="contenu"
               />
-              <i class="fs-2 ms-3 me-auto bi-plus-circle"></i>
+               <b-icon-plus-circle class="ms-2 text-black" style="vertical-align: middle"
+                              font-scale="1.5"></b-icon-plus-circle>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
     <nav class="container-fluid m-auto p-0 navbar-light bg-light sticky-top">
       <ul class="row m-auto" style="background-color: rgb(230,237,248);">
         <li class="col-1 text-start my-auto px-1 py-3">
-          <b-button v-b-toggle.sidebar variant="transparent" class="navbar-toggler-icon p-3"></b-button>
+          <b-button v-b-toggle.sidebar variant="transparent" class="navbar-toggler-icon shadow-none p-3"></b-button>
           <div>
             <b-sidebar id="sidebar" title="Class Meet" shadow>
               <ul class="border-bottom border-dark nav navbar-nav flex-column ms-3"

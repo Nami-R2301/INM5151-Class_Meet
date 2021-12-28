@@ -133,6 +133,7 @@ export default {
     return this.error_pw;
   },
   check_confirm_pw(pw, confirm_pw) {
+    this.error_confirm_pw = ""
     document.getElementById("confirmPassword").style.borderColor = "#2b2b2b"
     let msgE = "\tCe mot de passe n'est pas identique au mot de passe saisi dans le champ précédent !";
     if (confirm_pw !== pw) {

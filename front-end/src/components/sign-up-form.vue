@@ -73,20 +73,41 @@ export default {
   },
   computed: {
     checkEmail() {
-      if (this.email.length === 0 || document.getElementById('email').style.borderColor === "green") return
-      return this.validate_email() && this.validate_form()
+      let valide = null
+      if (this.error_backend.length > 0) valide = false
+      else if (this.email.length !== 0) {
+        this.validate_email()
+        valide = this.error_email.length === 0;
+      }
+      if (document.getElementById('submit') !== null) this.validate_form()
+      return valide
     },
     checkUsername() {
-      if (this.username.length === 0) return
-      return connection.check_username(this.username).length === 0 && this.validate_form()
+      let valide = null
+      if (this.username.length === 0) valide = false
+      else if (this.username.length !== 0) {
+        valide = connection.check_username(this.username).length === 0
+      }
+      if (document.getElementById('submit') !== null) this.validate_form()
+      return valide
     },
     checkPw() {
-      if (this.password.length === 0) return
-      return connection.check_password(this.password).length === 0 && this.validate_form()
+      let valide = null
+      if (this.password.length === 0) valide = false
+      else if (this.password.length !== 0) {
+        valide = connection.check_password(this.password).length === 0
+      }
+      if (document.getElementById('submit') !== null) this.validate_form()
+      return valide
     },
     checkConfirmPw() {
-      if (this.confirmPassword.length === 0) return
-      return connection.check_confirm_pw(this.password, this.confirmPassword).length === 0 && this.validate_form()
+      let valide = null
+      if (this.confirmPassword.length === 0 || this.password.length === 0) valide = false
+      else if (this.confirmPassword.length !== 0) {
+        valide = connection.check_confirm_pw(this.password, this.confirmPassword).length === 0
+      }
+      if (document.getElementById('submit') !== null) this.validate_form()
+      return valide
     }
   },
   data: () => ({
@@ -107,7 +128,7 @@ export default {
       this.error_email = ""
       if (connection.check_email(this.email).length > 0) {
         document.getElementById("email").style.borderColor = "red"
-      } else if(document.getElementById("email").style.borderColor !== "green") {
+      } else if (document.getElementById("email").style.borderColor !== "green") {
         document.getElementById("email").style.borderColor = "#2b2b2b"
         this.error_backend = "";
         fetch(`${this.$store.getters.baseUrlBackEnd}api/checkEmail`, {
@@ -166,9 +187,6 @@ export default {
 </script>
 
 <style scoped>
-.fs-5 {
-  font-size: 1.15rem !important;
-}
 
 .form-control {
   border-color: #2b2b2b;

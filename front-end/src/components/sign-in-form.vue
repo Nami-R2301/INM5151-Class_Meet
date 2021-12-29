@@ -92,6 +92,9 @@ export default {
       e.preventDefault();
       fetch(`${this.$store.getters.baseUrlBackEnd}api/connection`, {
         method: "POST",
+         headers: new Headers({
+            "Content-Type": "application/json; charset=utf-8"
+          }),
         body: JSON.stringify({email: this.email, password: this.pw}),
       })
           .then((res) => res.json())

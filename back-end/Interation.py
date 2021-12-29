@@ -1,9 +1,9 @@
 import re
 from datetime import datetime
-from sqlalchemy.sql.functions import user
-from sqlalchemy.orm.exc import NoResultFound
 import Database
-import sqlite3
+import secrets
+import hashlib
+
 
 regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
 #######################################################################
@@ -26,6 +26,17 @@ def retourne_Publication(Publication_):
 def list_publication(sous_categorie_):
     posts = Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
     list = []
+    if ( len(posts) == 0 or posts == None ):
+        msgBienvenue = Database.Publication (
+        contenu= ("Bienvenue sur la page de forum pour le cours " + sous_categorie_ + ", veuillez garder le respect dans vos propos, ClassMeet est une plateforme d'entraide avant tout, et sur ce, bon clavardage."),
+        auteur= "Forum_Master",
+        sous_categorie=sous_categorie_,
+        date=datetime.now().replace(microsecond=0),
+                )
+        Database.db.session.add(msgBienvenue)
+        Database.db.session.commit()
+        posts = Database.Publication.query.filter_by(sous_categorie=sous_categorie_).all()
+    
     for Publication in posts:
         list.append(
             {
@@ -113,9 +124,9 @@ def ajout_cours(sigle_, session_):
     Database.db.session.commit()
 
 
-def ajout_utilisateur(username_, psw_, email_):
+def ajout_utilisateur(username_, email_, psw_, salt_):
     if email_valide(email_):
-        n = Database.Etudiant(username=username_, password=psw_, email=email_)
+        n = Database.Etudiant(username=username_, email=email_, password=psw_, salt=salt_)
         Database.db.session.add(n)
         Database.db.session.commit()
     else:
@@ -123,6 +134,7 @@ def ajout_utilisateur(username_, psw_, email_):
 
 
 def ajout_publication(username_, sigle_, contenu_):
+        
     n = Database.Publication(
         contenu=contenu_,
         auteur=username_,
@@ -142,9 +154,10 @@ def supprimer_publications_de(sigle_):
 
 def connection(email, password):
     try:
-        etudiant = Database.Etudiant.query.filter_by(
-            email=email, password=password
-        ).first()
+        salt_etudiant = Database.Etudiant.query.with_entities(Database.Etudiant.salt).filter_by(email=email).first()
+        hash_password = hashlib.sha512((password + salt_etudiant[0]).encode("utf-8")).hexdigest()
+        etudiant = Database.Etudiant.query.filter_by(email=email, password=hash_password).first()
+
         return {
             "id": etudiant.etudiantId,
             "username": etudiant.username,
@@ -165,19 +178,20 @@ def email_valide(email_):
 
 
 def register(email, username, password):
-    if email_valide(email):
-        try:
-            res = Database.Etudiant(email=email, username=username, password=password)
-            Database.db.session.add(res)
-            Database.db.session.commit()
-            return {"username": username, "email": email}
-        except Exception as err:
-            if "UNIQUE constraint failed" in err.args[0]:
-                return {"err": "Email already exists"}
-            else:
-                return {"err": err}
-    else:
-        print("Email invalide!")
+    try:
+        if not email_valide(email):
+            raise Exception("email not valid")
+        salt = secrets.token_hex(16)
+        hash_password = hashlib.sha512((password + salt).encode("utf-8")).hexdigest()
+        res = Database.Etudiant(email=email, username=username, password=hash_password, salt=salt)
+        Database.db.session.add(res)
+        Database.db.session.commit()
+        return {"username": username, "email": email}
+    except Exception as err:
+        if "UNIQUE constraint failed" in err.args[0]:
+            return {"err": "Email already exists"}
+        else:
+            return {"err": err}
 
 
 def check_email(email):
@@ -185,14 +199,9 @@ def check_email(email):
         match = Database.Etudiant.query.filter_by(email=email).first()
         return {"email": match.email}
     except AttributeError as err:
-        return {"id": 0, "err": "Incorrect email or password"}
+        return {"err": "Incorrect email or password"}
     except Exception as err:
-        print(err)
-        return {"id": 0, "err": err}
-
-
-
-
+        return {"err": err}
 
 
         

@@ -20,7 +20,7 @@ def hello_world():
 
 @app.route("/api/connection", methods=["POST"])
 def connection():
-    data = json.loads(request.get_data())
+    data = request.get_json()
     etudiant = i.connection(data["email"], data["password"])
     if etudiant["id"] < 1:
         return json.dumps(etudiant), 404
@@ -30,7 +30,8 @@ def connection():
 @app.route("/api/register", methods=["POST"])
 def register():
     try:
-        data = json.loads(request.get_data())
+        data = request.get_json()
+        print("data", data)
         student = i.register(data["email"], data["username"], data["password"])
         if "err" in student.keys():
             return json.dumps(student), 404
@@ -39,15 +40,12 @@ def register():
         return {"err": err}
 
 
-@app.route("/api/checkEmail", methods=["POST"])
-def check_email():
-    data = json.loads(request.get_data())
-    student = i.check_email(data['email'])
-    if student['id'] < 1:
-        return json.dumps(student), 404
-    return json.dumps(student), 200
-
-
+@app.route("/api/checkEmail/<email>")
+def check_email_not_exist(email):
+    student = i.check_email(email)
+    if "email" in student:
+        return server_response(student, 404)
+    return server_response({"info": "email does not exist"})
 
 
 @app.route("/api/forum/<categorie_>", methods=["GET", "POST"])

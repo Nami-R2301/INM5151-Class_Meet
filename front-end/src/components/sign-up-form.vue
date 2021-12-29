@@ -125,6 +125,9 @@ export default {
         this.error_backend = "";
         fetch(`${this.$store.getters.baseUrlBackEnd}api/checkEmail`, {
           method: "POST",
+          headers: new Headers({
+            "Content-Type": "application/json; charset=utf-8"
+          }),
           body: JSON.stringify({
             email: this.email,
           }),

@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="row centered text-center">
-      <p class="name fw-bold fs-5 mt-4 mb-0">{{$cookies.get('user').username}}</p>
+      <p class="name fw-bold fs-5 mt-4 mb-0">{{ $cookies.get('user').username }}</p>
       <p class="programme text-decoration-underline mt-2">Baccalauréat en génie logiciel et informatique</p>
     </div>
   </div>

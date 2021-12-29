@@ -14,7 +14,7 @@
         lazy
         :state="checkEmail"
         placeholder="Ex: *****.****@gmail.com"
-        class="form-control py-1 px-3 rounded-pill border-2 mx-auto mb-2"
+        class="form-control rounded-pill border-2 mx-auto mb-2"
         name="email"
         id="email"
         trim
@@ -26,7 +26,7 @@
         @change="resetButton"
         v-model="pw"
         :state="checkPw"
-        class="form-control py-1 px-3 rounded-pill border-2 m-auto"
+        class="form-control rounded-pill border-2 m-auto"
         name="password"
         id="password"
     />
@@ -67,12 +67,7 @@ export default {
     checkPw() {
       let valide = null
       if (this.error_backend.length > 0) valide = false
-      else if (this.pw.length === 0) {
-        if (this.email.length > 0) {
-          document.getElementById('password').style.borderColor = "#2b2b2b"
-          valide = connection.check_password(this.pw).length === 0
-        }
-      } else valide = connection.check_password(this.pw).length === 0
+      else if (this.pw.length !== 0) valide = connection.check_password(this.pw).length === 0
       if (document.getElementById('submit') !== null) this.validate_form()
       return valide
     },
@@ -122,12 +117,20 @@ export default {
 <style scoped>
 
 .form-control {
-  border-color: #2b2b2b;
+  border-color: var(--bs-gray-dark);
 }
 
 b-form-input::placeholder {
   font-size: small;
+}
 
+.form-control.is-valid, .was-validated .form-control:valid {
+  border-color: #2b2b2b;
+  background-image: none;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: #dc3545;
+  border-width: 3px!important;
 }
 
 </style>

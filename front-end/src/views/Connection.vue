@@ -92,58 +92,37 @@ export default {
     this.error_email = "";
     let msgE2 = "\tL'adresse courriel saisie n'est pas une adresse de format valide !";
 
-    document.getElementById("email").style.borderColor = "#2b2b2b"
     if (email.length === 0) return false;
     if (email.toString().match(reg_email) === null) {
       console.log("Email not valid!\n");
-      document.getElementById("email").style.borderColor = "red"
       this.error_email = msgE2;
-    } else {
-      document.getElementById("email").style.borderColor = "green"
-      this.error_backend = "";
-    }
+    } else this.error_backend = "";
     return this.error_email
   },
   check_username(username) {
     this.error_username = "";
     let msgE = "\tLe nom d'utilisateur saisi n'est pas un nom valide !";
-    document.getElementById("username").style.borderColor = "#2b2b2b"
     if (username.length === 0) {
       console.log(msgE);
-      document.getElementById("username").style.borderColor = "red"
       this.error_username = msgE;
-    } else {
-      document.getElementById("username").style.borderColor = "green"
-      this.error_backend = "";
-    }
+    } else this.error_backend = "";
     return this.error_username;
   },
   check_password(pw) {
     this.error_pw = "";
-    let msgE = "\tLe mot de passe ne peut être laissé vide !";
-    document.getElementById("password").style.borderColor = "#2b2b2b"
     if (pw.length === 0) {
       console.log("Pw not valid!\n");
-      document.getElementById("password").style.borderColor = "red"
-      this.error_pw = msgE;
-    } else {
-      document.getElementById("password").style.borderColor = "green"
-      this.error_backend = "";
-    }
+      this.error_pw = "vide";
+    } else this.error_backend = "";
     return this.error_pw;
   },
   check_confirm_pw(pw, confirm_pw) {
     this.error_confirm_pw = ""
-    document.getElementById("confirmPassword").style.borderColor = "#2b2b2b"
     let msgE = "\tCe mot de passe n'est pas identique au mot de passe saisi dans le champ précédent !";
     if (confirm_pw !== pw) {
-      document.getElementById("confirmPassword").style.borderColor = "red"
       console.log("Confirm_pw is not valid!\n")
       this.error_confirm_pw = msgE;
-    } else if (confirm_pw.length !== 0) {
-      document.getElementById("confirmPassword").style.borderColor = "green"
-      this.error_backend = "";
-    }
+    } else if (confirm_pw.length !== 0) this.error_backend = "";
     return this.error_confirm_pw;
   },
   beforeCreate() {

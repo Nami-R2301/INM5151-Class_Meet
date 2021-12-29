@@ -5,13 +5,14 @@
       }}</p>
     <p v-else-if="this.error_backend.length !== 0" style="color: red; font-size: 1.10rem; font-weight: bold">
       {{ error_backend }}</p>
-    <p style="color: green; font-size: 1.10rem; font-weight: bold">{{ this.confirm_email }}</p>
+    <p class="valid-feedback" style="color: green; font-size: 1.10rem; font-weight: bold">{{ this.confirm_email }}</p>
     <label class="form-label fw-bold mb-2 mx-auto">Adresse courriel :</label>
     <b-form-input
         type="email"
         :state="checkEmail"
         v-model="email"
-        class="form-control  py-1 px-3 rounded-pill border-3 mb-4"
+        placeholder="Ex: *****.****@gmail.com"
+        class="form-control rounded-pill border-2 mb-4"
         name="email"
         id="email"
     />
@@ -21,7 +22,7 @@
         type="text"
         :state="checkUsername"
         v-model="username"
-        class="form-control py-1 px-3 rounded-pill border-3 mb-4"
+        class="form-control rounded-pill border-2 mb-4"
         name="username"
         id="username"
     />
@@ -31,7 +32,8 @@
         type="password"
         :state="checkPw"
         v-model="password"
-        class="form-control py-1 px-3 rounded-pill border-3 mb-4"
+        placeholder="Au moins 1 caractère"
+        class="form-control rounded-pill border-2 mb-4"
         name="password"
         id="password"
     />
@@ -41,7 +43,7 @@
         type="password"
         :state="checkConfirmPw"
         v-model="confirmPassword"
-        class="form-control  py-1 px-3 rounded-pill border-3 mb-4"
+        class="form-control rounded-pill border-2 mb-4"
         name="confirmPassword"
         id="confirmPassword"
     />
@@ -75,43 +77,35 @@ export default {
     checkEmail() {
       let valide = null
       if (this.error_backend.length > 0) valide = false
-      else if (this.email.length !== 0) {
-        this.validate_email()
-        valide = this.error_email.length === 0;
-      }
+      else if (this.email !== this.copy_email) valide = this.validate_email().length === 0;
+      else if (this.email.length > 0) valide = this.confirm_email.length > 0
       if (document.getElementById('submit') !== null) this.validate_form()
       return valide
     },
     checkUsername() {
       let valide = null
-      if (this.username.length === 0) valide = false
-      else if (this.username.length !== 0) {
-        valide = connection.check_username(this.username).length === 0
-      }
+      if (this.username.length !== 0) valide = connection.check_username(this.username).length === 0
       if (document.getElementById('submit') !== null) this.validate_form()
       return valide
     },
     checkPw() {
       let valide = null
-      if (this.password.length === 0) valide = false
-      else if (this.password.length !== 0) {
-        valide = connection.check_password(this.password).length === 0
-      }
+      if (this.password.length !== 0) valide = connection.check_password(this.password).length === 0
       if (document.getElementById('submit') !== null) this.validate_form()
       return valide
     },
     checkConfirmPw() {
       let valide = null
-      if (this.confirmPassword.length === 0 || this.password.length === 0) valide = false
-      else if (this.confirmPassword.length !== 0) {
+      if (this.password.length !== 0 && this.confirmPassword.length !== 0) {
         valide = connection.check_confirm_pw(this.password, this.confirmPassword).length === 0
-      }
+      } else if (this.password.length === 0 && this.confirmPassword.length !== 0) valide = false
       if (document.getElementById('submit') !== null) this.validate_form()
       return valide
     }
   },
   data: () => ({
     email: "",
+    copy_email: "",
     confirm_email: "",
     username: "",
     password: "",
@@ -125,11 +119,9 @@ export default {
   methods: {
     validate_email() {
       this.confirm_email = ""
-      this.error_email = ""
-      if (connection.check_email(this.email).length > 0) {
-        document.getElementById("email").style.borderColor = "red"
-      } else if (document.getElementById("email").style.borderColor !== "green") {
-        document.getElementById("email").style.borderColor = "#2b2b2b"
+      this.copy_email = this.email
+      this.error_email = connection.check_email(this.email)
+      if (this.email.length > 0 && this.error_email.length === 0) {
         this.error_backend = "";
         fetch(`${this.$store.getters.baseUrlBackEnd}api/checkEmail`, {
           method: "POST",
@@ -139,22 +131,20 @@ export default {
         })
             .then((res) => res.json())
             .then((data) => {
-              if (data.err) {
-                this.confirm_email = "Cette adresse courriel est libre !"
-                document.getElementById('email').style.borderColor = "green"
-              }
+              if (data.err) this.confirm_email = "Cette adresse courriel est libre !"
             })
             .catch((err) => {
               console.error(err);
               this.error_email = "Cette adresse courriel est déjà associé à un compte Class Meet !";
-              document.getElementById("email").style.borderColor = "red"
             });
       }
+      return this.error_email
     },
     validate_form() {
       document.getElementById('submit').disabled = this.email.length === 0 ||
           this.password.length === 0 || this.username.length === 0 ||
-          this.confirmPassword.length === 0 || document.getElementById('email').style.borderColor !== "green"
+          this.confirmPassword.length === 0 || this.confirm_email.length === 0 || this.error_username === null
+          || this.error_pw === null || this.error_confirm_pw === null || this.password !== this.confirmPassword
     },
     signup(e) {
       e.preventDefault();
@@ -189,7 +179,14 @@ export default {
 <style scoped>
 
 .form-control {
-  border-color: #2b2b2b;
+  border-color: var(--bs-orange);
 }
 
+.form-control.is-valid, .was-validated .form-control:valid {
+  border-color: #198754;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: #dc3545;
+  border-width: 3px!important;
+}
 </style>

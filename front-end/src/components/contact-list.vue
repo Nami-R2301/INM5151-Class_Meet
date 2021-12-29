@@ -2,7 +2,8 @@
   <div class="min-vh-100">
     <ul class="title-contacts m-auto mb-3 pb-1" style="font-size: 1.00rem">
       <li>
-        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="2"></b-icon-person-circle>
+        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle"
+                              font-scale="2"></b-icon-person-circle>
         <span style="vertical-align: middle" class="fs-5 fw-bold">Contacts</span>
       </li>
     </ul>
@@ -12,8 +13,11 @@
           :key="etudiant.name"
           class="mb-3"
       >
-        <b-icon-person-circle class="me-2 text-black" style="vertical-align: middle" font-scale="1.5"></b-icon-person-circle>
-        <span style="vertical-align: middle" class="fs-6 me-0">{{ etudiant.name }}</span>
+        <b-icon-person-circle v-if="etudiant.name !== $cookies.get('user').username" class="me-2 text-black"
+                              style="vertical-align: middle"
+                              font-scale="1.5"></b-icon-person-circle>
+        <span v-if="etudiant.name !== $cookies.get('user').username"  style="vertical-align: middle"
+              class="fs-6 me-0 mb-3">{{ etudiant.name }}</span>
       </div>
     </div>
   </div>
